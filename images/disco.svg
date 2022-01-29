@@ -1,0 +1,1450 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:serif="http://www.serif.com/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="372.90421mm"
+   height="372.90421mm"
+   viewBox="0 0 372.90421 372.90422"
+   version="1.1"
+   id="svg976"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="disco.svg">
+  <defs
+     id="defs970">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient939">
+      <stop
+         style="stop-color:#bbbbbb;stop-opacity:1;"
+         offset="0"
+         id="stop935" />
+      <stop
+         style="stop-color:#bbbbbb;stop-opacity:0;"
+         offset="1"
+         id="stop937" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect919"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient939"
+       id="linearGradient941"
+       x1="129.33136"
+       y1="78.521141"
+       x2="301.72394"
+       y2="259.59537"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.32"
+     inkscape:cx="583.62477"
+     inkscape:cy="598.8781"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="2488"
+     inkscape:window-height="1376"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false" />
+  <metadata
+     id="metadata973">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="box"
+     transform="translate(-54.09047,-47.508214)"
+     style="display:inline">
+    <rect
+       style="fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.81099999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1637"
+       width="372.09271"
+       height="372.09271"
+       x="54.000126"
+       y="47.715527"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40736988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect905"
+       width="2.0645564"
+       height="16.303099"
+       x="165.46786"
+       y="48.330631"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       style="fill:url(#linearGradient941);fill-opacity:1;stroke:#000000;stroke-width:1.98199999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path907"
+       sodipodi:type="arc"
+       sodipodi:cx="166.50017"
+       sodipodi:cy="118.4095"
+       sodipodi:rx="52.959572"
+       sodipodi:ry="52.959572"
+       sodipodi:start="1.8473088"
+       sodipodi:end="1.8457206"
+       sodipodi:open="true"
+       d="m 152.04208,169.35732 a 52.959572,52.959572 0 0 1 -36.49547,-65.38567 52.959572,52.959572 0 0 1 65.37118,-36.521432 52.959572,52.959572 0 0 1 36.54738,65.356672 52.959572,52.959572 0 0 1 -65.34215,36.57333"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="rotate(90)"
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98199987;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path983"
+       sodipodi:type="arc"
+       sodipodi:cx="118.4095"
+       sodipodi:cy="-166.50018"
+       sodipodi:rx="52.72768"
+       sodipodi:ry="22.868851"
+       sodipodi:start="1.8473088"
+       sodipodi:end="1.8457206"
+       sodipodi:open="true"
+       d="m 104.01472,-144.50004 a 52.72768,22.868851 0 0 1 -36.335666,-28.23466 52.72768,22.868851 0 0 1 65.084936,-15.77057 52.72768,22.868851 0 0 1 36.38735,28.22213 52.72768,22.868851 0 0 1 -65.05604,15.79299"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="rotate(90)"
+       d="m 104.01472,-131.59173 a 52.72768,36.286888 0 0 1 -36.335666,-44.80101 52.72768,36.286888 0 0 1 65.084936,-25.02379 52.72768,36.286888 0 0 1 36.38735,44.78115 52.72768,36.286888 0 0 1 -65.05604,25.05934"
+       sodipodi:open="true"
+       sodipodi:end="1.8457206"
+       sodipodi:start="1.8473088"
+       sodipodi:ry="36.286888"
+       sodipodi:rx="52.72768"
+       sodipodi:cy="-166.5002"
+       sodipodi:cx="118.4095"
+       sodipodi:type="arc"
+       id="path985"
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98200023;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="rotate(90)"
+       d="m 104.01472,-159.04826 a 52.72768,7.7461882 0 0 1 -36.335666,-9.56371 52.72768,7.7461882 0 0 1 65.084936,-5.34184 52.72768,7.7461882 0 0 1 36.38735,9.55946 52.72768,7.7461882 0 0 1 -65.05604,5.34944"
+       sodipodi:open="true"
+       sodipodi:end="1.8457206"
+       sodipodi:start="1.8473088"
+       sodipodi:ry="7.7461882"
+       sodipodi:rx="52.72768"
+       sodipodi:cy="-166.5002"
+       sodipodi:cx="118.4095"
+       sodipodi:type="arc"
+       id="path987"
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98199975;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98200023;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path989"
+       sodipodi:type="arc"
+       sodipodi:cx="118.4095"
+       sodipodi:cy="-166.5002"
+       sodipodi:rx="52.72768"
+       sodipodi:ry="46.868942"
+       sodipodi:start="1.8473088"
+       sodipodi:end="1.8457206"
+       sodipodi:open="true"
+       d="m 104.01472,-121.41165 a 52.72768,46.868942 0 0 1 -36.335666,-57.86597 52.72768,46.868942 0 0 1 65.084936,-32.32127 52.72768,46.868942 0 0 1 36.38735,57.8403 52.72768,46.868942 0 0 1 -65.05604,32.36721"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       d="m -180.89496,-96.40936 a 52.72768,22.868851 0 0 1 -36.33567,-28.23465 52.72768,22.868851 0 0 1 65.08494,-15.77058 52.72768,22.868851 0 0 1 36.38735,28.22213 52.72768,22.868851 0 0 1 -65.05604,15.792988"
+       sodipodi:open="true"
+       sodipodi:end="1.8457206"
+       sodipodi:start="1.8473088"
+       sodipodi:ry="22.868851"
+       sodipodi:rx="52.72768"
+       sodipodi:cy="-118.4095"
+       sodipodi:cx="-166.50018"
+       sodipodi:type="arc"
+       id="path991"
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98199987;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98200023;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path993"
+       sodipodi:type="arc"
+       sodipodi:cx="-166.5002"
+       sodipodi:cy="-118.4095"
+       sodipodi:rx="52.72768"
+       sodipodi:ry="36.286888"
+       sodipodi:start="1.8473088"
+       sodipodi:end="1.8457206"
+       sodipodi:open="true"
+       d="m -180.89497,-83.501028 a 52.72768,36.286888 0 0 1 -36.33567,-44.801012 52.72768,36.286888 0 0 1 65.08493,-25.02379 52.72768,36.286888 0 0 1 36.38736,44.78114 52.72768,36.286888 0 0 1 -65.05605,25.059351"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98199975;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path995"
+       sodipodi:type="arc"
+       sodipodi:cx="-166.5002"
+       sodipodi:cy="-118.4095"
+       sodipodi:rx="52.72768"
+       sodipodi:ry="7.7461882"
+       sodipodi:start="1.8473088"
+       sodipodi:end="1.8457206"
+       sodipodi:open="true"
+       d="m -180.89497,-110.95756 a 52.72768,7.7461882 0 0 1 -36.33567,-9.56371 52.72768,7.7461882 0 0 1 65.08493,-5.34184 52.72768,7.7461882 0 0 1 36.38736,9.55946 52.72768,7.7461882 0 0 1 -65.05605,5.34944"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="scale(-1)"
+       d="m -180.89497,-73.32095 a 52.72768,46.868942 0 0 1 -36.33567,-57.86597 52.72768,46.868942 0 0 1 65.08493,-32.32128 52.72768,46.868942 0 0 1 36.38736,57.84031 52.72768,46.868942 0 0 1 -65.05605,32.367205"
+       sodipodi:open="true"
+       sodipodi:end="1.8457206"
+       sodipodi:start="1.8473088"
+       sodipodi:ry="46.868942"
+       sodipodi:rx="52.72768"
+       sodipodi:cy="-118.4095"
+       sodipodi:cx="-166.5002"
+       sodipodi:type="arc"
+       id="path997"
+       style="fill:#000000;fill-opacity:0;stroke:#080202;stroke-width:1.98200023;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <rect
+       y="62.2892"
+       x="163.08434"
+       height="2.3445301"
+       width="6.8316526"
+       id="rect943"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.40736988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+  </g>
+  <g
+     inkscape:label="1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(248.76681,493.63461)"
+     style="display:none">
+    <g
+       transform="matrix(0.28467051,0,0,0.28467051,-101.39864,-228.97446)"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
+       id="Layer-1"
+       serif:id="Layer 1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/1.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401">
+      <g
+         transform="translate(548.14685,46.25748)"
+         id="g900">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-7.203 -12.072,-25.006 c 0.063,-0.947 0.111,-1.898 0.111,-2.853 0,-28.346 -29.478,-54.471 -79.069,-75.389 v 17.393 c -4.836,-1.919 -9.871,-3.787 -15.117,-5.593 v -8.108 c -70.874,-25.56 -176.383,-41.778 -294.241,-41.778 -102.973,0 -196.529,12.38 -265.791,32.554 v 28.246 h -0.002 v -34.188 c -70.96,22.55 -114.954,53.877 -114.954,88.515 0,5.46 1.101,10.838 3.217,16.113 l -7.228,12.867 c 0,0 -5.792,7.512 4.406,23.362 8.994,13.977 54.048,68.685 77.827,97.335 10.214,14.687 17.141,23.734 17.746,22.859 0.955,-1.386 -6.351,-28.961 -26.635,-60.423 -9.466,-16.895 -20.768,-39.283 -27.554,-55.819 18.942,11.99 130.23,68.029 357.232,67.801 231.994,-0.232 335.115,-72.851 346.433,-82.737 -3.955,15.889 -17.468,48.033 -28.245,70.638 -17.706,32.331 -24.12,60.478 -23.296,61.87 0.524,0.878 6.565,-8.441 15.476,-23.543 C -51.025,87.37 -11.739,30.974 -3.889,16.608 5.007,0.323 0,-7.203 0,-7.203"
+           style="fill:#a52b00;fill-rule:nonzero"
+           id="path898" />
+      </g>
+      <g
+         transform="translate(618.23685,-165.21952)"
+         id="g904">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,204.135 -79.343,-58.446 c -0.745,-2.6 -1.49,-5.201 -2.26,-7.781 l 26.062,-37.754 c 2.66,-3.84 3.196,-8.832 1.469,-13.211 -1.731,-4.358 -5.515,-7.482 -9.99,-8.247 l -44.066,-7.479 c -1.709,-3.485 -3.498,-6.916 -5.294,-10.319 L -94.907,18.51 c 1.903,-4.317 1.505,-9.335 -1.022,-13.254 -2.517,-3.937 -6.786,-6.237 -11.338,-6.058 l -44.724,1.625 c -2.315,-3.016 -4.667,-6.003 -7.067,-8.937 l 10.278,-45.432 c 1.042,-4.612 -0.274,-9.443 -3.487,-12.794 -3.195,-3.339 -7.838,-4.722 -12.253,-3.639 l -43.562,10.709 c -2.82,-2.493 -5.688,-4.953 -8.588,-7.365 l 1.567,-46.641 c 0.168,-4.721 -2.033,-9.208 -5.812,-11.829 -3.777,-2.636 -8.57,-3.032 -12.701,-1.074 l -40.638,19.321 c -3.273,-1.878 -6.565,-3.737 -9.892,-5.537 l -7.181,-45.961 c -0.729,-4.656 -3.724,-8.612 -7.919,-10.418 -4.185,-1.817 -8.976,-1.228 -12.648,1.536 l -36.232,27.185 c -3.569,-1.185 -7.153,-2.32 -10.779,-3.407 l -15.617,-43.585 c -1.588,-4.443 -5.25,-7.706 -9.716,-8.624 -4.45,-0.909 -9.028,0.632 -12.114,4.08 l -30.499,34.119 c -3.685,-0.423 -7.377,-0.81 -11.076,-1.131 l -23.549,-39.676 c -2.384,-4.018 -6.597,-6.464 -11.139,-6.464 -4.529,0 -8.75,2.446 -11.118,6.464 l -23.555,39.676 c -3.701,0.321 -7.408,0.708 -11.088,1.131 l -30.499,-34.119 c -3.09,-3.448 -7.684,-4.989 -12.122,-4.08 -4.46,0.93 -8.128,4.181 -9.707,8.624 l -15.629,43.585 c -3.621,1.087 -7.205,2.23 -10.78,3.407 l -36.22,-27.185 c -3.683,-2.774 -8.478,-3.361 -12.668,-1.536 -4.181,1.806 -7.188,5.762 -7.913,10.418 l -7.186,45.961 c -3.322,1.8 -6.614,3.649 -9.895,5.537 l -40.634,-19.321 c -4.127,-1.966 -8.945,-1.562 -12.704,1.074 -3.773,2.621 -5.98,7.108 -5.81,11.829 l 1.562,46.641 c -2.894,2.412 -5.756,4.872 -8.591,7.365 l -43.554,-10.709 c -4.423,-1.074 -9.062,0.3 -12.265,3.639 -3.221,3.351 -4.526,8.182 -3.491,12.794 l 10.257,45.432 c -2.378,2.945 -4.733,5.921 -7.042,8.937 l -44.724,-1.625 c -4.513,-0.135 -8.821,2.121 -11.343,6.058 -2.527,3.919 -2.91,8.937 -1.029,13.254 l 18.528,42.388 c -1.799,3.403 -3.586,6.834 -5.309,10.319 l -44.063,7.479 c -4.479,0.754 -8.252,3.876 -9.994,8.247 -1.728,4.379 -1.167,9.371 1.474,13.211 l 26.066,37.754 c -0.201,0.667 -0.387,1.339 -0.587,2.008 l -73.696,78.285 c 0,0 -11.296,8.851 5.147,29.654 14.5,18.351 88.951,91.096 128.271,129.205 16.606,19.348 27.984,31.329 29.172,30.293 1.876,-1.645 -7.972,-36.847 -40.682,-78.149 -25.216,-37.056 -57.941,-94.049 -50.267,-100.618 0,0 8.729,-11.081 26.242,-19.057 0.641,0.512 -0.662,-0.507 0,0 0,0 369.595,170.491 712.429,2.884 39.164,-7.025 62.873,13.955 62.873,13.955 8.176,4.74 -12.996,63.344 -30.407,102.137 -23.679,44.05 -27.151,78.422 -25.144,79.614 1.268,0.757 9.883,-12.353 22.172,-33.217 C -67.814,332.649 -10.492,252.1 0,232.534 11.895,210.352 0,204.135 0,204.135"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path902" />
+      </g>
+      <g
+         transform="translate(456.64285,-215.42552)"
+         id="g908">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,232.466 c 0,0 53.179,-2.466 123.032,-73.462 l 9.898,-21.979 c 0,0 -108.417,-107.848 60.118,-182.291 0,0 -14.755,24.112 -10.426,117.272 0,0 50.815,-17.649 65.714,-99.94 0,0 74.12,97.724 -80.502,189.377 0,0 -72.54,116.289 -174.805,105.15 z"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path906"
+           inkscape:transform-center-x="-11.22532"
+           inkscape:transform-center-y="-28.330586" />
+      </g>
+      <g
+         transform="translate(215.74385,28.25648)"
+         id="g912">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-78.192 c 0,0 36.935,-40.443 73.871,0 0,0 29.022,53.927 0,80.887 0,0 -47.487,37.748 -73.871,0 0,0 -31.658,-29.659 0,-80.887"
+           style="fill-rule:nonzero"
+           id="path910" />
+      </g>
+      <g
+         transform="translate(258.50785,-34.93552)"
+         id="g916">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0.004 c 0,15.746 -9.282,28.514 -20.732,28.514 -11.448,0 -20.73,-12.768 -20.73,-28.514 0,-15.75 9.282,-28.518 20.73,-28.518 C -9.282,-28.514 0,-15.746 0,0.004"
+           style="fill:#ffffff;fill-rule:nonzero"
+           id="path914" />
+      </g>
+      <g
+         transform="translate(50.894847,22.63148)"
+         id="g920">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-83.609 c 0,0 63.355,-28.052 80.648,34.562 0,0 18.114,72.98 -52.03,77.099 0,0 -89.444,-17.228 -28.618,-111.661"
+           style="fill-rule:nonzero"
+           id="path918" />
+      </g>
+      <g
+         transform="translate(82.714847,-33.90052)"
+         id="g924">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0.002 c 0,16.239 -9.572,29.409 -21.381,29.409 -11.804,0 -21.379,-13.17 -21.379,-29.409 0,-16.244 9.575,-29.411 21.379,-29.411 C -9.572,-29.409 0,-16.242 0,0.002"
+           style="fill:#ffffff;fill-rule:nonzero"
+           id="path922" />
+      </g>
+      <g
+         transform="translate(132.06385,116.46948)"
+         id="g928">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-40.271 80.796,-6.484 c 0,0 -2.738,13.006 -13.279,22.769 0,0 -27.79,30.47 -59.673,-2.533 0,0 -5.217,-5.629 -7.844,-13.752"
+           style="fill-rule:nonzero"
+           id="path926" />
+      </g>
+      <g
+         transform="translate(-191.45715,-189.32652)"
+         id="g932"
+         inkscape:transform-center-x="13.363477"
+         inkscape:transform-center-y="-26.19243">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,190.741 c -0.667,0 -1.321,0.049 -1.973,0.101 -26.234,-5.971 -99.973,-25.185 -119.464,-56.363 0,0 99.227,-112.872 -55.86,-185.019 l 18.057,124.878 c 0,0 -47.809,-31.949 -58.126,-101.346 0,0 -116.423,84.494 51.384,165.474 0,0 15.22,57.187 161.349,102.815 l 0.107,-0.435 c 1.471,0.272 2.977,0.435 4.526,0.435 13.808,0 25.003,-11.312 25.003,-25.271 0,-13.956 -11.195,-25.269 -25.003,-25.269"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path930" />
+      </g>
+    </g>
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:5.99471045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path949"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.070439523"
+       inkscape:transform-center-y="0.047089002"
+       transform="matrix(0.33797436,0,0,0.32343508,-75.682674,-323.5809)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/1.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(1.1482298,0,0,1.1431185,-81.999992,146.5479)"
+       inkscape:transform-center-y="0.16643122"
+       inkscape:transform-center-x="0.23931024"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path951"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.72999001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/1.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(1.6393006,0,0,1.6304089,56.298705,385.85979)"
+       inkscape:transform-center-y="0.2373264"
+       inkscape:transform-center-x="0.34164752"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path955"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.21234453;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/1.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.16776979;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path959"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.35463695"
+       inkscape:transform-center-y="0.24645528"
+       transform="matrix(1.7016112,0,0,1.6929047,-16.795249,319.01333)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/1.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+  </g>
+  <g
+     style="display:none"
+     transform="translate(248.76681,493.63461)"
+     id="g1008"
+     inkscape:groupmode="layer"
+     inkscape:label="2">
+    <g
+       serif:id="Layer 1"
+       id="g998"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
+       transform="matrix(0.28389494,-0.02099913,0.02099913,0.28389494,-99.469743,-225.14979)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/2.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401">
+      <g
+         id="g963"
+         transform="translate(548.14685,46.25748)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path961"
+           style="fill:#a52b00;fill-rule:nonzero"
+           d="m 0,-7.203 -12.072,-25.006 c 0.063,-0.947 0.111,-1.898 0.111,-2.853 0,-28.346 -29.478,-54.471 -79.069,-75.389 v 17.393 c -4.836,-1.919 -9.871,-3.787 -15.117,-5.593 v -8.108 c -70.874,-25.56 -176.383,-41.778 -294.241,-41.778 -102.973,0 -196.529,12.38 -265.791,32.554 v 28.246 h -0.002 v -34.188 c -70.96,22.55 -114.954,53.877 -114.954,88.515 0,5.46 1.101,10.838 3.217,16.113 l -7.228,12.867 c 0,0 -5.792,7.512 4.406,23.362 8.994,13.977 54.048,68.685 77.827,97.335 10.214,14.687 17.141,23.734 17.746,22.859 0.955,-1.386 -6.351,-28.961 -26.635,-60.423 -9.466,-16.895 -20.768,-39.283 -27.554,-55.819 18.942,11.99 130.23,68.029 357.232,67.801 231.994,-0.232 335.115,-72.851 346.433,-82.737 -3.955,15.889 -17.468,48.033 -28.245,70.638 -17.706,32.331 -24.12,60.478 -23.296,61.87 0.524,0.878 6.565,-8.441 15.476,-23.543 C -51.025,87.37 -11.739,30.974 -3.889,16.608 5.007,0.323 0,-7.203 0,-7.203"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g967"
+         transform="translate(618.23685,-165.21952)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path965"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 0,204.135 -79.343,-58.446 c -0.745,-2.6 -1.49,-5.201 -2.26,-7.781 l 26.062,-37.754 c 2.66,-3.84 3.196,-8.832 1.469,-13.211 -1.731,-4.358 -5.515,-7.482 -9.99,-8.247 l -44.066,-7.479 c -1.709,-3.485 -3.498,-6.916 -5.294,-10.319 L -94.907,18.51 c 1.903,-4.317 1.505,-9.335 -1.022,-13.254 -2.517,-3.937 -6.786,-6.237 -11.338,-6.058 l -44.724,1.625 c -2.315,-3.016 -4.667,-6.003 -7.067,-8.937 l 10.278,-45.432 c 1.042,-4.612 -0.274,-9.443 -3.487,-12.794 -3.195,-3.339 -7.838,-4.722 -12.253,-3.639 l -43.562,10.709 c -2.82,-2.493 -5.688,-4.953 -8.588,-7.365 l 1.567,-46.641 c 0.168,-4.721 -2.033,-9.208 -5.812,-11.829 -3.777,-2.636 -8.57,-3.032 -12.701,-1.074 l -40.638,19.321 c -3.273,-1.878 -6.565,-3.737 -9.892,-5.537 l -7.181,-45.961 c -0.729,-4.656 -3.724,-8.612 -7.919,-10.418 -4.185,-1.817 -8.976,-1.228 -12.648,1.536 l -36.232,27.185 c -3.569,-1.185 -7.153,-2.32 -10.779,-3.407 l -15.617,-43.585 c -1.588,-4.443 -5.25,-7.706 -9.716,-8.624 -4.45,-0.909 -9.028,0.632 -12.114,4.08 l -30.499,34.119 c -3.685,-0.423 -7.377,-0.81 -11.076,-1.131 l -23.549,-39.676 c -2.384,-4.018 -6.597,-6.464 -11.139,-6.464 -4.529,0 -8.75,2.446 -11.118,6.464 l -23.555,39.676 c -3.701,0.321 -7.408,0.708 -11.088,1.131 l -30.499,-34.119 c -3.09,-3.448 -7.684,-4.989 -12.122,-4.08 -4.46,0.93 -8.128,4.181 -9.707,8.624 l -15.629,43.585 c -3.621,1.087 -7.205,2.23 -10.78,3.407 l -36.22,-27.185 c -3.683,-2.774 -8.478,-3.361 -12.668,-1.536 -4.181,1.806 -7.188,5.762 -7.913,10.418 l -7.186,45.961 c -3.322,1.8 -6.614,3.649 -9.895,5.537 l -40.634,-19.321 c -4.127,-1.966 -8.945,-1.562 -12.704,1.074 -3.773,2.621 -5.98,7.108 -5.81,11.829 l 1.562,46.641 c -2.894,2.412 -5.756,4.872 -8.591,7.365 l -43.554,-10.709 c -4.423,-1.074 -9.062,0.3 -12.265,3.639 -3.221,3.351 -4.526,8.182 -3.491,12.794 l 10.257,45.432 c -2.378,2.945 -4.733,5.921 -7.042,8.937 l -44.724,-1.625 c -4.513,-0.135 -8.821,2.121 -11.343,6.058 -2.527,3.919 -2.91,8.937 -1.029,13.254 l 18.528,42.388 c -1.799,3.403 -3.586,6.834 -5.309,10.319 l -44.063,7.479 c -4.479,0.754 -8.252,3.876 -9.994,8.247 -1.728,4.379 -1.167,9.371 1.474,13.211 l 26.066,37.754 c -0.201,0.667 -0.387,1.339 -0.587,2.008 l -73.696,78.285 c 0,0 -11.296,8.851 5.147,29.654 14.5,18.351 88.951,91.096 128.271,129.205 16.606,19.348 27.984,31.329 29.172,30.293 1.876,-1.645 -7.972,-36.847 -40.682,-78.149 -25.216,-37.056 -57.941,-94.049 -50.267,-100.618 0,0 8.729,-11.081 26.242,-19.057 0.641,0.512 -0.662,-0.507 0,0 0,0 369.595,170.491 712.429,2.884 39.164,-7.025 62.873,13.955 62.873,13.955 8.176,4.74 -12.996,63.344 -30.407,102.137 -23.679,44.05 -27.151,78.422 -25.144,79.614 1.268,0.757 9.883,-12.353 22.172,-33.217 C -67.814,332.649 -10.492,252.1 0,232.534 11.895,210.352 0,204.135 0,204.135"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g971"
+         transform="rotate(14.74195,1157.6666,1864.8322)"
+         inkscape:transform-center-x="-13.816578"
+         inkscape:transform-center-y="-25.72719">
+        <path
+           inkscape:transform-center-y="-28.330586"
+           inkscape:transform-center-x="-11.22532"
+           id="path969"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 0,232.466 c 0,0 53.179,-2.466 123.032,-73.462 l 9.898,-21.979 c 0,0 -89.716185,-98.127342 78.81882,-172.570342 0,0 -33.45582,14.391342 -29.12682,107.551342 0,0 29.12033,-20.199759 44.01933,-102.490759 0,0 95.81467,100.274759 -58.80733,191.927759 0,0 -72.54,116.289 -174.805,105.15 z"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+           inkscape:export-xdpi="34.874401"
+           inkscape:export-ydpi="34.874401" />
+      </g>
+      <g
+         id="g975"
+         transform="translate(215.74385,28.25648)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path973"
+           style="fill-rule:nonzero"
+           d="m 0,-78.192 c 0,0 36.935,-40.443 73.871,0 0,0 29.022,53.927 0,80.887 0,0 -47.487,37.748 -73.871,0 0,0 -31.658,-29.659 0,-80.887"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g979"
+         transform="translate(258.50785,-34.93552)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path977"
+           style="fill:#ffffff;fill-rule:nonzero"
+           d="m 0,0.004 c 0,15.746 -9.282,28.514 -20.732,28.514 -11.448,0 -20.73,-12.768 -20.73,-28.514 0,-15.75 9.282,-28.518 20.73,-28.518 C -9.282,-28.514 0,-15.746 0,0.004"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g983"
+         transform="translate(50.894847,22.63148)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path981"
+           style="fill-rule:nonzero"
+           d="m 0,-83.609 c 0,0 63.355,-28.052 80.648,34.562 0,0 18.114,72.98 -52.03,77.099 0,0 -89.444,-17.228 -28.618,-111.661"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g988"
+         transform="translate(82.714847,-33.90052)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path986"
+           style="fill:#ffffff;fill-rule:nonzero"
+           d="m 0,0.002 c 0,16.239 -9.572,29.409 -21.381,29.409 -11.804,0 -21.379,-13.17 -21.379,-29.409 0,-16.244 9.575,-29.411 21.379,-29.411 C -9.572,-29.409 0,-16.242 0,0.002"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g992"
+         transform="translate(132.06385,116.46948)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path990"
+           style="fill-rule:nonzero"
+           d="m 0,-40.271 80.796,-6.484 c 0,0 -2.738,13.006 -13.279,22.769 0,0 -27.79,30.47 -59.673,-2.533 0,0 -5.217,-5.629 -7.844,-13.752"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="-26.19243"
+         inkscape:transform-center-x="13.363477"
+         id="g996"
+         transform="translate(-191.45715,-189.32652)"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           id="path994"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m -2.5061464,207.47511 c -0.6508439,-0.14591 -1.2997221,-0.24117 -1.947305,-0.33306 -24.2923216,-11.56541 -92.0418896,-46.44541 -104.2401686,-81.13213 0,0 100.4644823,-78.161839 -35.08286,-182.488654 l 11.35218,115.534481 c 0,0 -36.58102,-43.174329 -31.46659,-113.147372 0,0 -135.16787,58.5186229 10.85903,174.247155 0,0 -19.0797,37.71077 113.528009,114.20125 l -1.252674,-12.38209 c 1.375865,0.58722 -7.17797,-8.65211 12.817577,4.00946 13.473542,3.02069 41.248525,25.23852 44.302244,11.61764 3.053062,-13.61796 -5.395901,-27.10599 -18.8694424,-30.12668"
+           inkscape:connector-curvature="0"
+           inkscape:transform-center-x="7.2770584"
+           inkscape:transform-center-y="-26.322571"
+           sodipodi:nodetypes="ccccccccccsc" />
+      </g>
+      <g
+         inkscape:transform-center-y="-25.72719"
+         inkscape:transform-center-x="-13.816578"
+         transform="rotate(14.74195,1157.6666,1864.8322)"
+         id="g1091"
+         inkscape:export-filename="/home/bz/Pictures/disco-logo/frames/2.png"
+         inkscape:export-xdpi="34.874401"
+         inkscape:export-ydpi="34.874401">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,232.466 c 0,0 53.179,-2.466 123.032,-73.462 l 9.898,-21.979 c 0,0 -87.144376,-99.64141 81.39062,-174.08441 0,0 -36.02762,15.90541 -31.69862,109.06541 0,0 28.96732,-21.987814 43.86632,-104.278814 0,0 95.96768,102.062814 -58.65432,193.715814 0,0 -72.54,116.289 -174.805,105.15 z"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1089"
+           inkscape:transform-center-x="-11.22532"
+           inkscape:transform-center-y="-28.330586"
+           sodipodi:nodetypes="ccccccccc" />
+      </g>
+    </g>
+    <path
+       transform="matrix(0.62748521,0,0,0.61906334,-48.167979,-186.33331)"
+       inkscape:transform-center-y="0.090122771"
+       inkscape:transform-center-x="0.13077806"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1000"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:3.180053;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/2.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.41561842;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1002"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.29251926"
+       inkscape:transform-center-y="0.20333321"
+       transform="matrix(1.4035238,0,0,1.396674,-59.582515,266.03572)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/2.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:0.94312733;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1004"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.43923964"
+       inkscape:transform-center-y="0.30502432"
+       transform="matrix(2.1075449,0,0,2.09551,100.60345,605.04827)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/2.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(2.0420581,0,0,2.0311493,13.086652,476.08018)"
+       inkscape:transform-center-y="0.29569954"
+       inkscape:transform-center-x="0.42558661"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1006"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:0.97319233;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/2.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+  </g>
+  <g
+     inkscape:label="3"
+     inkscape:groupmode="layer"
+     id="g1056"
+     transform="translate(248.76681,493.63461)"
+     style="display:none">
+    <g
+       transform="matrix(0.28232351,-0.0364792,0.0364792,0.28232351,-96.433357,-220.74584)"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
+       id="g1046"
+       serif:id="Layer 1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/3.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401">
+      <g
+         transform="translate(548.14685,46.25748)"
+         id="g1012">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-7.203 -12.072,-25.006 c 0.063,-0.947 0.111,-1.898 0.111,-2.853 0,-28.346 -29.478,-54.471 -79.069,-75.389 v 17.393 c -4.836,-1.919 -9.871,-3.787 -15.117,-5.593 v -8.108 c -70.874,-25.56 -176.383,-41.778 -294.241,-41.778 -102.973,0 -196.529,12.38 -265.791,32.554 v 28.246 h -0.002 v -34.188 c -70.96,22.55 -114.954,53.877 -114.954,88.515 0,5.46 1.101,10.838 3.217,16.113 l -7.228,12.867 c 0,0 -5.792,7.512 4.406,23.362 8.994,13.977 54.048,68.685 77.827,97.335 10.214,14.687 17.141,23.734 17.746,22.859 0.955,-1.386 -6.351,-28.961 -26.635,-60.423 -9.466,-16.895 -20.768,-39.283 -27.554,-55.819 18.942,11.99 130.23,68.029 357.232,67.801 231.994,-0.232 335.115,-72.851 346.433,-82.737 -3.955,15.889 -17.468,48.033 -28.245,70.638 -17.706,32.331 -24.12,60.478 -23.296,61.87 0.524,0.878 6.565,-8.441 15.476,-23.543 C -51.025,87.37 -11.739,30.974 -3.889,16.608 5.007,0.323 0,-7.203 0,-7.203"
+           style="fill:#a52b00;fill-rule:nonzero"
+           id="path1010" />
+      </g>
+      <g
+         transform="translate(618.23685,-165.21952)"
+         id="g1016">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,204.135 -79.343,-58.446 c -0.745,-2.6 -1.49,-5.201 -2.26,-7.781 l 26.062,-37.754 c 2.66,-3.84 3.196,-8.832 1.469,-13.211 -1.731,-4.358 -5.515,-7.482 -9.99,-8.247 l -44.066,-7.479 c -1.709,-3.485 -3.498,-6.916 -5.294,-10.319 L -94.907,18.51 c 1.903,-4.317 1.505,-9.335 -1.022,-13.254 -2.517,-3.937 -6.786,-6.237 -11.338,-6.058 l -44.724,1.625 c -2.315,-3.016 -4.667,-6.003 -7.067,-8.937 l 10.278,-45.432 c 1.042,-4.612 -0.274,-9.443 -3.487,-12.794 -3.195,-3.339 -7.838,-4.722 -12.253,-3.639 l -43.562,10.709 c -2.82,-2.493 -5.688,-4.953 -8.588,-7.365 l 1.567,-46.641 c 0.168,-4.721 -2.033,-9.208 -5.812,-11.829 -3.777,-2.636 -8.57,-3.032 -12.701,-1.074 l -40.638,19.321 c -3.273,-1.878 -6.565,-3.737 -9.892,-5.537 l -7.181,-45.961 c -0.729,-4.656 -3.724,-8.612 -7.919,-10.418 -4.185,-1.817 -8.976,-1.228 -12.648,1.536 l -36.232,27.185 c -3.569,-1.185 -7.153,-2.32 -10.779,-3.407 l -15.617,-43.585 c -1.588,-4.443 -5.25,-7.706 -9.716,-8.624 -4.45,-0.909 -9.028,0.632 -12.114,4.08 l -30.499,34.119 c -3.685,-0.423 -7.377,-0.81 -11.076,-1.131 l -23.549,-39.676 c -2.384,-4.018 -6.597,-6.464 -11.139,-6.464 -4.529,0 -8.75,2.446 -11.118,6.464 l -23.555,39.676 c -3.701,0.321 -7.408,0.708 -11.088,1.131 l -30.499,-34.119 c -3.09,-3.448 -7.684,-4.989 -12.122,-4.08 -4.46,0.93 -8.128,4.181 -9.707,8.624 l -15.629,43.585 c -3.621,1.087 -7.205,2.23 -10.78,3.407 l -36.22,-27.185 c -3.683,-2.774 -8.478,-3.361 -12.668,-1.536 -4.181,1.806 -7.188,5.762 -7.913,10.418 l -7.186,45.961 c -3.322,1.8 -6.614,3.649 -9.895,5.537 l -40.634,-19.321 c -4.127,-1.966 -8.945,-1.562 -12.704,1.074 -3.773,2.621 -5.98,7.108 -5.81,11.829 l 1.562,46.641 c -2.894,2.412 -5.756,4.872 -8.591,7.365 l -43.554,-10.709 c -4.423,-1.074 -9.062,0.3 -12.265,3.639 -3.221,3.351 -4.526,8.182 -3.491,12.794 l 10.257,45.432 c -2.378,2.945 -4.733,5.921 -7.042,8.937 l -44.724,-1.625 c -4.513,-0.135 -8.821,2.121 -11.343,6.058 -2.527,3.919 -2.91,8.937 -1.029,13.254 l 18.528,42.388 c -1.799,3.403 -3.586,6.834 -5.309,10.319 l -44.063,7.479 c -4.479,0.754 -8.252,3.876 -9.994,8.247 -1.728,4.379 -1.167,9.371 1.474,13.211 l 26.066,37.754 c -0.201,0.667 -0.387,1.339 -0.587,2.008 l -73.696,78.285 c 0,0 -11.296,8.851 5.147,29.654 14.5,18.351 88.951,91.096 128.271,129.205 16.606,19.348 27.984,31.329 29.172,30.293 1.876,-1.645 -7.972,-36.847 -40.682,-78.149 -25.216,-37.056 -57.941,-94.049 -50.267,-100.618 0,0 8.729,-11.081 26.242,-19.057 0.641,0.512 -0.662,-0.507 0,0 0,0 369.595,170.491 712.429,2.884 39.164,-7.025 62.873,13.955 62.873,13.955 8.176,4.74 -12.996,63.344 -30.407,102.137 -23.679,44.05 -27.151,78.422 -25.144,79.614 1.268,0.757 9.883,-12.353 22.172,-33.217 C -67.814,332.649 -10.492,252.1 0,232.534 11.895,210.352 0,204.135 0,204.135"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1014" />
+      </g>
+      <g
+         inkscape:transform-center-y="-23.441386"
+         inkscape:transform-center-x="-16.348075"
+         transform="rotate(22.925971,856.2034,1225.8131)"
+         id="g1020">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,232.466 c 0,0 53.179,-2.466 123.032,-73.462 l 9.898,-21.979 c 0,0 -100.415104,-103.427654 68.1199,-177.870654 0,0 -22.7569,19.691654 -18.4279,112.851654 0,0 9.73106,-26.474188 24.63006,-108.765188 0,0 115.20394,106.549188 -39.41806,198.202188 0,0 -72.54,116.289 -174.805,105.15 z"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1018"
+           inkscape:transform-center-x="-11.22532"
+           inkscape:transform-center-y="-28.330586"
+           sodipodi:nodetypes="ccccccccc" />
+      </g>
+      <g
+         transform="translate(215.74385,28.25648)"
+         id="g1024">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-78.192 c 0,0 36.935,-40.443 73.871,0 0,0 29.022,53.927 0,80.887 0,0 -47.487,37.748 -73.871,0 0,0 -31.658,-29.659 0,-80.887"
+           style="fill-rule:nonzero"
+           id="path1022" />
+      </g>
+      <g
+         transform="translate(258.50785,-34.93552)"
+         id="g1028">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0.004 c 0,15.746 -9.282,28.514 -20.732,28.514 -11.448,0 -20.73,-12.768 -20.73,-28.514 0,-15.75 9.282,-28.518 20.73,-28.518 C -9.282,-28.514 0,-15.746 0,0.004"
+           style="fill:#ffffff;fill-rule:nonzero"
+           id="path1026" />
+      </g>
+      <g
+         transform="translate(50.894847,22.63148)"
+         id="g1032">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-83.609 c 0,0 63.355,-28.052 80.648,34.562 0,0 18.114,72.98 -52.03,77.099 0,0 -89.444,-17.228 -28.618,-111.661"
+           style="fill-rule:nonzero"
+           id="path1030" />
+      </g>
+      <g
+         transform="translate(82.714847,-33.90052)"
+         id="g1036">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0.002 c 0,16.239 -9.572,29.409 -21.381,29.409 -11.804,0 -21.379,-13.17 -21.379,-29.409 0,-16.244 9.575,-29.411 21.379,-29.411 C -9.572,-29.409 0,-16.242 0,0.002"
+           style="fill:#ffffff;fill-rule:nonzero"
+           id="path1034" />
+      </g>
+      <g
+         transform="translate(132.06385,116.46948)"
+         id="g1040">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-40.271 80.796,-6.484 c 0,0 -2.738,13.006 -13.279,22.769 0,0 -27.79,30.47 -59.673,-2.533 0,0 -5.217,-5.629 -7.844,-13.752"
+           style="fill-rule:nonzero"
+           id="path1038" />
+      </g>
+      <g
+         transform="rotate(9.6308276,972.52051,-1051.3713)"
+         id="g1044"
+         inkscape:transform-center-x="10.671407"
+         inkscape:transform-center-y="-25.831361">
+        <path
+           sodipodi:nodetypes="ccccccccccsc"
+           inkscape:transform-center-y="-26.322571"
+           inkscape:transform-center-x="7.2770584"
+           inkscape:connector-curvature="0"
+           d="m -2.5061464,207.47511 c -0.6508439,-0.14591 -1.2997221,-0.24117 -1.947305,-0.33306 -24.2923216,-11.56541 -92.0418896,-46.44541 -104.2401686,-81.13213 0,0 102.3748898,-81.537228 -33.17245,-185.864043 l 9.44177,118.90987 c 0,0 -24.6472,-45.223385 -19.53277,-115.196428 0,0 -147.10169,60.5676789 -1.07479,176.296211 0,0 -19.0797,37.71077 113.528009,114.20125 l -1.252674,-12.38209 c 1.375865,0.58722 -7.17797,-8.65211 12.817577,4.00946 13.473542,3.02069 32.732089,-0.3972 35.785808,-14.01808 3.053062,-13.61796 3.120535,-1.47027 -10.3530064,-4.49096"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1042" />
+      </g>
+    </g>
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.84718025;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1048"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.2249335"
+       inkscape:transform-center-y="0.15528"
+       transform="matrix(1.0792383,0,0,1.0667715,-5.3619746,21.527979)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/3.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(1.7962711,0,0,1.7868202,-25.103556,449.89689)"
+       inkscape:transform-center-y="0.26011518"
+       inkscape:transform-center-x="0.37437502"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1050"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.10631108;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/3.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(2.7035528,0,0,2.6875667,156.98712,884.07396)"
+       inkscape:transform-center-y="0.39118978"
+       inkscape:transform-center-x="0.56344902"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1052"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:0.73528647;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/3.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:0.80142134;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1054"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.5168566"
+       inkscape:transform-center-y="0.35905572"
+       transform="matrix(2.4799717,0,0,2.4662596,54.514982,678.1315)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/3.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+  </g>
+  <g
+     style="display:none"
+     transform="translate(248.76681,493.63461)"
+     id="g1087"
+     inkscape:groupmode="layer"
+     inkscape:label="4">
+    <g
+       serif:id="Layer 1"
+       id="g1077"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
+       transform="matrix(0.28454075,-0.00859411,0.00859411,0.28454075,-102.31694,-226.29027)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/4.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401">
+      <g
+         id="g1043"
+         transform="translate(548.14685,46.25748)">
+        <path
+           id="path1041"
+           style="fill:#a52b00;fill-rule:nonzero"
+           d="m 0,-7.203 -12.072,-25.006 c 0.063,-0.947 0.111,-1.898 0.111,-2.853 0,-28.346 -29.478,-54.471 -79.069,-75.389 v 17.393 c -4.836,-1.919 -9.871,-3.787 -15.117,-5.593 v -8.108 c -70.874,-25.56 -176.383,-41.778 -294.241,-41.778 -102.973,0 -196.529,12.38 -265.791,32.554 v 28.246 h -0.002 v -34.188 c -70.96,22.55 -114.954,53.877 -114.954,88.515 0,5.46 1.101,10.838 3.217,16.113 l -7.228,12.867 c 0,0 -5.792,7.512 4.406,23.362 8.994,13.977 54.048,68.685 77.827,97.335 10.214,14.687 17.141,23.734 17.746,22.859 0.955,-1.386 -6.351,-28.961 -26.635,-60.423 -9.466,-16.895 -20.768,-39.283 -27.554,-55.819 18.942,11.99 130.23,68.029 357.232,67.801 231.994,-0.232 335.115,-72.851 346.433,-82.737 -3.955,15.889 -17.468,48.033 -28.245,70.638 -17.706,32.331 -24.12,60.478 -23.296,61.87 0.524,0.878 6.565,-8.441 15.476,-23.543 C -51.025,87.37 -11.739,30.974 -3.889,16.608 5.007,0.323 0,-7.203 0,-7.203"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1047"
+         transform="translate(618.23685,-165.21952)">
+        <path
+           id="path1045"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 0,204.135 -79.343,-58.446 c -0.745,-2.6 -1.49,-5.201 -2.26,-7.781 l 26.062,-37.754 c 2.66,-3.84 3.196,-8.832 1.469,-13.211 -1.731,-4.358 -5.515,-7.482 -9.99,-8.247 l -44.066,-7.479 c -1.709,-3.485 -3.498,-6.916 -5.294,-10.319 L -94.907,18.51 c 1.903,-4.317 1.505,-9.335 -1.022,-13.254 -2.517,-3.937 -6.786,-6.237 -11.338,-6.058 l -44.724,1.625 c -2.315,-3.016 -4.667,-6.003 -7.067,-8.937 l 10.278,-45.432 c 1.042,-4.612 -0.274,-9.443 -3.487,-12.794 -3.195,-3.339 -7.838,-4.722 -12.253,-3.639 l -43.562,10.709 c -2.82,-2.493 -5.688,-4.953 -8.588,-7.365 l 1.567,-46.641 c 0.168,-4.721 -2.033,-9.208 -5.812,-11.829 -3.777,-2.636 -8.57,-3.032 -12.701,-1.074 l -40.638,19.321 c -3.273,-1.878 -6.565,-3.737 -9.892,-5.537 l -7.181,-45.961 c -0.729,-4.656 -3.724,-8.612 -7.919,-10.418 -4.185,-1.817 -8.976,-1.228 -12.648,1.536 l -36.232,27.185 c -3.569,-1.185 -7.153,-2.32 -10.779,-3.407 l -15.617,-43.585 c -1.588,-4.443 -5.25,-7.706 -9.716,-8.624 -4.45,-0.909 -9.028,0.632 -12.114,4.08 l -30.499,34.119 c -3.685,-0.423 -7.377,-0.81 -11.076,-1.131 l -23.549,-39.676 c -2.384,-4.018 -6.597,-6.464 -11.139,-6.464 -4.529,0 -8.75,2.446 -11.118,6.464 l -23.555,39.676 c -3.701,0.321 -7.408,0.708 -11.088,1.131 l -30.499,-34.119 c -3.09,-3.448 -7.684,-4.989 -12.122,-4.08 -4.46,0.93 -8.128,4.181 -9.707,8.624 l -15.629,43.585 c -3.621,1.087 -7.205,2.23 -10.78,3.407 l -36.22,-27.185 c -3.683,-2.774 -8.478,-3.361 -12.668,-1.536 -4.181,1.806 -7.188,5.762 -7.913,10.418 l -7.186,45.961 c -3.322,1.8 -6.614,3.649 -9.895,5.537 l -40.634,-19.321 c -4.127,-1.966 -8.945,-1.562 -12.704,1.074 -3.773,2.621 -5.98,7.108 -5.81,11.829 l 1.562,46.641 c -2.894,2.412 -5.756,4.872 -8.591,7.365 l -43.554,-10.709 c -4.423,-1.074 -9.062,0.3 -12.265,3.639 -3.221,3.351 -4.526,8.182 -3.491,12.794 l 10.257,45.432 c -2.378,2.945 -4.733,5.921 -7.042,8.937 l -44.724,-1.625 c -4.513,-0.135 -8.821,2.121 -11.343,6.058 -2.527,3.919 -2.91,8.937 -1.029,13.254 l 18.528,42.388 c -1.799,3.403 -3.586,6.834 -5.309,10.319 l -44.063,7.479 c -4.479,0.754 -8.252,3.876 -9.994,8.247 -1.728,4.379 -1.167,9.371 1.474,13.211 l 26.066,37.754 c -0.201,0.667 -0.387,1.339 -0.587,2.008 l -73.696,78.285 c 0,0 -11.296,8.851 5.147,29.654 14.5,18.351 88.951,91.096 128.271,129.205 16.606,19.348 27.984,31.329 29.172,30.293 1.876,-1.645 -7.972,-36.847 -40.682,-78.149 -25.216,-37.056 -57.941,-94.049 -50.267,-100.618 0,0 8.729,-11.081 26.242,-19.057 0.641,0.512 -0.662,-0.507 0,0 0,0 369.595,170.491 712.429,2.884 39.164,-7.025 62.873,13.955 62.873,13.955 8.176,4.74 -12.996,63.344 -30.407,102.137 -23.679,44.05 -27.151,78.422 -25.144,79.614 1.268,0.757 9.883,-12.353 22.172,-33.217 C -67.814,332.649 -10.492,252.1 0,232.534 11.895,210.352 0,204.135 0,204.135"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1051"
+         transform="rotate(27.201525,767.44,1043.0655)"
+         inkscape:transform-center-x="-17.422246"
+         inkscape:transform-center-y="-22.337582">
+        <path
+           inkscape:transform-center-y="-30.340607"
+           inkscape:transform-center-x="-5.8836601"
+           id="path1049"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 7.428518,260.99595 c 0,0 51.026006,-15.18005 101.759462,-100.8888 l 4.32299,-23.7141 c 0,0 -118.7101138,-73.473102 26.98159,-186.254893 0,0 -20.98203,21.809149 5.61943,111.195325 0,0 17.33157,-26.055724 12.00739,-109.514948 0,0 123.19161,73.742183 -4.85728,199.883846 0,0 -42.45136,130.31909 -144.394563,144.09552 z"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccccc" />
+      </g>
+      <g
+         id="g1055"
+         transform="translate(215.74385,28.25648)">
+        <path
+           id="path1053"
+           style="fill-rule:nonzero"
+           d="m 0,-78.192 c 0,0 36.935,-40.443 73.871,0 0,0 29.022,53.927 0,80.887 0,0 -47.487,37.748 -73.871,0 0,0 -31.658,-29.659 0,-80.887"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1059"
+         transform="translate(258.50785,-34.93552)">
+        <path
+           id="path1057"
+           style="fill:#ffffff;fill-rule:nonzero"
+           d="m 0,0.004 c 0,15.746 -9.282,28.514 -20.732,28.514 -11.448,0 -20.73,-12.768 -20.73,-28.514 0,-15.75 9.282,-28.518 20.73,-28.518 C -9.282,-28.514 0,-15.746 0,0.004"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1063"
+         transform="translate(50.894847,22.63148)">
+        <path
+           id="path1061"
+           style="fill-rule:nonzero"
+           d="m 0,-83.609 c 0,0 63.355,-28.052 80.648,34.562 0,0 18.114,72.98 -52.03,77.099 0,0 -89.444,-17.228 -28.618,-111.661"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1067"
+         transform="translate(82.714847,-33.90052)">
+        <path
+           id="path1065"
+           style="fill:#ffffff;fill-rule:nonzero"
+           d="m 0,0.002 c 0,16.239 -9.572,29.409 -21.381,29.409 -11.804,0 -21.379,-13.17 -21.379,-29.409 0,-16.244 9.575,-29.411 21.379,-29.411 C -9.572,-29.409 0,-16.242 0,0.002"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1071"
+         transform="translate(132.06385,116.46948)">
+        <path
+           id="path1069"
+           style="fill-rule:nonzero"
+           d="m 0,-40.271 80.796,-6.484 c 0,0 -2.738,13.006 -13.279,22.769 0,0 -27.79,30.47 -59.673,-2.533 0,0 -5.217,-5.629 -7.844,-13.752"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="-24.85463"
+         inkscape:transform-center-x="14.19419"
+         id="g1075"
+         transform="rotate(-2.0602469,-5428.8703,5364.315)">
+        <path
+           id="path1073"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m -2.8356135,208.3106 c -0.6492886,-0.15268 -1.2971392,-0.2547 -1.9437296,-0.35333 C -28.949861,196.13942 -96.332382,160.55551 -108.16864,125.7436 c 0,0 111.4412153,-84.649003 -23.01192,-190.382253 l -0.02,123.184489 c 0,0 -24.47781,-48.053708 -18.6347,-117.969673 0,0 -147.42161,61.607935 -2.60827,178.851457 0,0 -19.47152,37.50996 112.332133,115.37776 l -1.123612,-12.39447 c 1.369673,0.60152 -7.087445,-8.72642 12.775112,4.14277 13.441342,3.16089 32.7344504,-0.0562 35.9299024,-13.64451 3.1947646,-13.58542 3.1356826,-1.43768 -10.3056589,-4.59857"
+           inkscape:connector-curvature="0"
+           inkscape:transform-center-x="7.0862562"
+           inkscape:transform-center-y="-26.325805"
+           sodipodi:nodetypes="ccccccccccsc" />
+      </g>
+    </g>
+    <path
+       transform="matrix(1.4119164,0,0,1.3961153,26.130852,176.72704)"
+       inkscape:transform-center-y="0.20322867"
+       inkscape:transform-center-x="0.29426698"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1079"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.41168725;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/4.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.51314592;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1081"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.27365811"
+       inkscape:transform-center-y="0.19021587"
+       transform="matrix(1.3130142,0,0,1.3067011,-67.518246,223.62862)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/4.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:0.96048391;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1083"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.43129361"
+       inkscape:transform-center-y="0.29949169"
+       transform="matrix(2.0694572,0,0,2.0576458,101.3493,587.19792)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/4.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(1.8458266,0,0,1.8361446,-1.1300536,385.52111)"
+       inkscape:transform-center-y="0.26729856"
+       inkscape:transform-center-x="0.38469663"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1085"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.07660103;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/4.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+  </g>
+  <g
+     inkscape:label="5"
+     inkscape:groupmode="layer"
+     id="g1139"
+     transform="translate(248.76681,493.63461)"
+     style="display:none">
+    <g
+       transform="matrix(0.28421899,0.01602709,-0.01602709,0.28421899,-104.82798,-228.89362)"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
+       id="g1129"
+       serif:id="Layer 1"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/5.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401">
+      <g
+         transform="translate(548.14685,46.25748)"
+         id="g1095">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-7.203 -12.072,-25.006 c 0.063,-0.947 0.111,-1.898 0.111,-2.853 0,-28.346 -29.478,-54.471 -79.069,-75.389 v 17.393 c -4.836,-1.919 -9.871,-3.787 -15.117,-5.593 v -8.108 c -70.874,-25.56 -176.383,-41.778 -294.241,-41.778 -102.973,0 -196.529,12.38 -265.791,32.554 v 28.246 h -0.002 v -34.188 c -70.96,22.55 -114.954,53.877 -114.954,88.515 0,5.46 1.101,10.838 3.217,16.113 l -7.228,12.867 c 0,0 -5.792,7.512 4.406,23.362 8.994,13.977 54.048,68.685 77.827,97.335 10.214,14.687 17.141,23.734 17.746,22.859 0.955,-1.386 -6.351,-28.961 -26.635,-60.423 -9.466,-16.895 -20.768,-39.283 -27.554,-55.819 18.942,11.99 130.23,68.029 357.232,67.801 231.994,-0.232 335.115,-72.851 346.433,-82.737 -3.955,15.889 -17.468,48.033 -28.245,70.638 -17.706,32.331 -24.12,60.478 -23.296,61.87 0.524,0.878 6.565,-8.441 15.476,-23.543 C -51.025,87.37 -11.739,30.974 -3.889,16.608 5.007,0.323 0,-7.203 0,-7.203"
+           style="fill:#a52b00;fill-rule:nonzero"
+           id="path1093" />
+      </g>
+      <g
+         transform="translate(618.23685,-165.21952)"
+         id="g1099">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,204.135 -79.343,-58.446 c -0.745,-2.6 -1.49,-5.201 -2.26,-7.781 l 26.062,-37.754 c 2.66,-3.84 3.196,-8.832 1.469,-13.211 -1.731,-4.358 -5.515,-7.482 -9.99,-8.247 l -44.066,-7.479 c -1.709,-3.485 -3.498,-6.916 -5.294,-10.319 L -94.907,18.51 c 1.903,-4.317 1.505,-9.335 -1.022,-13.254 -2.517,-3.937 -6.786,-6.237 -11.338,-6.058 l -44.724,1.625 c -2.315,-3.016 -4.667,-6.003 -7.067,-8.937 l 10.278,-45.432 c 1.042,-4.612 -0.274,-9.443 -3.487,-12.794 -3.195,-3.339 -7.838,-4.722 -12.253,-3.639 l -43.562,10.709 c -2.82,-2.493 -5.688,-4.953 -8.588,-7.365 l 1.567,-46.641 c 0.168,-4.721 -2.033,-9.208 -5.812,-11.829 -3.777,-2.636 -8.57,-3.032 -12.701,-1.074 l -40.638,19.321 c -3.273,-1.878 -6.565,-3.737 -9.892,-5.537 l -7.181,-45.961 c -0.729,-4.656 -3.724,-8.612 -7.919,-10.418 -4.185,-1.817 -8.976,-1.228 -12.648,1.536 l -36.232,27.185 c -3.569,-1.185 -7.153,-2.32 -10.779,-3.407 l -15.617,-43.585 c -1.588,-4.443 -5.25,-7.706 -9.716,-8.624 -4.45,-0.909 -9.028,0.632 -12.114,4.08 l -30.499,34.119 c -3.685,-0.423 -7.377,-0.81 -11.076,-1.131 l -23.549,-39.676 c -2.384,-4.018 -6.597,-6.464 -11.139,-6.464 -4.529,0 -8.75,2.446 -11.118,6.464 l -23.555,39.676 c -3.701,0.321 -7.408,0.708 -11.088,1.131 l -30.499,-34.119 c -3.09,-3.448 -7.684,-4.989 -12.122,-4.08 -4.46,0.93 -8.128,4.181 -9.707,8.624 l -15.629,43.585 c -3.621,1.087 -7.205,2.23 -10.78,3.407 l -36.22,-27.185 c -3.683,-2.774 -8.478,-3.361 -12.668,-1.536 -4.181,1.806 -7.188,5.762 -7.913,10.418 l -7.186,45.961 c -3.322,1.8 -6.614,3.649 -9.895,5.537 l -40.634,-19.321 c -4.127,-1.966 -8.945,-1.562 -12.704,1.074 -3.773,2.621 -5.98,7.108 -5.81,11.829 l 1.562,46.641 c -2.894,2.412 -5.756,4.872 -8.591,7.365 l -43.554,-10.709 c -4.423,-1.074 -9.062,0.3 -12.265,3.639 -3.221,3.351 -4.526,8.182 -3.491,12.794 l 10.257,45.432 c -2.378,2.945 -4.733,5.921 -7.042,8.937 l -44.724,-1.625 c -4.513,-0.135 -8.821,2.121 -11.343,6.058 -2.527,3.919 -2.91,8.937 -1.029,13.254 l 18.528,42.388 c -1.799,3.403 -3.586,6.834 -5.309,10.319 l -44.063,7.479 c -4.479,0.754 -8.252,3.876 -9.994,8.247 -1.728,4.379 -1.167,9.371 1.474,13.211 l 26.066,37.754 c -0.201,0.667 -0.387,1.339 -0.587,2.008 l -73.696,78.285 c 0,0 -11.296,8.851 5.147,29.654 14.5,18.351 88.951,91.096 128.271,129.205 16.606,19.348 27.984,31.329 29.172,30.293 1.876,-1.645 -7.972,-36.847 -40.682,-78.149 -25.216,-37.056 -57.941,-94.049 -50.267,-100.618 0,0 8.729,-11.081 26.242,-19.057 0.641,0.512 -0.662,-0.507 0,0 0,0 369.595,170.491 712.429,2.884 39.164,-7.025 62.873,13.955 62.873,13.955 8.176,4.74 -12.996,63.344 -30.407,102.137 -23.679,44.05 -27.151,78.422 -25.144,79.614 1.268,0.757 9.883,-12.353 22.172,-33.217 C -67.814,332.649 -10.492,252.1 0,232.534 11.895,210.352 0,204.135 0,204.135"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1097" />
+      </g>
+      <g
+         inkscape:transform-center-y="-24.596194"
+         inkscape:transform-center-x="-14.625385"
+         transform="rotate(15.835747,1108.9757,1742.8966)"
+         id="g1103">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 9.8606927,266.66204 c 0,0 50.1154753,-17.95902 96.0660673,-106.32426 l 3.01431,-23.9157 c 0,0 -135.286476,-71.295204 3.9925,-191.906861 0,0 -7.03181,27.379779 24.43777,115.170393 0,0 43.40114,-31.780368 33.50219,-114.821321 0,0 99.52853,71.678666 -21.40066,204.661259 0,0 -45.68965,124.85319 -146.7225732,144.2066 z"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1101"
+           inkscape:transform-center-x="-4.8019779"
+           inkscape:transform-center-y="-30.180582"
+           sodipodi:nodetypes="ccccccccc" />
+      </g>
+      <g
+         transform="translate(215.74385,28.25648)"
+         id="g1107">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-78.192 c 0,0 36.935,-40.443 73.871,0 0,0 29.022,53.927 0,80.887 0,0 -47.487,37.748 -73.871,0 0,0 -31.658,-29.659 0,-80.887"
+           style="fill-rule:nonzero"
+           id="path1105" />
+      </g>
+      <g
+         transform="translate(258.50785,-34.93552)"
+         id="g1111">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0.004 c 0,15.746 -9.282,28.514 -20.732,28.514 -11.448,0 -20.73,-12.768 -20.73,-28.514 0,-15.75 9.282,-28.518 20.73,-28.518 C -9.282,-28.514 0,-15.746 0,0.004"
+           style="fill:#ffffff;fill-rule:nonzero"
+           id="path1109" />
+      </g>
+      <g
+         transform="translate(50.894847,22.63148)"
+         id="g1115">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-83.609 c 0,0 63.355,-28.052 80.648,34.562 0,0 18.114,72.98 -52.03,77.099 0,0 -89.444,-17.228 -28.618,-111.661"
+           style="fill-rule:nonzero"
+           id="path1113" />
+      </g>
+      <g
+         transform="translate(82.714847,-33.90052)"
+         id="g1119">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,0.002 c 0,16.239 -9.572,29.409 -21.381,29.409 -11.804,0 -21.379,-13.17 -21.379,-29.409 0,-16.244 9.575,-29.411 21.379,-29.411 C -9.572,-29.409 0,-16.242 0,0.002"
+           style="fill:#ffffff;fill-rule:nonzero"
+           id="path1117" />
+      </g>
+      <g
+         transform="translate(132.06385,116.46948)"
+         id="g1123">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 0,-40.271 80.796,-6.484 c 0,0 -2.738,13.006 -13.279,22.769 0,0 -27.79,30.47 -59.673,-2.533 0,0 -5.217,-5.629 -7.844,-13.752"
+           style="fill-rule:nonzero"
+           id="path1121" />
+      </g>
+      <g
+         transform="rotate(-2.0602469,-5428.8703,5364.315)"
+         id="g1127"
+         inkscape:transform-center-x="14.19419"
+         inkscape:transform-center-y="-24.85463">
+        <path
+           sodipodi:nodetypes="ccccccccccsc"
+           inkscape:transform-center-y="-25.629971"
+           inkscape:transform-center-x="11.187395"
+           inkscape:connector-curvature="0"
+           d="m 2.2817235,189.73791 c -0.666982,-0.005 -1.32131184,0.0397 -1.97366012,0.0871 -26.19138538,-6.1552 -99.79352638,-25.88699 -119.06491338,-57.2012 0,0 100.01784,-112.171822 -54.55825,-185.407034 l 17.17887,125.001825 c 0,0 -47.58328,-32.284222 -57.41228,-101.752019 0,0 -117.01397,83.673659 50.21973,165.831048 0,0 -10.65551,40.89741 135.149193,87.55131 l -3.847993,-11.83547 c 1.469053,0.28234 -8.84835,-6.93462 13.376112,1.20237 13.80766,0.0971 31.904617,-7.32413 32.002729,-21.28276 0.09808,-13.95566 2.738122,-2.09812 -11.0695375,-2.19517"
+           style="fill:#f74c00;fill-rule:nonzero"
+           id="path1125" />
+      </g>
+    </g>
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.01271319;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1131"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.41014215"
+       inkscape:transform-center-y="0.28336125"
+       transform="matrix(1.9678784,0,0,1.9464177,78.744681,436.06129)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/5.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(1.9513292,0,0,1.9407367,-11.476929,522.42305)"
+       inkscape:transform-center-y="0.28248823"
+       inkscape:transform-center-x="0.40669325"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1133"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.01848602;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/5.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       transform="matrix(1.428838,0,0,1.4212832,40.744617,287.29211)"
+       inkscape:transform-center-y="0.20686349"
+       inkscape:transform-center-x="0.29777981"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1135"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.39082289;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/5.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+    <path
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.49010754;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1137"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.2778769"
+       inkscape:transform-center-y="0.19319693"
+       transform="matrix(1.3333081,0,0,1.3269103,-46.107816,149.04858)"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/5.png"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-ydpi="34.874401" />
+  </g>
+  <g
+     style="display:inline"
+     transform="translate(248.76681,493.63461)"
+     id="g1187"
+     inkscape:groupmode="layer"
+     inkscape:label="6">
+    <g
+       inkscape:export-ydpi="34.874401"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       serif:id="Layer 1"
+       id="g1177"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
+       transform="matrix(0.28248857,0.03517821,-0.03517821,0.28248857,-105.57337,-231.63373)">
+      <g
+         id="g1143"
+         transform="translate(548.14685,46.25748)">
+        <path
+           id="path1141"
+           style="fill:#a52b00;fill-rule:nonzero"
+           d="m 0,-7.203 -12.072,-25.006 c 0.063,-0.947 0.111,-1.898 0.111,-2.853 0,-28.346 -29.478,-54.471 -79.069,-75.389 v 17.393 c -4.836,-1.919 -9.871,-3.787 -15.117,-5.593 v -8.108 c -70.874,-25.56 -176.383,-41.778 -294.241,-41.778 -102.973,0 -196.529,12.38 -265.791,32.554 v 28.246 h -0.002 v -34.188 c -70.96,22.55 -114.954,53.877 -114.954,88.515 0,5.46 1.101,10.838 3.217,16.113 l -7.228,12.867 c 0,0 -5.792,7.512 4.406,23.362 8.994,13.977 54.048,68.685 77.827,97.335 10.214,14.687 17.141,23.734 17.746,22.859 0.955,-1.386 -6.351,-28.961 -26.635,-60.423 -9.466,-16.895 -20.768,-39.283 -27.554,-55.819 18.942,11.99 130.23,68.029 357.232,67.801 231.994,-0.232 335.115,-72.851 346.433,-82.737 -3.955,15.889 -17.468,48.033 -28.245,70.638 -17.706,32.331 -24.12,60.478 -23.296,61.87 0.524,0.878 6.565,-8.441 15.476,-23.543 C -51.025,87.37 -11.739,30.974 -3.889,16.608 5.007,0.323 0,-7.203 0,-7.203"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1147"
+         transform="translate(618.23685,-165.21952)">
+        <path
+           id="path1145"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 0,204.135 -79.343,-58.446 c -0.745,-2.6 -1.49,-5.201 -2.26,-7.781 l 26.062,-37.754 c 2.66,-3.84 3.196,-8.832 1.469,-13.211 -1.731,-4.358 -5.515,-7.482 -9.99,-8.247 l -44.066,-7.479 c -1.709,-3.485 -3.498,-6.916 -5.294,-10.319 L -94.907,18.51 c 1.903,-4.317 1.505,-9.335 -1.022,-13.254 -2.517,-3.937 -6.786,-6.237 -11.338,-6.058 l -44.724,1.625 c -2.315,-3.016 -4.667,-6.003 -7.067,-8.937 l 10.278,-45.432 c 1.042,-4.612 -0.274,-9.443 -3.487,-12.794 -3.195,-3.339 -7.838,-4.722 -12.253,-3.639 l -43.562,10.709 c -2.82,-2.493 -5.688,-4.953 -8.588,-7.365 l 1.567,-46.641 c 0.168,-4.721 -2.033,-9.208 -5.812,-11.829 -3.777,-2.636 -8.57,-3.032 -12.701,-1.074 l -40.638,19.321 c -3.273,-1.878 -6.565,-3.737 -9.892,-5.537 l -7.181,-45.961 c -0.729,-4.656 -3.724,-8.612 -7.919,-10.418 -4.185,-1.817 -8.976,-1.228 -12.648,1.536 l -36.232,27.185 c -3.569,-1.185 -7.153,-2.32 -10.779,-3.407 l -15.617,-43.585 c -1.588,-4.443 -5.25,-7.706 -9.716,-8.624 -4.45,-0.909 -9.028,0.632 -12.114,4.08 l -30.499,34.119 c -3.685,-0.423 -7.377,-0.81 -11.076,-1.131 l -23.549,-39.676 c -2.384,-4.018 -6.597,-6.464 -11.139,-6.464 -4.529,0 -8.75,2.446 -11.118,6.464 l -23.555,39.676 c -3.701,0.321 -7.408,0.708 -11.088,1.131 l -30.499,-34.119 c -3.09,-3.448 -7.684,-4.989 -12.122,-4.08 -4.46,0.93 -8.128,4.181 -9.707,8.624 l -15.629,43.585 c -3.621,1.087 -7.205,2.23 -10.78,3.407 l -36.22,-27.185 c -3.683,-2.774 -8.478,-3.361 -12.668,-1.536 -4.181,1.806 -7.188,5.762 -7.913,10.418 l -7.186,45.961 c -3.322,1.8 -6.614,3.649 -9.895,5.537 l -40.634,-19.321 c -4.127,-1.966 -8.945,-1.562 -12.704,1.074 -3.773,2.621 -5.98,7.108 -5.81,11.829 l 1.562,46.641 c -2.894,2.412 -5.756,4.872 -8.591,7.365 l -43.554,-10.709 c -4.423,-1.074 -9.062,0.3 -12.265,3.639 -3.221,3.351 -4.526,8.182 -3.491,12.794 l 10.257,45.432 c -2.378,2.945 -4.733,5.921 -7.042,8.937 l -44.724,-1.625 c -4.513,-0.135 -8.821,2.121 -11.343,6.058 -2.527,3.919 -2.91,8.937 -1.029,13.254 l 18.528,42.388 c -1.799,3.403 -3.586,6.834 -5.309,10.319 l -44.063,7.479 c -4.479,0.754 -8.252,3.876 -9.994,8.247 -1.728,4.379 -1.167,9.371 1.474,13.211 l 26.066,37.754 c -0.201,0.667 -0.387,1.339 -0.587,2.008 l -73.696,78.285 c 0,0 -11.296,8.851 5.147,29.654 14.5,18.351 88.951,91.096 128.271,129.205 16.606,19.348 27.984,31.329 29.172,30.293 1.876,-1.645 -7.972,-36.847 -40.682,-78.149 -25.216,-37.056 -57.941,-94.049 -50.267,-100.618 0,0 8.729,-11.081 26.242,-19.057 0.641,0.512 -0.662,-0.507 0,0 0,0 369.595,170.491 712.429,2.884 39.164,-7.025 62.873,13.955 62.873,13.955 8.176,4.74 -12.996,63.344 -30.407,102.137 -23.679,44.05 -27.151,78.422 -25.144,79.614 1.268,0.757 9.883,-12.353 22.172,-33.217 C -67.814,332.649 -10.492,252.1 0,232.534 11.895,210.352 0,204.135 0,204.135"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1151"
+         transform="rotate(15.835747,1108.9757,1742.8966)"
+         inkscape:transform-center-x="-14.625385"
+         inkscape:transform-center-y="-24.596194">
+        <path
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:transform-center-y="-30.180582"
+           inkscape:transform-center-x="-4.8019779"
+           id="path1149"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 9.8606927,266.66204 c 0,0 50.1154753,-17.95902 96.0660673,-106.32426 l 3.01431,-23.9157 c 0,0 -135.286476,-71.295204 3.9925,-191.906861 0,0 -7.03181,27.379779 24.43777,115.170393 0,0 43.40114,-31.780368 33.50219,-114.821321 0,0 99.52853,71.678666 -21.40066,204.661259 0,0 -45.68965,124.85319 -146.7225732,144.2066 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1155"
+         transform="translate(215.74385,28.25648)">
+        <path
+           id="path1153"
+           style="fill-rule:nonzero"
+           d="m 0,-78.192 c 0,0 36.935,-40.443 73.871,0 0,0 29.022,53.927 0,80.887 0,0 -47.487,37.748 -73.871,0 0,0 -31.658,-29.659 0,-80.887"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1159"
+         transform="translate(258.50785,-34.93552)">
+        <path
+           id="path1157"
+           style="fill:#ffffff;fill-rule:nonzero"
+           d="m 0,0.004 c 0,15.746 -9.282,28.514 -20.732,28.514 -11.448,0 -20.73,-12.768 -20.73,-28.514 0,-15.75 9.282,-28.518 20.73,-28.518 C -9.282,-28.514 0,-15.746 0,0.004"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1163"
+         transform="translate(50.894847,22.63148)">
+        <path
+           id="path1161"
+           style="fill-rule:nonzero"
+           d="m 0,-83.609 c 0,0 63.355,-28.052 80.648,34.562 0,0 18.114,72.98 -52.03,77.099 0,0 -89.444,-17.228 -28.618,-111.661"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1167"
+         transform="translate(82.714847,-33.90052)">
+        <path
+           id="path1165"
+           style="fill:#ffffff;fill-rule:nonzero"
+           d="m 0,0.002 c 0,16.239 -9.572,29.409 -21.381,29.409 -11.804,0 -21.379,-13.17 -21.379,-29.409 0,-16.244 9.575,-29.411 21.379,-29.411 C -9.572,-29.409 0,-16.242 0,0.002"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g1171"
+         transform="translate(132.06385,116.46948)">
+        <path
+           id="path1169"
+           style="fill-rule:nonzero"
+           d="m 0,-40.271 80.796,-6.484 c 0,0 -2.738,13.006 -13.279,22.769 0,0 -27.79,30.47 -59.673,-2.533 0,0 -5.217,-5.629 -7.844,-13.752"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="-24.85463"
+         inkscape:transform-center-x="14.19419"
+         id="g1175"
+         transform="rotate(-2.0602469,-5428.8703,5364.315)">
+        <path
+           id="path1173"
+           style="fill:#f74c00;fill-rule:nonzero"
+           d="m 2.2817235,189.73791 c -0.666982,-0.005 -1.32131184,0.0397 -1.97366012,0.0871 -26.19138538,-6.1552 -99.79352638,-25.88699 -119.06491338,-57.2012 0,0 100.01784,-112.171822 -54.55825,-185.407034 l 17.17887,125.001825 c 0,0 -47.58328,-32.284222 -57.41228,-101.752019 0,0 -117.01397,83.673659 50.21973,165.831048 0,0 -10.65551,40.89741 135.149193,87.55131 l -3.847993,-11.83547 c 1.469053,0.28234 -8.84835,-6.93462 13.376112,1.20237 13.80766,0.0971 31.904617,-7.32413 32.002729,-21.28276 0.09808,-13.95566 2.738122,-2.09812 -11.0695375,-2.19517"
+           inkscape:connector-curvature="0"
+           inkscape:transform-center-x="11.187395"
+           inkscape:transform-center-y="-25.629971"
+           sodipodi:nodetypes="ccccccccccsc" />
+      </g>
+    </g>
+    <path
+       inkscape:export-ydpi="34.874401"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       transform="matrix(1.9678784,0,0,1.9464177,78.744681,436.06129)"
+       inkscape:transform-center-y="0.28336125"
+       inkscape:transform-center-x="0.41014215"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1179"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.01271319;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star" />
+    <path
+       inkscape:export-ydpi="34.874401"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.01848602;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1181"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.40669325"
+       inkscape:transform-center-y="0.28248823"
+       transform="matrix(1.9513292,0,0,1.9407367,-11.476929,522.42305)" />
+    <path
+       inkscape:export-ydpi="34.874401"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       sodipodi:type="star"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.39082289;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1183"
+       sodipodi:sides="5"
+       sodipodi:cx="-90.910751"
+       sodipodi:cy="-468.01376"
+       sodipodi:r1="3.6628349"
+       sodipodi:r2="1.8314174"
+       sodipodi:arg1="0.49934672"
+       sodipodi:arg2="1.1276653"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:transform-center-x="0.29777981"
+       inkscape:transform-center-y="0.20686349"
+       transform="matrix(1.428838,0,0,1.4212832,40.744617,287.29211)" />
+    <path
+       inkscape:export-ydpi="34.874401"
+       inkscape:export-xdpi="34.874401"
+       inkscape:export-filename="/home/bz/Pictures/disco-logo/frames1/6.png"
+       transform="matrix(1.3333081,0,0,1.3269103,-46.107816,149.04858)"
+       inkscape:transform-center-y="0.19319693"
+       inkscape:transform-center-x="0.2778769"
+       d="m -87.695165,-466.25981 -2.430329,-0.0994 -1.459698,1.94568 -0.656451,-2.3421 -2.301522,-0.78701 2.02462,-1.34807 0.03728,-2.43208 1.907735,1.50895 2.324562,-0.7161 -0.845575,2.28066 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.1276653"
+       sodipodi:arg1="0.49934672"
+       sodipodi:r2="1.8314174"
+       sodipodi:r1="3.6628349"
+       sodipodi:cy="-468.01376"
+       sodipodi:cx="-90.910751"
+       sodipodi:sides="5"
+       id="path1185"
+       style="fill:#faf600;fill-opacity:1;stroke:#080202;stroke-width:1.49010754;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="star" />
+  </g>
+</svg>
