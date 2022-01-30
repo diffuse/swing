@@ -1,4 +1,6 @@
+use chrono::prelude::*;
 use log::{Level, LevelFilter, Metadata, Record, SetLoggerError};
+use serde_json::json;
 
 /// Config for logger
 pub struct LoggerConfig {
@@ -31,7 +33,11 @@ impl log::Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let msg = format!("{} - {}", record.level(), record.args());
+            let msg = json!({
+                "time": Utc::now().to_rfc3339(),
+                "level": record.level(),
+                "message": record.args(),
+            });
 
             match record.level() {
                 Level::Warn | Level::Error => {
@@ -47,14 +53,17 @@ impl log::Log for DiscoLogger {
 
 #[cfg(test)]
 mod tests {
+    /*
+    use super::*;
+
     #[test]
     fn it_works() {
-        /*
         let config = LoggerConfig {
             level: LevelFilter::Info,
         };
         DiscoLogger::new(config).init().unwrap();
-        log::info!("");
-        */
+        log::info!("foo");
+        assert_eq!(true, false);
     }
+    */
 }
