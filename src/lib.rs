@@ -35,9 +35,9 @@ impl log::Log for DiscoLogger {
 
             match record.level() {
                 Level::Warn | Level::Error => {
-                    println!("{}", msg)
+                    eprintln!("{}", msg)
                 }
-                _ => eprintln!("{}", msg),
+                _ => println!("{}", msg),
             }
         }
     }
