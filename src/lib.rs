@@ -1,5 +1,5 @@
 use chrono::prelude::*;
-use log::{Level, LevelFilter, Metadata, Record, SetLoggerError};
+use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 
 /// Config for logger
@@ -24,7 +24,7 @@ impl DiscoLogger {
     }
 }
 
-impl log::Log for DiscoLogger {
+impl Log for DiscoLogger {
     /// Check if this message should be logged
     fn enabled(&self, metadata: &Metadata) -> bool {
         metadata.level() <= self.config.level
@@ -57,13 +57,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
-        /*
+    fn enabled_filters_levels() {
         let config = LoggerConfig {
-            level: LevelFilter::Info,
+            level: LevelFilter::Warn,
         };
-        DiscoLogger::new(config).init().unwrap();
-        log::info!("foo");
-        */
+        let logger = DiscoLogger::new(config);
+        let mut mb = Metadata::builder();
+
+        assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Debug).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
+        assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
+        assert!(logger.enabled(&mut mb.level(Level::Error).build()));
     }
 }
