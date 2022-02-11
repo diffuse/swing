@@ -5,7 +5,7 @@ use serde_json::json;
 /// Config for logger
 pub struct LoggerConfig {
     /// log level
-    level: LevelFilter,
+    pub level: LevelFilter,
 }
 
 /// Implements log::Log
@@ -20,7 +20,7 @@ impl DiscoLogger {
 
     /// Initialize this logger
     pub fn init(self) -> Result<(), SetLoggerError> {
-        log::set_boxed_logger(Box::new(self)).map(|()| log::set_max_level(LevelFilter::Info))
+        log::set_boxed_logger(Box::new(self)).map(|()| log::set_max_level(LevelFilter::Trace))
     }
 }
 
@@ -36,6 +36,7 @@ impl log::Log for DiscoLogger {
             let msg = json!({
                 "time": Utc::now().to_rfc3339(),
                 "level": record.level(),
+                "target": record.target(),
                 "message": record.args(),
             });
 
@@ -53,17 +54,16 @@ impl log::Log for DiscoLogger {
 
 #[cfg(test)]
 mod tests {
-    /*
     use super::*;
 
     #[test]
     fn it_works() {
+        /*
         let config = LoggerConfig {
             level: LevelFilter::Info,
         };
         DiscoLogger::new(config).init().unwrap();
         log::info!("foo");
-        assert_eq!(true, false);
+        */
     }
-    */
 }
