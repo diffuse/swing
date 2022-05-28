@@ -36,14 +36,16 @@ fn main() {
 # Level handling
 Logs at levels `trace`, `debug`, and `info` are all written to stdout, while those at `warn` and `error` levels are logged to stderr.
 
-# Example output
+# Example
+An example is included at `src/example` that logs some test messages at different levels.
+
 ```shell
-$ ./example
-{"time":"2022-02-11T02:06:08.172675662+00:00","level":"TRACE","target":"example","message":"foo"}
-{"time":"2022-02-11T02:06:08.172740488+00:00","level":"DEBUG","target":"example","message":"bar"}
-{"time":"2022-02-11T02:06:08.172794482+00:00","level":"INFO","target":"example","message":"baz"}
-{"time":"2022-02-11T02:06:08.172836567+00:00","level":"WARN","target":"example","message":"spam"}
-{"time":"2022-02-11T02:06:08.172923387+00:00","level":"ERROR","target":"example","message":"eggs"}
+$ cargo run
+{"time":"2022-05-28T23:08:18.420138779+00:00","level":"TRACE","target":"example","message":"foo"}
+{"time":"2022-05-28T23:08:18.420226306+00:00","level":"DEBUG","target":"example","message":"bar"}
+{"time":"2022-05-28T23:08:18.420267953+00:00","level":"INFO","target":"example","message":"baz"}
+{"time":"2022-05-28T23:08:18.420306418+00:00","level":"WARN","target":"example","message":"spam"}
+{"time":"2022-05-28T23:08:18.420361151+00:00","level":"ERROR","target":"example","message":"eggs"}
 ```
 
 # Stream redirection
