@@ -3,10 +3,27 @@ use colored::{ColoredString, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 
+/// Logger formatting mode
+pub enum LoggerMode {
+    Json,
+    Simple,
+}
+
 /// Config for logger
 pub struct LoggerConfig {
     /// log level
     pub level: LevelFilter,
+    /// logger mode
+    pub mode: LoggerMode,
+}
+
+impl Default for LoggerConfig {
+    fn default() -> LoggerConfig {
+        LoggerConfig {
+            level: LevelFilter::Info,
+            mode: LoggerMode::Json,
+        }
+    }
 }
 
 /// Implements log::Log
@@ -36,6 +53,30 @@ fn format_by_level(level: Level, msg: String) -> ColoredString {
     }
 }
 
+/// Format a log message based on the current LoggerMode setting
+fn format_by_mode(mode: &LoggerMode, record: &Record) -> String {
+    let now = Utc::now().to_rfc3339();
+
+    match mode {
+        LoggerMode::Json => json!({
+            "time": now,
+            "level": record.level(),
+            "target": record.target(),
+            "message": record.args(),
+        })
+        .to_string(),
+        LoggerMode::Simple => {
+            format!(
+                "{} [{}] {} - {}",
+                now,
+                record.target(),
+                record.level(),
+                record.args()
+            )
+        }
+    }
+}
+
 impl Log for DiscoLogger {
     /// Check if this message should be logged
     fn enabled(&self, metadata: &Metadata) -> bool {
@@ -45,14 +86,7 @@ impl Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let mut msg = json!({
-                "time": Utc::now().to_rfc3339(),
-                "level": record.level(),
-                "target": record.target(),
-                "message": record.args(),
-            })
-            .to_string();
-
+            let mut msg = format_by_mode(&self.config.mode, record);
             msg = format_by_level(record.level(), msg).to_string();
 
             match record.level() {

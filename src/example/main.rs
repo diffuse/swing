@@ -1,10 +1,12 @@
-use disco::{DiscoLogger, LoggerConfig};
+use disco::{DiscoLogger, LoggerConfig, LoggerMode};
 use log::LevelFilter;
 
 fn main() {
     // setup logger
     let config = LoggerConfig {
         level: LevelFilter::Trace,
+        mode: LoggerMode::Json,
+        ..Default::default()
     };
     DiscoLogger::new(config).init().unwrap();
 
