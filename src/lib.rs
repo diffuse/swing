@@ -7,6 +7,7 @@ use serde_json::json;
 pub enum LoggerMode {
     Json,
     Simple,
+    Custom(Box<dyn Sync + Send + Fn(&Record) -> String>),
 }
 
 /// Config for logger
@@ -74,6 +75,7 @@ fn format_by_mode(mode: &LoggerMode, record: &Record) -> String {
                 record.args()
             )
         }
+        LoggerMode::Custom(f) => f(record),
     }
 }
 
