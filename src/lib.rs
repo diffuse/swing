@@ -3,8 +3,8 @@ use colored::{ColoredString, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 
-/// Logger formatting mode
-pub enum LoggerMode {
+/// Record formatting mode
+pub enum RecordFormat {
     Json,
     Simple,
     Custom(Box<dyn Sync + Send + Fn(&Record) -> String>),
@@ -14,15 +14,15 @@ pub enum LoggerMode {
 pub struct LoggerConfig {
     /// log level
     pub level: LevelFilter,
-    /// logger mode
-    pub mode: LoggerMode,
+    /// record formatting mode
+    pub fmt: RecordFormat,
 }
 
 impl Default for LoggerConfig {
     fn default() -> LoggerConfig {
         LoggerConfig {
             level: LevelFilter::Info,
-            mode: LoggerMode::Json,
+            fmt: RecordFormat::Json,
         }
     }
 }
@@ -54,19 +54,19 @@ fn format_by_level(level: Level, msg: String) -> ColoredString {
     }
 }
 
-/// Format a log message based on the current LoggerMode setting
-fn format_by_mode(mode: &LoggerMode, record: &Record) -> String {
+/// Format a log message based on the current RecordFormat setting
+fn format_by_mode(fmt: &RecordFormat, record: &Record) -> String {
     let now = Utc::now().to_rfc3339();
 
-    match mode {
-        LoggerMode::Json => json!({
+    match fmt {
+        RecordFormat::Json => json!({
             "time": now,
             "level": record.level(),
             "target": record.target(),
             "message": record.args(),
         })
         .to_string(),
-        LoggerMode::Simple => {
+        RecordFormat::Simple => {
             format!(
                 "{} [{}] {} - {}",
                 now,
@@ -75,7 +75,7 @@ fn format_by_mode(mode: &LoggerMode, record: &Record) -> String {
                 record.args()
             )
         }
-        LoggerMode::Custom(f) => f(record),
+        RecordFormat::Custom(f) => f(record),
     }
 }
 
@@ -88,7 +88,7 @@ impl Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let mut msg = format_by_mode(&self.config.mode, record);
+            let mut msg = format_by_mode(&self.config.fmt, record);
             msg = format_by_level(record.level(), msg).to_string();
 
             match record.level() {
