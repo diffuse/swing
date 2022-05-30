@@ -55,7 +55,7 @@ fn format_by_level(level: Level, msg: String) -> ColoredString {
 }
 
 /// Format a log message based on the current RecordFormat setting
-fn format_by_mode(fmt: &RecordFormat, record: &Record) -> String {
+fn format_record(fmt: &RecordFormat, record: &Record) -> String {
     let now = Utc::now().to_rfc3339();
 
     match fmt {
@@ -88,7 +88,7 @@ impl Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let mut msg = format_by_mode(&self.config.fmt, record);
+            let mut msg = format_record(&self.config.fmt, record);
             msg = format_by_level(record.level(), msg).to_string();
 
             match record.level() {
