@@ -109,6 +109,7 @@ mod tests {
     fn enabled_filters_levels() {
         let config = LoggerConfig {
             level: LevelFilter::Warn,
+            ..Default::default()
         };
         let logger = DiscoLogger::new(config);
         let mut mb = Metadata::builder();
@@ -118,5 +119,65 @@ mod tests {
         assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
         assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
         assert!(logger.enabled(&mut mb.level(Level::Error).build()));
+    }
+
+    #[test]
+    fn format_record_presets_return_non_empty() {
+        // create normal test record
+        let rec = Record::builder()
+            .args(format_args!("foo"))
+            .level(Level::Info)
+            .target("test")
+            .build();
+
+        // record should give non-empty log line
+        assert!(!format_record(&RecordFormat::Json, &rec).is_empty());
+        assert!(!format_record(&RecordFormat::Simple, &rec).is_empty());
+
+        // create record with empty args and target
+        let rec = Record::builder()
+            .args(format_args!(""))
+            .level(Level::Info)
+            .target("")
+            .build();
+
+        // record should still give non-empty log lines
+        assert!(!format_record(&RecordFormat::Json, &rec).is_empty());
+        assert!(!format_record(&RecordFormat::Simple, &rec).is_empty());
+    }
+
+    #[test]
+    fn format_record_custom_formats_correctly() {
+        let rec = Record::builder()
+            .args(format_args!("foo"))
+            .level(Level::Info)
+            .target("test")
+            .build();
+
+        assert_eq!(
+            format_record(&RecordFormat::Custom(Box::new(|_| "".to_string())), &rec),
+            ""
+        );
+
+        assert_eq!(
+            format_record(
+                &RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
+                &rec
+            ),
+            "INFO foo"
+        );
+
+        assert_eq!(
+            format_record(
+                &RecordFormat::Custom(Box::new(|r| format!(
+                    "{} [{}] {}",
+                    r.level(),
+                    r.target(),
+                    r.args()
+                ))),
+                &rec
+            ),
+            "INFO [test] foo"
+        );
     }
 }
