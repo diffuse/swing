@@ -11,7 +11,7 @@ disco = "0.1"
 log = "0.4"
 ```
 
-# Usage
+# Quick start
 Create a `LoggerConfig` to configure your logger, then create and initialize a `DiscoLogger`:
 ```rust
 use disco::{DiscoLogger, LoggerConfig};
@@ -21,6 +21,7 @@ fn main() {
     // setup logger
     let config = LoggerConfig {
         level: LevelFilter::Trace,
+        ...Default::default()
     };
     DiscoLogger::new(config).init().unwrap();
 
@@ -32,6 +33,81 @@ fn main() {
     log::error!("eggs");
 }
 ```
+
+# Logger config options
+A `DiscoLogger` config can be created with:
+```rust
+let config = LoggerConfig {
+    level: LevelFilter::Trace,
+    ...Default::default()
+};
+```
+
+Below is a breakdown of available config options and their effects (see below subsections for full
+explanations of options and behaviors):
+
+Option | Description | Example Usage
+--- | --- | ---
+`level` | Only logs at or above this severity will be logged | `level: LevelFilter::Debug`
+`fmt` | Sets the method used to structure a log line/record | `fmt: RecordFormat::Json`
+
+## level
+The `LevelFilter` enum used in `LoggerConfig` is taken directly from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html).  It defines the following variants:
+- `Off`
+- `Trace`
+- `Debug`
+- `Info`
+- `Warn`
+- `Error`
+
+## fmt
+Each call to the [log](https://docs.rs/log/latest/log/) crate macros (`trace!`, `info!`, etc...) generates a log [record](https://docs.rs/log/latest/log/struct.Record.html).  These records are then formatted by this crate using one of the methods in the `RecordFormat` enum:
+- `Json`
+- `Simple`
+- `Custom`
+
+### JSON format
+This is the default record format and will generate log lines that look like this:
+```json
+{"time":"2022-05-30T21:26:06.221369768+00:00","level":"TRACE","target":"example","message":"foo"}
+{"time":"2022-05-30T21:26:06.221467684+00:00","level":"DEBUG","target":"example","message":"bar"}
+{"time":"2022-05-30T21:26:06.221535118+00:00","level":"INFO","target":"example","message":"baz"}
+{"time":"2022-05-30T21:26:06.221589773+00:00","level":"WARN","target":"example","message":"spam"}
+{"time":"2022-05-30T21:26:06.221661633+00:00","level":"ERROR","target":"example","message":"eggs"}
+```
+
+### Simple format
+This format generates log lines that look like this:
+```text
+2022-05-30T21:25:39.507718423+00:00 [example] TRACE - foo
+2022-05-30T21:25:39.507775483+00:00 [example] DEBUG - bar
+2022-05-30T21:25:39.507790185+00:00 [example] INFO - baz
+2022-05-30T21:25:39.507802207+00:00 [example] WARN - spam
+2022-05-30T21:25:39.507830979+00:00 [example] ERROR - eggs
+```
+
+### Custom format
+If you don't like any of the above formats, you can handle formatting log records directly, using the `Custom` format:
+```rust
+let fmt = RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args())));
+
+let config = LoggerConfig {
+    level: LevelFilter::Trace,
+    fmt,
+    ..Default::default()
+};
+```
+
+The above example format will generate log lines that look like this:
+```text
+TRACE foo
+DEBUG bar
+INFO baz
+WARN spam
+ERROR eggs
+```
+
+See [the log crate "Record" struct](https://docs.rs/log/latest/log/struct.Record.html) for available record fields/methods to use within the custom format closure.
 
 # Level handling
 Logs at levels `trace`, `debug`, and `info` are all written to stdout, while those at `warn` and `error` levels are logged to stderr.
