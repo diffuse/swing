@@ -69,21 +69,21 @@ Each call to the [log](https://docs.rs/log/latest/log/) crate macros (`trace!`, 
 ### JSON format
 This is the default record format and will generate log lines that look like this:
 ```json
-{"time":"2022-05-30T21:26:06.221369768+00:00","level":"TRACE","target":"example","message":"foo"}
-{"time":"2022-05-30T21:26:06.221467684+00:00","level":"DEBUG","target":"example","message":"bar"}
-{"time":"2022-05-30T21:26:06.221535118+00:00","level":"INFO","target":"example","message":"baz"}
-{"time":"2022-05-30T21:26:06.221589773+00:00","level":"WARN","target":"example","message":"spam"}
-{"time":"2022-05-30T21:26:06.221661633+00:00","level":"ERROR","target":"example","message":"eggs"}
+{"time":"2022-05-30T21:26:06.221369768+00:00","level":"TRACE","target":"main","message":"foo"}
+{"time":"2022-05-30T21:26:06.221467684+00:00","level":"DEBUG","target":"main","message":"bar"}
+{"time":"2022-05-30T21:26:06.221535118+00:00","level":"INFO","target":"main","message":"baz"}
+{"time":"2022-05-30T21:26:06.221589773+00:00","level":"WARN","target":"main","message":"spam"}
+{"time":"2022-05-30T21:26:06.221661633+00:00","level":"ERROR","target":"main","message":"eggs"}
 ```
 
 ### Simple format
 This format generates log lines that look like this:
 ```text
-2022-05-30T21:25:39.507718423+00:00 [example] TRACE - foo
-2022-05-30T21:25:39.507775483+00:00 [example] DEBUG - bar
-2022-05-30T21:25:39.507790185+00:00 [example] INFO - baz
-2022-05-30T21:25:39.507802207+00:00 [example] WARN - spam
-2022-05-30T21:25:39.507830979+00:00 [example] ERROR - eggs
+2022-05-30T21:25:39.507718423+00:00 [main] TRACE - foo
+2022-05-30T21:25:39.507775483+00:00 [main] DEBUG - bar
+2022-05-30T21:25:39.507790185+00:00 [main] INFO - baz
+2022-05-30T21:25:39.507802207+00:00 [main] WARN - spam
+2022-05-30T21:25:39.507830979+00:00 [main] ERROR - eggs
 ```
 
 ### Custom format
@@ -113,15 +113,15 @@ See [the log crate "Record" struct](https://docs.rs/log/latest/log/struct.Record
 Logs at levels `trace`, `debug`, and `info` are all written to stdout, while those at `warn` and `error` levels are logged to stderr.
 
 # Example
-An example is included at `src/example` that logs some test messages at different levels.
+An example is included at `examples/main.rs` that logs some test messages at different levels.
 
 ```shell
 $ cargo run
-{"time":"2022-05-28T23:08:18.420138779+00:00","level":"TRACE","target":"example","message":"foo"}
-{"time":"2022-05-28T23:08:18.420226306+00:00","level":"DEBUG","target":"example","message":"bar"}
-{"time":"2022-05-28T23:08:18.420267953+00:00","level":"INFO","target":"example","message":"baz"}
-{"time":"2022-05-28T23:08:18.420306418+00:00","level":"WARN","target":"example","message":"spam"}
-{"time":"2022-05-28T23:08:18.420361151+00:00","level":"ERROR","target":"example","message":"eggs"}
+{"time":"2022-05-28T23:08:18.420138779+00:00","level":"TRACE","target":"main","message":"foo"}
+{"time":"2022-05-28T23:08:18.420226306+00:00","level":"DEBUG","target":"main","message":"bar"}
+{"time":"2022-05-28T23:08:18.420267953+00:00","level":"INFO","target":"main","message":"baz"}
+{"time":"2022-05-28T23:08:18.420306418+00:00","level":"WARN","target":"main","message":"spam"}
+{"time":"2022-05-28T23:08:18.420361151+00:00","level":"ERROR","target":"main","message":"eggs"}
 ```
 
 # Stream redirection

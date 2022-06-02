@@ -4,14 +4,6 @@ version = "0.1.0"
 authors = ["Diffuse <48339639+diffuse@users.noreply.github.com>"]
 edition = "2018"
 
-[lib]
-name = "disco"
-path = "src/lib.rs"
-
-[[bin]]
-name = "example"
-path = "src/example/main.rs"
-
 [dependencies]
 log = { version = "0.4", features = ["std", "serde"] }
 chrono = "0.4"
