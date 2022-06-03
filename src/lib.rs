@@ -10,12 +10,19 @@ pub enum RecordFormat {
     Custom(Box<dyn Sync + Send + Fn(&Record) -> String>),
 }
 
+/// Color formatting mode
+pub enum ColorFormat {
+    Line,
+}
+
 /// Config for logger
 pub struct LoggerConfig {
     /// log level
     pub level: LevelFilter,
     /// record formatting mode
     pub record_format: RecordFormat,
+    /// color formatting mode
+    pub color_format: Option<ColorFormat>,
 }
 
 impl Default for LoggerConfig {
@@ -23,6 +30,7 @@ impl Default for LoggerConfig {
         LoggerConfig {
             level: LevelFilter::Info,
             record_format: RecordFormat::Json,
+            color_format: Some(ColorFormat::Line),
         }
     }
 }
@@ -44,7 +52,7 @@ impl DiscoLogger {
 }
 
 /// Color code and bold level strings as appropriate
-fn format_by_level(level: Level, msg: String) -> ColoredString {
+fn color_log_line(level: Level, msg: String) -> ColoredString {
     match level {
         Level::Trace => msg.bright_magenta(),
         Level::Debug => msg.cyan(),
@@ -54,8 +62,20 @@ fn format_by_level(level: Level, msg: String) -> ColoredString {
     }
 }
 
+/// Color a log line based on selected options
+fn color_log(msg: String, record: &Record, color_format: &Option<ColorFormat>) -> String {
+    if color_format.is_none() {
+        return msg;
+    }
+
+    match color_format.as_ref().unwrap() {
+        ColorFormat::Line => color_log_line(record.level(), msg),
+    }
+    .to_string()
+}
+
 /// Format a log message based on the current RecordFormat setting
-fn format_record(record_format: &RecordFormat, record: &Record) -> String {
+fn format_record(record: &Record, record_format: &RecordFormat) -> String {
     let now = Utc::now().to_rfc3339();
 
     match record_format {
@@ -88,8 +108,8 @@ impl Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let mut msg = format_record(&self.config.record_format, record);
-            msg = format_by_level(record.level(), msg).to_string();
+            let mut msg = format_record(record, &self.config.record_format);
+            msg = color_log(msg, record, &self.config.color_format);
 
             match record.level() {
                 Level::Warn | Level::Error => eprintln!("{}", msg),
@@ -131,8 +151,8 @@ mod tests {
             .build();
 
         // record should give non-empty log line
-        assert!(!format_record(&RecordFormat::Json, &rec).is_empty());
-        assert!(!format_record(&RecordFormat::Simple, &rec).is_empty());
+        assert!(!format_record(&rec, &RecordFormat::Json).is_empty());
+        assert!(!format_record(&rec, &RecordFormat::Simple).is_empty());
 
         // create record with empty args and target
         let rec = Record::builder()
@@ -142,8 +162,8 @@ mod tests {
             .build();
 
         // record should still give non-empty log lines
-        assert!(!format_record(&RecordFormat::Json, &rec).is_empty());
-        assert!(!format_record(&RecordFormat::Simple, &rec).is_empty());
+        assert!(!format_record(&rec, &RecordFormat::Json).is_empty());
+        assert!(!format_record(&rec, &RecordFormat::Simple).is_empty());
     }
 
     #[test]
@@ -155,27 +175,27 @@ mod tests {
             .build();
 
         assert_eq!(
-            format_record(&RecordFormat::Custom(Box::new(|_| "".to_string())), &rec),
+            format_record(&rec, &RecordFormat::Custom(Box::new(|_| "".to_string()))),
             ""
         );
 
         assert_eq!(
             format_record(
+                &rec,
                 &RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
-                &rec
             ),
             "INFO foo"
         );
 
         assert_eq!(
             format_record(
+                &rec,
                 &RecordFormat::Custom(Box::new(|r| format!(
                     "{} [{}] {}",
                     r.level(),
                     r.target(),
                     r.args()
                 ))),
-                &rec
             ),
             "INFO [test] foo"
         );
