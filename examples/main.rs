@@ -5,7 +5,7 @@ fn main() {
     // setup logger
     let config = LoggerConfig {
         level: LevelFilter::Trace,
-        fmt: RecordFormat::Json,
+        record_format: RecordFormat::Json,
         ..Default::default()
     };
     DiscoLogger::new(config).init().unwrap();

@@ -49,7 +49,7 @@ explanations of options and behaviors):
 Option | Description | Example Usage
 --- | --- | ---
 `level` | Only logs at or above this severity will be logged | `level: LevelFilter::Debug`
-`fmt` | Sets the method used to structure a log line/record | `fmt: RecordFormat::Json`
+`record_format` | Sets the method used to structure a log line/record | `record_format: RecordFormat::Json`
 
 ## level
 The `LevelFilter` enum used in `LoggerConfig` is taken directly from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html).  It defines the following variants:
@@ -60,7 +60,7 @@ The `LevelFilter` enum used in `LoggerConfig` is taken directly from [the log cr
 - `Warn`
 - `Error`
 
-## fmt
+## record_format
 Each call to the [log](https://docs.rs/log/latest/log/) crate macros (`trace!`, `info!`, etc...) generates a log [record](https://docs.rs/log/latest/log/struct.Record.html).  These records are then formatted by this crate using one of the methods in the `RecordFormat` enum:
 - `Json`
 - `Simple`
@@ -89,11 +89,11 @@ This format generates log lines that look like this:
 ### Custom format
 If you don't like any of the above formats, you can handle formatting log records directly, using the `Custom` format:
 ```rust
-let fmt = RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args())));
+let record_format = RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args())));
 
 let config = LoggerConfig {
     level: LevelFilter::Trace,
-    fmt,
+    record_format,
     ..Default::default()
 };
 ```
