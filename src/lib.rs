@@ -15,14 +15,14 @@ pub struct LoggerConfig {
     /// log level
     pub level: LevelFilter,
     /// record formatting mode
-    pub fmt: RecordFormat,
+    pub record_format: RecordFormat,
 }
 
 impl Default for LoggerConfig {
     fn default() -> LoggerConfig {
         LoggerConfig {
             level: LevelFilter::Info,
-            fmt: RecordFormat::Json,
+            record_format: RecordFormat::Json,
         }
     }
 }
@@ -55,10 +55,10 @@ fn format_by_level(level: Level, msg: String) -> ColoredString {
 }
 
 /// Format a log message based on the current RecordFormat setting
-fn format_record(fmt: &RecordFormat, record: &Record) -> String {
+fn format_record(record_format: &RecordFormat, record: &Record) -> String {
     let now = Utc::now().to_rfc3339();
 
-    match fmt {
+    match record_format {
         RecordFormat::Json => json!({
             "time": now,
             "level": record.level(),
@@ -88,7 +88,7 @@ impl Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let mut msg = format_record(&self.config.fmt, record);
+            let mut msg = format_record(&self.config.record_format, record);
             msg = format_by_level(record.level(), msg).to_string();
 
             match record.level() {
