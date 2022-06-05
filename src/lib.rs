@@ -13,7 +13,7 @@ pub enum RecordFormat {
 /// Color formatting mode
 pub enum ColorFormat {
     Line,
-    Gradient,
+    LinearGradient,
 }
 
 /// Config for logger
@@ -177,8 +177,6 @@ fn color_log_line_gradient(level: Level, msg: String) -> String {
         .enumerate()
         .map(|(i, c)| {
             // how far along the linear gradient this color should be (0.0 - 1.0)
-            //
-            // use a reference of 100 characters
             let dist = (i as f32) / (msg.len() as f32);
             let color = linear_gradient(&start_color, &end_color, dist);
 
@@ -208,7 +206,7 @@ fn color_log(msg: String, record: &Record, color_format: &Option<ColorFormat>) -
 
     match color_format.as_ref().unwrap() {
         ColorFormat::Line => color_log_line(record.level(), msg),
-        ColorFormat::Gradient => color_log_line_gradient(record.level(), msg),
+        ColorFormat::LinearGradient => color_log_line_gradient(record.level(), msg),
     }
 }
 
