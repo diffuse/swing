@@ -12,7 +12,7 @@ pub enum RecordFormat {
 
 /// Color formatting mode
 pub enum ColorFormat {
-    Line,
+    Solid,
     LinearGradient,
 }
 
@@ -31,7 +31,7 @@ impl Default for LoggerConfig {
         LoggerConfig {
             level: LevelFilter::Info,
             record_format: RecordFormat::Json,
-            color_format: Some(ColorFormat::Line),
+            color_format: Some(ColorFormat::Solid),
         }
     }
 }
@@ -59,7 +59,7 @@ impl DiscoLogger {
 ///
 /// * `level` - level of this log line
 /// * `msg` - messsage being logged
-fn color_log_line(level: Level, msg: String) -> String {
+fn color_log_solid(level: Level, msg: String) -> String {
     match level {
         Level::Trace => msg.bright_magenta(),
         Level::Debug => msg.cyan(),
@@ -205,7 +205,7 @@ fn color_log(msg: String, record: &Record, color_format: &Option<ColorFormat>) -
     }
 
     match color_format.as_ref().unwrap() {
-        ColorFormat::Line => color_log_line(record.level(), msg),
+        ColorFormat::Solid => color_log_solid(record.level(), msg),
         ColorFormat::LinearGradient => color_log_line_gradient(record.level(), msg),
     }
 }
@@ -263,6 +263,8 @@ mod tests {
 
     #[test]
     fn enabled_filters_levels() {
+        // TODO test LevelFilter::Off
+
         let config = LoggerConfig {
             level: LevelFilter::Warn,
             ..Default::default()
@@ -433,14 +435,14 @@ mod tests {
     }
 
     #[test]
-    fn color_log_line_colors_by_level() {
+    fn color_log_solid_colors_by_level() {
         let msg = "foo".to_string();
         let lines = [
-            color_log_line(Level::Trace, msg.clone()),
-            color_log_line(Level::Debug, msg.clone()),
-            color_log_line(Level::Info, msg.clone()),
-            color_log_line(Level::Warn, msg.clone()),
-            color_log_line(Level::Error, msg.clone()),
+            color_log_solid(Level::Trace, msg.clone()),
+            color_log_solid(Level::Debug, msg.clone()),
+            color_log_solid(Level::Info, msg.clone()),
+            color_log_solid(Level::Warn, msg.clone()),
+            color_log_solid(Level::Error, msg.clone()),
         ];
 
         for (i, line) in lines.iter().enumerate() {
@@ -451,10 +453,10 @@ mod tests {
             }
         }
     }
-    
+
     #[test]
-    fn color_log_line_handles_empty_msg() {
-        color_log_line(Level::Warn, "".to_string());
+    fn color_log_solid_handles_empty_msg() {
+        color_log_solid(Level::Warn, "".to_string());
     }
 
     #[test]
