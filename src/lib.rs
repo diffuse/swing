@@ -102,6 +102,73 @@ fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
     }
 }
 
+/// Get RGB values corresponding to some known color
+///
+/// Bright white will be returned if `color` is unknown
+///
+/// # Arguments
+///
+/// * `color` - color name to retreive RGB values for
+fn rgb_from_str(color: &str) -> Rgb {
+    match color {
+        "magenta" => Rgb {
+            r: 149,
+            g: 119,
+            b: 149,
+        },
+        "bright magenta" => Rgb {
+            r: 227,
+            g: 184,
+            b: 227,
+        },
+        "cyan" => Rgb {
+            r: 13,
+            g: 144,
+            b: 138,
+        },
+        "bright cyan" => Rgb {
+            r: 20,
+            g: 219,
+            b: 210,
+        },
+        "green" => Rgb {
+            r: 70,
+            g: 140,
+            b: 10,
+        },
+        "bright green" => Rgb {
+            r: 107,
+            g: 217,
+            b: 13,
+        },
+        "orange" => Rgb {
+            r: 255,
+            g: 128,
+            b: 0,
+        },
+        "bright orange" => Rgb {
+            r: 247,
+            g: 178,
+            b: 109,
+        },
+        "red" => Rgb {
+            r: 203,
+            g: 0,
+            b: 11,
+        },
+        "bright red" => Rgb {
+            r: 252,
+            g: 58,
+            b: 69,
+        },
+        _ => Rgb {
+            r: 255,
+            g: 255,
+            b: 255,
+        },
+    }
+}
+
 /// Color log line in a gradient dark -> light, choosing
 /// color based on log level
 ///
@@ -111,66 +178,11 @@ fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
 /// * `msg` - messsage being logged
 fn color_log_line_gradient(level: Level, msg: String) -> String {
     let (start_color, end_color) = match level {
-        Level::Trace => (
-            Rgb {
-                r: 149,
-                g: 119,
-                b: 149,
-            },
-            Rgb {
-                r: 227,
-                g: 184,
-                b: 227,
-            },
-        ),
-        Level::Debug => (
-            Rgb {
-                r: 13,
-                g: 144,
-                b: 138,
-            },
-            Rgb {
-                r: 20,
-                g: 219,
-                b: 210,
-            },
-        ),
-        Level::Info => (
-            Rgb {
-                r: 70,
-                g: 140,
-                b: 10,
-            },
-            Rgb {
-                r: 107,
-                g: 217,
-                b: 13,
-            },
-        ),
-        Level::Warn => (
-            Rgb {
-                r: 255,
-                g: 128,
-                b: 0,
-            },
-            Rgb {
-                r: 247,
-                g: 178,
-                b: 109,
-            },
-        ),
-        _ => (
-            Rgb {
-                r: 203,
-                g: 0,
-                b: 11,
-            },
-            Rgb {
-                r: 252,
-                g: 58,
-                b: 69,
-            },
-        ),
+        Level::Trace => (rgb_from_str("magenta"), rgb_from_str("bright magenta")),
+        Level::Debug => (rgb_from_str("cyan"), rgb_from_str("bright cyan")),
+        Level::Info => (rgb_from_str("green"), rgb_from_str("bright green")),
+        Level::Warn => (rgb_from_str("orange"), rgb_from_str("bright orange")),
+        _ => (rgb_from_str("red"), rgb_from_str("bright red")),
     };
 
     msg.chars()
@@ -495,5 +507,17 @@ mod tests {
         let msg = "foo".to_string();
 
         assert_eq!(color_log(msg.clone(), &rec, &None), msg);
+    }
+
+    #[test]
+    fn rgb_from_str_defaults_to_white() {
+        assert_eq!(
+            rgb_from_str("foo"),
+            Rgb {
+                r: 255,
+                g: 255,
+                b: 255
+            }
+        );
     }
 }
