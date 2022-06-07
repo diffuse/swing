@@ -52,54 +52,12 @@ impl DiscoLogger {
     }
 }
 
-/// Color code strings using one color per line,
-/// chosen based on log level
-///
-/// # Arguments
-///
-/// * `level` - level of this log line
-/// * `msg` - messsage being logged
-fn color_log_solid(level: Level, msg: String) -> String {
-    match level {
-        Level::Trace => msg.bright_magenta(),
-        Level::Debug => msg.cyan(),
-        Level::Info => msg.green(),
-        Level::Warn => msg.truecolor(255, 128, 0),
-        Level::Error => msg.red(),
-    }
-    .to_string()
-}
-
 /// RGB values 0-255 in floating point format
 #[derive(Debug, PartialEq)]
 struct Rgb {
     r: u8,
     g: u8,
     b: u8,
-}
-
-/// Compute a new color `dist` distance along the linear
-/// gradient from `start` to `end`
-///
-/// `dist` will be clamped to the range 0.0 - 1.0
-///
-/// # Arguments
-///
-/// * `start` - starting color for linear gradient
-/// * `end` - ending color for linear gradient
-/// * `dist` - desired distance along linear gradient (0.0 - 1.0)
-fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
-    let dist = dist.clamp(0.0, 1.0);
-
-    let r_range = (end.r as f32) - (start.r as f32);
-    let g_range = (end.g as f32) - (start.g as f32);
-    let b_range = (end.b as f32) - (start.b as f32);
-
-    Rgb {
-        r: ((start.r as f32) + (dist * r_range)) as u8,
-        g: ((start.g as f32) + (dist * g_range)) as u8,
-        b: ((start.b as f32) + (dist * b_range)) as u8,
-    }
 }
 
 /// Get RGB values corresponding to some known color
@@ -166,6 +124,48 @@ fn rgb_from_str(color: &str) -> Rgb {
             g: 255,
             b: 255,
         },
+    }
+}
+
+/// Color code strings using one color per line,
+/// chosen based on log level
+///
+/// # Arguments
+///
+/// * `level` - level of this log line
+/// * `msg` - messsage being logged
+fn color_log_solid(level: Level, msg: String) -> String {
+    match level {
+        Level::Trace => msg.bright_magenta(),
+        Level::Debug => msg.cyan(),
+        Level::Info => msg.green(),
+        Level::Warn => msg.truecolor(255, 128, 0),
+        Level::Error => msg.red(),
+    }
+    .to_string()
+}
+
+/// Compute a new color `dist` distance along the linear
+/// gradient from `start` to `end`
+///
+/// `dist` will be clamped to the range 0.0 - 1.0
+///
+/// # Arguments
+///
+/// * `start` - starting color for linear gradient
+/// * `end` - ending color for linear gradient
+/// * `dist` - desired distance along linear gradient (0.0 - 1.0)
+fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
+    let dist = dist.clamp(0.0, 1.0);
+
+    let r_range = (end.r as f32) - (start.r as f32);
+    let g_range = (end.g as f32) - (start.g as f32);
+    let b_range = (end.b as f32) - (start.b as f32);
+
+    Rgb {
+        r: ((start.r as f32) + (dist * r_range)) as u8,
+        g: ((start.g as f32) + (dist * g_range)) as u8,
+        b: ((start.b as f32) + (dist * b_range)) as u8,
     }
 }
 
