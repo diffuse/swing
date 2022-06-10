@@ -12,6 +12,7 @@ pub trait Theme: Send + Sync {
     fn range(&self, level: Level) -> RgbRange;
 }
 
+/// Basic log level colors
 pub struct Simple {}
 
 impl Theme for Simple {
@@ -45,9 +46,10 @@ impl Theme for Simple {
     }
 }
 
-pub struct Cool {}
+/// Move down the color spectrum by level
+pub struct Spectral {}
 
-impl Theme for Cool {
+impl Theme for Spectral {
     fn solid(&self, level: Level) -> Rgb {
         self.range(level).start
     }
