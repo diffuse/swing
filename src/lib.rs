@@ -534,19 +534,22 @@ mod tests {
         logger.color_inline_gradient(Level::Warn, "".to_string());
     }
 
-    /*
-    TODO
     #[test]
     fn color_log_with_none_format_returns_orig() {
+        let config = LoggerConfig {
+            color_format: None,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
         let rec = Record::builder()
             .args(format_args!("foo"))
             .level(Level::Info)
             .target("test")
             .build();
 
+        // input msg should not be altered by None color format
         let msg = "foo".to_string();
-
-        assert_eq!(color_log(msg.clone(), &rec, &None), msg);
+        assert_eq!(logger.color_log(msg.clone(), &rec), msg);
     }
-    */
 }
