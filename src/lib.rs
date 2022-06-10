@@ -26,6 +26,8 @@ pub struct LoggerConfig {
     pub record_format: RecordFormat,
     /// color formatting mode
     pub color_format: Option<ColorFormat>,
+    /// color theme
+    pub theme: Box<dyn Theme>,
 }
 
 impl Default for LoggerConfig {
@@ -34,16 +36,58 @@ impl Default for LoggerConfig {
             level: LevelFilter::Info,
             record_format: RecordFormat::Json,
             color_format: Some(ColorFormat::Solid),
+            theme: Box::new(NormalTheme {}),
         }
     }
 }
 
-/// RGB values 0-255 in floating point format
+/// RGB triplet
 #[derive(Debug, PartialEq)]
-struct Rgb {
+pub struct Rgb {
     r: u8,
     g: u8,
     b: u8,
+}
+
+/// Define a color range to use as a theme
+/// with this library's color formats
+pub trait Theme: Send + Sync {
+    // TODO rename these methods to normal/start/end
+    //
+    // TODO rename this/reconsider this design
+    fn normal_color(&self, level: Level) -> Rgb;
+    /// return the starting color in this theme's color range
+    fn start_color(&self, level: Level) -> Rgb;
+    /// return the ending color in this theme's color range
+    fn end_color(&self, level: Level) -> Rgb;
+}
+
+pub struct NormalTheme {}
+
+impl Theme for NormalTheme {
+    fn normal_color(&self, level: Level) -> Rgb {
+        self.start_color(level)
+    }
+
+    fn start_color(&self, level: Level) -> Rgb {
+        match level {
+            Level::Trace => rgb_from_str("magenta"),
+            Level::Debug => rgb_from_str("cyan"),
+            Level::Info => rgb_from_str("green"),
+            Level::Warn => rgb_from_str("orange"),
+            Level::Error => rgb_from_str("red"),
+        }
+    }
+
+    fn end_color(&self, level: Level) -> Rgb {
+        match level {
+            Level::Trace => rgb_from_str("bright magenta"),
+            Level::Debug => rgb_from_str("bright cyan"),
+            Level::Info => rgb_from_str("bright green"),
+            Level::Warn => rgb_from_str("bright orange"),
+            Level::Error => rgb_from_str("bright red"),
+        }
+    }
 }
 
 /// Get RGB values corresponding to some known color
@@ -113,24 +157,6 @@ fn rgb_from_str(color: &str) -> Rgb {
     }
 }
 
-/// Color code strings using one color per line,
-/// chosen based on log level
-///
-/// # Arguments
-///
-/// * `level` - level of this log line
-/// * `msg` - messsage being logged
-fn color_solid(level: Level, msg: String) -> String {
-    match level {
-        Level::Trace => msg.bright_magenta(),
-        Level::Debug => msg.cyan(),
-        Level::Info => msg.green(),
-        Level::Warn => msg.truecolor(255, 128, 0),
-        Level::Error => msg.red(),
-    }
-    .to_string()
-}
-
 /// Compute a new color `dist` distance along the linear
 /// gradient from `start` to `end`
 ///
@@ -153,40 +179,6 @@ fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
         g: ((start.g as f32) + (dist * g_range)) as u8,
         b: ((start.b as f32) + (dist * b_range)) as u8,
     }
-}
-
-/// Apply linear color gradient over each line
-///
-/// # Arguments
-///
-/// * `level` - level of this log line
-/// * `msg` - messsage being logged
-fn color_inline_gradient(level: Level, msg: String) -> String {
-    let (start_color, end_color) = match level {
-        Level::Trace => (rgb_from_str("magenta"), rgb_from_str("bright magenta")),
-        Level::Debug => (rgb_from_str("cyan"), rgb_from_str("bright cyan")),
-        Level::Info => (rgb_from_str("green"), rgb_from_str("bright green")),
-        Level::Warn => (rgb_from_str("orange"), rgb_from_str("bright orange")),
-        _ => (rgb_from_str("red"), rgb_from_str("bright red")),
-    };
-
-    msg.chars()
-        .enumerate()
-        .map(|(i, c)| {
-            // how far along the linear gradient this color should be (0.0 - 1.0)
-            let dist = (i as f32) / (msg.len() as f32);
-            let color = linear_gradient(&start_color, &end_color, dist);
-
-            let true_color = Color::TrueColor {
-                r: color.r,
-                g: color.g,
-                b: color.b,
-            };
-
-            c.to_string().color(true_color).to_string()
-        })
-        .collect::<Vec<String>>()
-        .join("")
 }
 
 /// Implements log::Log
@@ -213,6 +205,54 @@ impl DiscoLogger {
         log::set_boxed_logger(Box::new(self)).map(|()| log::set_max_level(LevelFilter::Trace))
     }
 
+    /// Color code strings using one color per line,
+    /// chosen based on log level
+    ///
+    /// # Arguments
+    ///
+    /// * `level` - level of this log line
+    /// * `msg` - messsage being logged
+    fn color_solid(&self, level: Level, msg: String) -> String {
+        let color = self.config.theme.normal_color(level);
+
+        let true_color = Color::TrueColor {
+            r: color.r,
+            g: color.g,
+            b: color.b,
+        };
+
+        msg.color(true_color).to_string()
+    }
+
+    /// Apply linear color gradient over each line
+    ///
+    /// # Arguments
+    ///
+    /// * `level` - level of this log line
+    /// * `msg` - messsage being logged
+    fn color_inline_gradient(&self, level: Level, msg: String) -> String {
+        let theme = &self.config.theme;
+
+        msg.chars()
+            .enumerate()
+            .map(|(i, c)| {
+                // how far along the linear gradient this color should be (0.0 - 1.0)
+                let dist = (i as f32) / (msg.len() as f32);
+                let color =
+                    linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
+
+                let true_color = Color::TrueColor {
+                    r: color.r,
+                    g: color.g,
+                    b: color.b,
+                };
+
+                c.to_string().color(true_color).to_string()
+            })
+            .collect::<Vec<String>>()
+            .join("")
+    }
+
     /// Apply a linear color gradient over multiple lines
     ///
     /// # Arguments
@@ -220,18 +260,11 @@ impl DiscoLogger {
     /// * `level` - level of this log line
     /// * `msg` - messsage being logged
     fn color_multi_line_gradient(&self, level: Level, msg: String) -> String {
-        let (start_color, end_color) = match level {
-            Level::Trace => (rgb_from_str("magenta"), rgb_from_str("bright magenta")),
-            Level::Debug => (rgb_from_str("cyan"), rgb_from_str("bright cyan")),
-            Level::Info => (rgb_from_str("bright green"), rgb_from_str("cyan")), //rgb_from_str("bright green")),
-            Level::Warn => (rgb_from_str("orange"), rgb_from_str("bright orange")),
-            _ => (rgb_from_str("red"), rgb_from_str("bright red")),
-        };
-
         // essentially a linear gradient, but lines move along the gradient in ((i % N) / N) jumps
         let n = 20;
         let dist = (self.lines_logged.load(Ordering::SeqCst) % n) as f32 / n as f32;
-        let color = linear_gradient(&start_color, &end_color, dist);
+        let theme = &self.config.theme;
+        let color = linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
 
         let true_color = Color::TrueColor {
             r: color.r,
@@ -248,20 +281,14 @@ impl DiscoLogger {
     ///
     /// * `msg` - message being logged
     /// * `record` - log record
-    /// * `color_format` - formatting to use for color
-    fn color_log(
-        &self,
-        msg: String,
-        record: &Record,
-        color_format: &Option<ColorFormat>,
-    ) -> String {
-        if color_format.is_none() {
+    fn color_log(&self, msg: String, record: &Record) -> String {
+        if self.config.color_format.is_none() {
             return msg;
         }
 
-        let s = match color_format.as_ref().unwrap() {
-            ColorFormat::Solid => color_solid(record.level(), msg),
-            ColorFormat::InlineGradient => color_inline_gradient(record.level(), msg),
+        let s = match self.config.color_format.as_ref().unwrap() {
+            ColorFormat::Solid => self.color_solid(record.level(), msg),
+            ColorFormat::InlineGradient => self.color_inline_gradient(record.level(), msg),
             ColorFormat::MultiLineGradient => self.color_multi_line_gradient(record.level(), msg),
         };
 
@@ -305,7 +332,7 @@ impl Log for DiscoLogger {
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
             let mut msg = format_record(record, &self.config.record_format);
-            msg = self.color_log(msg, record, &self.config.color_format);
+            msg = self.color_log(msg, record);
 
             match record.level() {
                 Level::Warn | Level::Error => eprintln!("{}", msg.bold()),
@@ -496,13 +523,19 @@ mod tests {
 
     #[test]
     fn color_solid_colors_by_level() {
+        let config = LoggerConfig {
+            level: LevelFilter::Trace,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
         let msg = "foo".to_string();
         let lines = [
-            color_solid(Level::Trace, msg.clone()),
-            color_solid(Level::Debug, msg.clone()),
-            color_solid(Level::Info, msg.clone()),
-            color_solid(Level::Warn, msg.clone()),
-            color_solid(Level::Error, msg.clone()),
+            logger.color_solid(Level::Trace, msg.clone()),
+            logger.color_solid(Level::Debug, msg.clone()),
+            logger.color_solid(Level::Info, msg.clone()),
+            logger.color_solid(Level::Warn, msg.clone()),
+            logger.color_solid(Level::Error, msg.clone()),
         ];
 
         for (i, line) in lines.iter().enumerate() {
@@ -516,18 +549,30 @@ mod tests {
 
     #[test]
     fn color_solid_handles_empty_msg() {
-        color_solid(Level::Warn, "".to_string());
+        let config = LoggerConfig {
+            level: LevelFilter::Trace,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
+        logger.color_solid(Level::Warn, "".to_string());
     }
 
     #[test]
     fn color_inline_gradient_colors_by_level() {
+        let config = LoggerConfig {
+            level: LevelFilter::Trace,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
         let msg = "foo".to_string();
         let lines = [
-            color_inline_gradient(Level::Trace, msg.clone()),
-            color_inline_gradient(Level::Debug, msg.clone()),
-            color_inline_gradient(Level::Info, msg.clone()),
-            color_inline_gradient(Level::Warn, msg.clone()),
-            color_inline_gradient(Level::Error, msg.clone()),
+            logger.color_inline_gradient(Level::Trace, msg.clone()),
+            logger.color_inline_gradient(Level::Debug, msg.clone()),
+            logger.color_inline_gradient(Level::Info, msg.clone()),
+            logger.color_inline_gradient(Level::Warn, msg.clone()),
+            logger.color_inline_gradient(Level::Error, msg.clone()),
         ];
 
         for (i, line) in lines.iter().enumerate() {
@@ -541,7 +586,13 @@ mod tests {
 
     #[test]
     fn color_inline_gradient_handles_empty_msg() {
-        color_inline_gradient(Level::Warn, "".to_string());
+        let config = LoggerConfig {
+            level: LevelFilter::Trace,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
+        logger.color_inline_gradient(Level::Warn, "".to_string());
     }
 
     /*
