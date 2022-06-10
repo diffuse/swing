@@ -12,9 +12,9 @@ pub trait Theme: Send + Sync {
     fn range(&self, level: Level) -> RgbRange;
 }
 
-pub struct SimpleTheme {}
+pub struct Simple {}
 
-impl Theme for SimpleTheme {
+impl Theme for Simple {
     fn solid(&self, level: Level) -> Rgb {
         self.range(level).start
     }
