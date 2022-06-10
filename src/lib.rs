@@ -1,8 +1,11 @@
 use chrono::prelude::*;
-use colored::{Color, Colorize};
+use colored::Colorize;
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 use std::sync::atomic::{AtomicUsize, Ordering};
+
+mod colors;
+use colors::Color;
 
 /// Record formatting mode
 pub enum RecordFormat {
@@ -71,89 +74,22 @@ impl Theme for NormalTheme {
 
     fn start_color(&self, level: Level) -> Rgb {
         match level {
-            Level::Trace => rgb_from_str("magenta"),
-            Level::Debug => rgb_from_str("cyan"),
-            Level::Info => rgb_from_str("green"),
-            Level::Warn => rgb_from_str("orange"),
-            Level::Error => rgb_from_str("red"),
+            Level::Trace => Color::DarkPink.value(),
+            Level::Debug => Color::DarkCyan.value(),
+            Level::Info => Color::DarkGreen.value(),
+            Level::Warn => Color::DarkOrange.value(),
+            Level::Error => Color::DarkRed.value(),
         }
     }
 
     fn end_color(&self, level: Level) -> Rgb {
         match level {
-            Level::Trace => rgb_from_str("bright magenta"),
-            Level::Debug => rgb_from_str("bright cyan"),
-            Level::Info => rgb_from_str("bright green"),
-            Level::Warn => rgb_from_str("bright orange"),
-            Level::Error => rgb_from_str("bright red"),
+            Level::Trace => Color::Pink.value(),
+            Level::Debug => Color::Cyan.value(),
+            Level::Info => Color::Green.value(),
+            Level::Warn => Color::Orange.value(),
+            Level::Error => Color::Red.value(),
         }
-    }
-}
-
-/// Get RGB values corresponding to some known color
-///
-/// Bright white will be returned if `color` is unknown
-///
-/// # Arguments
-///
-/// * `color` - color name to retreive RGB values for
-fn rgb_from_str(color: &str) -> Rgb {
-    match color {
-        "magenta" => Rgb {
-            r: 149,
-            g: 119,
-            b: 149,
-        },
-        "bright magenta" => Rgb {
-            r: 227,
-            g: 184,
-            b: 227,
-        },
-        "cyan" => Rgb {
-            r: 13,
-            g: 144,
-            b: 138,
-        },
-        "bright cyan" => Rgb {
-            r: 20,
-            g: 219,
-            b: 210,
-        },
-        "green" => Rgb {
-            r: 70,
-            g: 140,
-            b: 10,
-        },
-        "bright green" => Rgb {
-            r: 107,
-            g: 217,
-            b: 13,
-        },
-        "orange" => Rgb {
-            r: 255,
-            g: 128,
-            b: 0,
-        },
-        "bright orange" => Rgb {
-            r: 247,
-            g: 178,
-            b: 109,
-        },
-        "red" => Rgb {
-            r: 203,
-            g: 0,
-            b: 11,
-        },
-        "bright red" => Rgb {
-            r: 252,
-            g: 58,
-            b: 69,
-        },
-        _ => Rgb {
-            r: 255,
-            g: 255,
-            b: 255,
-        },
     }
 }
 
@@ -240,7 +176,7 @@ impl DiscoLogger {
     fn color_solid(&self, level: Level, msg: String) -> String {
         let color = self.config.theme.normal_color(level);
 
-        let true_color = Color::TrueColor {
+        let true_color = colored::Color::TrueColor {
             r: color.r,
             g: color.g,
             b: color.b,
@@ -266,7 +202,7 @@ impl DiscoLogger {
                 let color =
                     linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
 
-                let true_color = Color::TrueColor {
+                let true_color = colored::Color::TrueColor {
                     r: color.r,
                     g: color.g,
                     b: color.b,
@@ -291,7 +227,7 @@ impl DiscoLogger {
         let theme = &self.config.theme;
         let color = linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
 
-        let true_color = Color::TrueColor {
+        let true_color = colored::Color::TrueColor {
             r: color.r,
             g: color.g,
             b: color.b,
@@ -613,16 +549,4 @@ mod tests {
         assert_eq!(color_log(msg.clone(), &rec, &None), msg);
     }
     */
-
-    #[test]
-    fn rgb_from_str_defaults_to_white() {
-        assert_eq!(
-            rgb_from_str("foo"),
-            Rgb {
-                r: 255,
-                g: 255,
-                b: 255
-            }
-        );
-    }
 }
