@@ -14,7 +14,7 @@ pub enum RecordFormat {
 /// Color formatting mode
 pub enum ColorFormat {
     Solid,
-    LinearGradient,
+    InlineGradient,
     Disco,
 }
 
@@ -162,7 +162,7 @@ fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
 ///
 /// * `level` - level of this log line
 /// * `msg` - messsage being logged
-fn color_log_line_gradient(level: Level, msg: String) -> String {
+fn color_log_inline_gradient(level: Level, msg: String) -> String {
     let (start_color, end_color) = match level {
         Level::Trace => (rgb_from_str("magenta"), rgb_from_str("bright magenta")),
         Level::Debug => (rgb_from_str("cyan"), rgb_from_str("bright cyan")),
@@ -262,7 +262,7 @@ impl DiscoLogger {
 
         let s = match color_format.as_ref().unwrap() {
             ColorFormat::Solid => color_log_solid(record.level(), msg),
-            ColorFormat::LinearGradient => color_log_line_gradient(record.level(), msg),
+            ColorFormat::InlineGradient => color_log_inline_gradient(record.level(), msg),
             ColorFormat::Disco => self.color_log_disco(record.level(), msg),
         };
 
@@ -521,14 +521,14 @@ mod tests {
     }
 
     #[test]
-    fn color_log_line_gradient_colors_by_level() {
+    fn color_log_inline_gradient_colors_by_level() {
         let msg = "foo".to_string();
         let lines = [
-            color_log_line_gradient(Level::Trace, msg.clone()),
-            color_log_line_gradient(Level::Debug, msg.clone()),
-            color_log_line_gradient(Level::Info, msg.clone()),
-            color_log_line_gradient(Level::Warn, msg.clone()),
-            color_log_line_gradient(Level::Error, msg.clone()),
+            color_log_inline_gradient(Level::Trace, msg.clone()),
+            color_log_inline_gradient(Level::Debug, msg.clone()),
+            color_log_inline_gradient(Level::Info, msg.clone()),
+            color_log_inline_gradient(Level::Warn, msg.clone()),
+            color_log_inline_gradient(Level::Error, msg.clone()),
         ];
 
         for (i, line) in lines.iter().enumerate() {
@@ -541,8 +541,8 @@ mod tests {
     }
 
     #[test]
-    fn color_log_line_gradient_handles_empty_msg() {
-        color_log_line_gradient(Level::Warn, "".to_string());
+    fn color_log_inline_gradient_handles_empty_msg() {
+        color_log_inline_gradient(Level::Warn, "".to_string());
     }
 
     /*
