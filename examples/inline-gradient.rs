@@ -25,7 +25,7 @@ fn main() {
     let config = LoggerConfig {
         level: LevelFilter::Trace,
         record_format: RecordFormat::Simple,
-        color_format: Some(ColorFormat::LinearGradient),
+        color_format: Some(ColorFormat::InlineGradient),
         ..Default::default()
     };
     DiscoLogger::new(config).init().unwrap();
