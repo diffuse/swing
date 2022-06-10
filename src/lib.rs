@@ -6,7 +6,7 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 
 mod color;
 mod theme;
-use theme::{NormalTheme, Theme};
+use theme::{SimpleTheme, Theme};
 
 /// Record formatting mode
 pub enum RecordFormat {
@@ -40,7 +40,7 @@ impl Default for LoggerConfig {
             level: LevelFilter::Info,
             record_format: RecordFormat::Json,
             color_format: Some(ColorFormat::Solid),
-            theme: Box::new(NormalTheme {}),
+            theme: Box::new(SimpleTheme {}),
         }
     }
 }
