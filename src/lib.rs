@@ -205,6 +205,31 @@ impl DiscoLogger {
         log::set_boxed_logger(Box::new(self)).map(|()| log::set_max_level(LevelFilter::Trace))
     }
 
+    /// Format a log message based on the current RecordFormat setting
+    fn format_record(&self, record: &Record) -> String {
+        let now = Utc::now().to_rfc3339();
+
+        match &self.config.record_format {
+            RecordFormat::Json => json!({
+                "time": now,
+                "level": record.level(),
+                "target": record.target(),
+                "message": record.args(),
+            })
+            .to_string(),
+            RecordFormat::Simple => {
+                format!(
+                    "{} [{}] {} - {}",
+                    now,
+                    record.target(),
+                    record.level(),
+                    record.args()
+                )
+            }
+            RecordFormat::Custom(f) => f(record),
+        }
+    }
+
     /// Color code strings using one color per line,
     /// chosen based on log level
     ///
@@ -297,31 +322,6 @@ impl DiscoLogger {
     }
 }
 
-/// Format a log message based on the current RecordFormat setting
-fn format_record(record: &Record, record_format: &RecordFormat) -> String {
-    let now = Utc::now().to_rfc3339();
-
-    match record_format {
-        RecordFormat::Json => json!({
-            "time": now,
-            "level": record.level(),
-            "target": record.target(),
-            "message": record.args(),
-        })
-        .to_string(),
-        RecordFormat::Simple => {
-            format!(
-                "{} [{}] {} - {}",
-                now,
-                record.target(),
-                record.level(),
-                record.args()
-            )
-        }
-        RecordFormat::Custom(f) => f(record),
-    }
-}
-
 impl Log for DiscoLogger {
     /// Check if this message should be logged
     fn enabled(&self, metadata: &Metadata) -> bool {
@@ -331,7 +331,7 @@ impl Log for DiscoLogger {
     /// Log a message
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            let mut msg = format_record(record, &self.config.record_format);
+            let mut msg = self.format_record(record);
             msg = self.color_log(msg, record);
 
             match record.level() {
@@ -368,62 +368,65 @@ mod tests {
 
     #[test]
     fn format_record_presets_return_non_empty() {
-        // create normal test record
-        let rec = Record::builder()
-            .args(format_args!("foo"))
-            .level(Level::Info)
-            .target("test")
-            .build();
+        for fmt in vec![RecordFormat::Json, RecordFormat::Simple] {
+            let config = LoggerConfig {
+                record_format: fmt,
+                ..Default::default()
+            };
+            let logger = DiscoLogger::new(config);
 
-        // record should give non-empty log line
-        assert!(!format_record(&rec, &RecordFormat::Json).is_empty());
-        assert!(!format_record(&rec, &RecordFormat::Simple).is_empty());
+            // create normal test record
+            let rec = Record::builder()
+                .args(format_args!("foo"))
+                .level(Level::Info)
+                .target("test")
+                .build();
 
-        // create record with empty args and target
-        let rec = Record::builder()
-            .args(format_args!(""))
-            .level(Level::Info)
-            .target("")
-            .build();
+            assert!(!logger.format_record(&rec).is_empty());
 
-        // record should still give non-empty log lines
-        assert!(!format_record(&rec, &RecordFormat::Json).is_empty());
-        assert!(!format_record(&rec, &RecordFormat::Simple).is_empty());
+            // create record with empty args and target
+            let rec = Record::builder()
+                .args(format_args!(""))
+                .level(Level::Info)
+                .target("")
+                .build();
+
+            // record should still give non-empty log lines
+            assert!(!logger.format_record(&rec).is_empty());
+        }
     }
 
     #[test]
     fn format_record_custom_formats_correctly() {
+        let test_cases = vec![
+            (RecordFormat::Custom(Box::new(|_| "".to_string())), ""),
+            (
+                RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
+                "INFO foo",
+            ),
+            (
+                RecordFormat::Custom(Box::new(|r| {
+                    format!("{} [{}] {}", r.level(), r.target(), r.args())
+                })),
+                "INFO [test] foo",
+            ),
+        ];
+
         let rec = Record::builder()
             .args(format_args!("foo"))
             .level(Level::Info)
             .target("test")
             .build();
 
-        assert_eq!(
-            format_record(&rec, &RecordFormat::Custom(Box::new(|_| "".to_string()))),
-            ""
-        );
+        for (fmt, expected) in test_cases {
+            let config = LoggerConfig {
+                record_format: fmt,
+                ..Default::default()
+            };
+            let logger = DiscoLogger::new(config);
 
-        assert_eq!(
-            format_record(
-                &rec,
-                &RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
-            ),
-            "INFO foo"
-        );
-
-        assert_eq!(
-            format_record(
-                &rec,
-                &RecordFormat::Custom(Box::new(|r| format!(
-                    "{} [{}] {}",
-                    r.level(),
-                    r.target(),
-                    r.args()
-                ))),
-            ),
-            "INFO [test] foo"
-        );
+            assert_eq!(logger.format_record(&rec), expected);
+        }
     }
 
     /// To account for differences in the floating point math used to
