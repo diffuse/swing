@@ -1,4 +1,4 @@
-use crate::colors::Color;
+use crate::color::Color;
 use crate::Rgb;
 use log::Level;
 

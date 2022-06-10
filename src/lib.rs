@@ -4,7 +4,7 @@ use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-mod colors;
+mod color;
 mod theme;
 use theme::{NormalTheme, Theme};
 
