@@ -2,14 +2,18 @@ use crate::Rgb;
 
 #[allow(dead_code)]
 pub enum Color {
-    DarkPink,
-    Pink,
     DarkMagenta,
     Magenta,
+    DarkPink,
+    Pink,
     DarkCyan,
     Cyan,
+    DarkBlue,
+    Blue,
     DarkGreen,
     Green,
+    DarkYellow,
+    Yellow,
     DarkOrange,
     Orange,
     DarkRed,
@@ -19,16 +23,6 @@ pub enum Color {
 impl Color {
     pub fn value(&self) -> Rgb {
         match self {
-            Color::DarkPink => Rgb {
-                r: 149,
-                g: 119,
-                b: 149,
-            },
-            Color::Pink => Rgb {
-                r: 227,
-                g: 184,
-                b: 227,
-            },
             Color::DarkMagenta => Rgb {
                 r: 139,
                 g: 0,
@@ -38,6 +32,16 @@ impl Color {
                 r: 255,
                 g: 0,
                 b: 255,
+            },
+            Color::DarkPink => Rgb {
+                r: 149,
+                g: 119,
+                b: 149,
+            },
+            Color::Pink => Rgb {
+                r: 227,
+                g: 184,
+                b: 227,
             },
             Color::DarkCyan => Rgb {
                 r: 10,
@@ -49,6 +53,16 @@ impl Color {
                 g: 210,
                 b: 210,
             },
+            Color::DarkBlue => Rgb {
+                r: 70,
+                g: 75,
+                b: 185,
+            },
+            Color::Blue => Rgb {
+                r: 90,
+                g: 100,
+                b: 240,
+            },
             Color::DarkGreen => Rgb {
                 r: 70,
                 g: 140,
@@ -58,6 +72,16 @@ impl Color {
                 r: 110,
                 g: 220,
                 b: 10,
+            },
+            Color::DarkYellow => Rgb {
+                r: 170,
+                g: 128,
+                b: 0,
+            },
+            Color::Yellow => Rgb {
+                r: 255,
+                g: 185,
+                b: 0,
             },
             Color::DarkOrange => Rgb {
                 r: 255,

@@ -44,3 +44,36 @@ impl Theme for Simple {
         }
     }
 }
+
+pub struct Cool {}
+
+impl Theme for Cool {
+    fn solid(&self, level: Level) -> Rgb {
+        self.range(level).start
+    }
+
+    fn range(&self, level: Level) -> RgbRange {
+        match level {
+            Level::Trace => RgbRange {
+                start: Color::Pink.value(),
+                end: Color::DarkMagenta.value(),
+            },
+            Level::Debug => RgbRange {
+                start: Color::Cyan.value(),
+                end: Color::DarkBlue.value(),
+            },
+            Level::Info => RgbRange {
+                start: Color::Green.value(),
+                end: Color::DarkCyan.value(),
+            },
+            Level::Warn => RgbRange {
+                start: Color::Orange.value(),
+                end: Color::DarkYellow.value(),
+            },
+            Level::Error => RgbRange {
+                start: Color::Red.value(),
+                end: Color::DarkOrange.value(),
+            },
+        }
+    }
+}
