@@ -53,6 +53,14 @@ pub struct Rgb {
     b: u8,
 }
 
+/// RgbRange defines a linear color range
+/// from some start Rgb triplet -> some end
+/// Rgb triplet
+pub struct RgbRange {
+    start: Rgb,
+    end: Rgb,
+}
+
 /// Compute a new color `dist` distance along the linear
 /// gradient from `start` to `end`
 ///
@@ -60,11 +68,12 @@ pub struct Rgb {
 ///
 /// # Arguments
 ///
-/// * `start` - starting color for linear gradient
-/// * `end` - ending color for linear gradient
+/// * `color_range` - bounding color range for this linear gradient
 /// * `dist` - desired distance along linear gradient (0.0 - 1.0)
-fn linear_gradient(start: &Rgb, end: &Rgb, dist: f32) -> Rgb {
+fn linear_gradient(range: &RgbRange, dist: f32) -> Rgb {
     let dist = dist.clamp(0.0, 1.0);
+    let start = &range.start;
+    let end = &range.end;
 
     let r_range = (end.r as f32) - (start.r as f32);
     let g_range = (end.g as f32) - (start.g as f32);
@@ -134,7 +143,7 @@ impl DiscoLogger {
     /// * `level` - level of this log line
     /// * `msg` - messsage being logged
     fn color_solid(&self, level: Level, msg: String) -> String {
-        let color = self.config.theme.normal_color(level);
+        let color = self.config.theme.solid(level);
 
         let true_color = Color::TrueColor {
             r: color.r,
@@ -159,8 +168,7 @@ impl DiscoLogger {
             .map(|(i, c)| {
                 // how far along the linear gradient this color should be (0.0 - 1.0)
                 let dist = (i as f32) / (msg.len() as f32);
-                let color =
-                    linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
+                let color = linear_gradient(&theme.range(level), dist);
 
                 let true_color = Color::TrueColor {
                     r: color.r,
@@ -185,7 +193,7 @@ impl DiscoLogger {
         let n = 20;
         let dist = (self.lines_logged.load(Ordering::SeqCst) % n) as f32 / n as f32;
         let theme = &self.config.theme;
-        let color = linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
+        let color = linear_gradient(&theme.range(level), dist);
 
         let true_color = Color::TrueColor {
             r: color.r,
@@ -350,20 +358,18 @@ mod tests {
 
     #[test]
     fn linear_gradient_calculates_correct_color() {
-        let start = Rgb { r: 0, g: 0, b: 0 };
-        let end = Rgb {
-            r: 255,
-            g: 255,
-            b: 255,
+        let r = RgbRange {
+            start: Rgb { r: 0, g: 0, b: 0 },
+            end: Rgb {
+                r: 255,
+                g: 255,
+                b: 255,
+            },
         };
 
+        assert_rgb_eq(linear_gradient(&r, 0.0), Rgb { r: 0, g: 0, b: 0 }, None);
         assert_rgb_eq(
-            linear_gradient(&start, &end, 0.0),
-            Rgb { r: 0, g: 0, b: 0 },
-            None,
-        );
-        assert_rgb_eq(
-            linear_gradient(&start, &end, 0.25),
+            linear_gradient(&r, 0.25),
             Rgb {
                 r: 64,
                 g: 64,
@@ -372,7 +378,7 @@ mod tests {
             None,
         );
         assert_rgb_eq(
-            linear_gradient(&start, &end, 0.5),
+            linear_gradient(&r, 0.5),
             Rgb {
                 r: 128,
                 g: 128,
@@ -381,7 +387,7 @@ mod tests {
             None,
         );
         assert_rgb_eq(
-            linear_gradient(&start, &end, 0.75),
+            linear_gradient(&r, 0.75),
             Rgb {
                 r: 190,
                 g: 190,
@@ -390,7 +396,7 @@ mod tests {
             None,
         );
         assert_rgb_eq(
-            linear_gradient(&start, &end, 1.0),
+            linear_gradient(&r, 1.0),
             Rgb {
                 r: 255,
                 g: 255,
@@ -402,22 +408,24 @@ mod tests {
 
     #[test]
     fn linear_gradient_clamps_dist() {
-        let start = Rgb { r: 0, g: 0, b: 0 };
-        let end = Rgb {
-            r: 255,
-            g: 255,
-            b: 255,
+        let r = RgbRange {
+            start: Rgb { r: 0, g: 0, b: 0 },
+            end: Rgb {
+                r: 255,
+                g: 255,
+                b: 255,
+            },
         };
 
         let expected = Rgb { r: 0, g: 0, b: 0 };
-        assert_rgb_eq(linear_gradient(&start, &end, -1.0), expected, None);
+        assert_rgb_eq(linear_gradient(&r, -1.0), expected, None);
 
         let expected = Rgb {
             r: 255,
             g: 255,
             b: 255,
         };
-        assert_rgb_eq(linear_gradient(&start, &end, 100.0), expected, None);
+        assert_rgb_eq(linear_gradient(&r, 100.0), expected, None);
     }
 
     #[test]

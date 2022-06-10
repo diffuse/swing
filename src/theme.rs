@@ -1,44 +1,46 @@
 use crate::color::Color;
-use crate::Rgb;
+use crate::{Rgb, RgbRange};
 use log::Level;
 
-/// Define a color range to use as a theme
-/// with this library's color formats
+/// Define a color range for each log level
+/// to use as a theme with this library's color
+/// formats
 pub trait Theme: Send + Sync {
-    // TODO rename these methods to normal/start/end
-    //
-    // TODO rename this/reconsider this design
-    fn normal_color(&self, level: Level) -> Rgb;
-    /// return the starting color in this theme's color range
-    fn start_color(&self, level: Level) -> Rgb;
-    /// return the ending color in this theme's color range
-    fn end_color(&self, level: Level) -> Rgb;
+    /// return the representative solid color for this theme at each level
+    fn solid(&self, level: Level) -> Rgb;
+    /// return the bounding color range for this theme at each level
+    fn range(&self, level: Level) -> RgbRange;
 }
 
 pub struct NormalTheme {}
 
 impl Theme for NormalTheme {
-    fn normal_color(&self, level: Level) -> Rgb {
-        self.start_color(level)
+    fn solid(&self, level: Level) -> Rgb {
+        self.range(level).start
     }
 
-    fn start_color(&self, level: Level) -> Rgb {
+    fn range(&self, level: Level) -> RgbRange {
         match level {
-            Level::Trace => Color::DarkPink.value(),
-            Level::Debug => Color::DarkCyan.value(),
-            Level::Info => Color::DarkGreen.value(),
-            Level::Warn => Color::DarkOrange.value(),
-            Level::Error => Color::DarkRed.value(),
-        }
-    }
-
-    fn end_color(&self, level: Level) -> Rgb {
-        match level {
-            Level::Trace => Color::Pink.value(),
-            Level::Debug => Color::Cyan.value(),
-            Level::Info => Color::Green.value(),
-            Level::Warn => Color::Orange.value(),
-            Level::Error => Color::Red.value(),
+            Level::Trace => RgbRange {
+                start: Color::DarkPink.value(),
+                end: Color::Pink.value(),
+            },
+            Level::Debug => RgbRange {
+                start: Color::DarkCyan.value(),
+                end: Color::Cyan.value(),
+            },
+            Level::Info => RgbRange {
+                start: Color::DarkGreen.value(),
+                end: Color::Green.value(),
+            },
+            Level::Warn => RgbRange {
+                start: Color::DarkOrange.value(),
+                end: Color::Orange.value(),
+            },
+            Level::Error => RgbRange {
+                start: Color::DarkRed.value(),
+                end: Color::Red.value(),
+            },
         }
     }
 }
