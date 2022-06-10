@@ -1,11 +1,12 @@
 use chrono::prelude::*;
-use colored::Colorize;
+use colored::{Color, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
 mod colors;
-use colors::Color;
+mod theme;
+use theme::{NormalTheme, Theme};
 
 /// Record formatting mode
 pub enum RecordFormat {
@@ -50,47 +51,6 @@ pub struct Rgb {
     r: u8,
     g: u8,
     b: u8,
-}
-
-/// Define a color range to use as a theme
-/// with this library's color formats
-pub trait Theme: Send + Sync {
-    // TODO rename these methods to normal/start/end
-    //
-    // TODO rename this/reconsider this design
-    fn normal_color(&self, level: Level) -> Rgb;
-    /// return the starting color in this theme's color range
-    fn start_color(&self, level: Level) -> Rgb;
-    /// return the ending color in this theme's color range
-    fn end_color(&self, level: Level) -> Rgb;
-}
-
-pub struct NormalTheme {}
-
-impl Theme for NormalTheme {
-    fn normal_color(&self, level: Level) -> Rgb {
-        self.start_color(level)
-    }
-
-    fn start_color(&self, level: Level) -> Rgb {
-        match level {
-            Level::Trace => Color::DarkPink.value(),
-            Level::Debug => Color::DarkCyan.value(),
-            Level::Info => Color::DarkGreen.value(),
-            Level::Warn => Color::DarkOrange.value(),
-            Level::Error => Color::DarkRed.value(),
-        }
-    }
-
-    fn end_color(&self, level: Level) -> Rgb {
-        match level {
-            Level::Trace => Color::Pink.value(),
-            Level::Debug => Color::Cyan.value(),
-            Level::Info => Color::Green.value(),
-            Level::Warn => Color::Orange.value(),
-            Level::Error => Color::Red.value(),
-        }
-    }
 }
 
 /// Compute a new color `dist` distance along the linear
@@ -176,7 +136,7 @@ impl DiscoLogger {
     fn color_solid(&self, level: Level, msg: String) -> String {
         let color = self.config.theme.normal_color(level);
 
-        let true_color = colored::Color::TrueColor {
+        let true_color = Color::TrueColor {
             r: color.r,
             g: color.g,
             b: color.b,
@@ -202,7 +162,7 @@ impl DiscoLogger {
                 let color =
                     linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
 
-                let true_color = colored::Color::TrueColor {
+                let true_color = Color::TrueColor {
                     r: color.r,
                     g: color.g,
                     b: color.b,
@@ -227,7 +187,7 @@ impl DiscoLogger {
         let theme = &self.config.theme;
         let color = linear_gradient(&theme.start_color(level), &theme.end_color(level), dist);
 
-        let true_color = colored::Color::TrueColor {
+        let true_color = Color::TrueColor {
             r: color.r,
             g: color.g,
             b: color.b,
