@@ -5,7 +5,7 @@ use serde_json::json;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
 mod color;
-mod theme;
+pub mod theme;
 use theme::Theme;
 
 /// Record formatting mode
