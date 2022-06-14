@@ -2,10 +2,11 @@ use chrono::prelude::*;
 use colored::{Color, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
-use std::sync::atomic::{AtomicUsize, Ordering};
+use std::collections::HashMap;
+use std::sync::Mutex;
 
 mod color;
-mod theme;
+pub mod theme;
 use theme::Theme;
 
 /// Record formatting mode
@@ -89,7 +90,7 @@ fn linear_gradient(range: &RgbRange, dist: f32) -> Rgb {
 /// Implements log::Log
 pub struct DiscoLogger {
     config: LoggerConfig,
-    lines_logged: AtomicUsize,
+    lines_logged: Mutex<HashMap<Level, usize>>,
 }
 
 impl DiscoLogger {
@@ -101,7 +102,7 @@ impl DiscoLogger {
     pub fn new(config: LoggerConfig) -> DiscoLogger {
         DiscoLogger {
             config,
-            lines_logged: AtomicUsize::new(0),
+            lines_logged: Mutex::new(HashMap::new()),
         }
     }
 
@@ -191,7 +192,8 @@ impl DiscoLogger {
     fn color_multi_line_gradient(&self, level: Level, msg: String) -> String {
         // essentially a linear gradient, but lines move along the gradient in ((i % N) / N) jumps
         let n = 20;
-        let dist = (self.lines_logged.load(Ordering::SeqCst) % n) as f32 / n as f32;
+        let lines_logged = *self.lines_logged.lock().unwrap().entry(level).or_insert(0);
+        let dist = (lines_logged % n) as f32 / n as f32;
         let theme = &self.config.theme;
         let color = linear_gradient(&theme.range(level), dist);
 
@@ -221,7 +223,13 @@ impl DiscoLogger {
             ColorFormat::MultiLineGradient => self.color_multi_line_gradient(record.level(), msg),
         };
 
-        self.lines_logged.fetch_add(1, Ordering::SeqCst);
+        self.lines_logged
+            .lock()
+            .unwrap()
+            .entry(record.level())
+            .and_modify(|e| *e += 1)
+            .or_insert(0);
+
         return s;
     }
 }

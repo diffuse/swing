@@ -1,3 +1,4 @@
+use disco::theme::Spectral;
 use disco::{ColorFormat, DiscoLogger, LoggerConfig, RecordFormat};
 use lipsum::lipsum;
 use log::LevelFilter;
@@ -26,6 +27,7 @@ fn main() {
         level: LevelFilter::Trace,
         record_format: RecordFormat::Simple,
         color_format: Some(ColorFormat::MultiLineGradient),
+        theme: Box::new(Spectral {}),
         ..Default::default()
     };
     DiscoLogger::new(config).init().unwrap();
