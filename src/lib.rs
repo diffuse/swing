@@ -87,6 +87,23 @@ fn linear_gradient(range: &RgbRange, dist: f32) -> Rgb {
     }
 }
 
+/// Get the distance, [0-1], that `x` falls along the line from 0-`n`
+///
+/// Dist will move in the direction:
+/// - 0 -> 1 when (`x` % `2n`) <= `n`
+/// - 1 -> 0 when `n` < (`x` % `2n`) < `2n`
+///
+/// If used with linear gradients, this oscillating dist will avoid the
+/// harsh visual transition when wrapping around from 0->1.0 to 0->1.0
+///
+/// # Arguments
+///
+/// * `x` - some number, who's value `x` % `2n`, will be considered the distance along the line 0-`n`
+/// * `n` - upper limit of range 0-`n`
+fn oscillate_dist(x: usize, n: usize) -> f32 {
+    ((x + n) % (n * 2)).abs_diff(n) as f32 / n as f32
+}
+
 /// Implements log::Log
 pub struct DiscoLogger {
     config: LoggerConfig,
@@ -193,7 +210,7 @@ impl DiscoLogger {
         // essentially a linear gradient, but lines move along the gradient in ((i % N) / N) jumps
         let n = 20;
         let lines_logged = *self.lines_logged.lock().unwrap().entry(level).or_insert(0);
-        let dist = (lines_logged % n) as f32 / n as f32;
+        let dist = oscillate_dist(lines_logged, n);
         let theme = &self.config.theme;
         let color = linear_gradient(&theme.range(level), dist);
 
@@ -259,6 +276,42 @@ impl Log for DiscoLogger {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// To account for differences in the floating point math used to
+    /// calculate colors along a gradient, this function compares the
+    /// values in two Rgb structs within some range (+/- some value)
+    ///
+    /// # Arguments
+    ///
+    /// * `valid_range` - Rgb values +/- this value will be considered equal
+    fn assert_rgb_eq(lhs: Rgb, rhs: Rgb, valid_range: Option<u8>) {
+        let valid_range = valid_range.unwrap_or(1);
+
+        let is_eq = |a: u8, b: u8| -> bool {
+            // cast to avoid overflow
+            let a = a as i32;
+            let b = b as i32;
+            let valid_range = valid_range as i32;
+
+            // true if a within b +/- valid_range
+            !(a < (b - valid_range) || a > (b + valid_range))
+        };
+
+        assert!(is_eq(lhs.r, rhs.r) && is_eq(lhs.g, rhs.g) && is_eq(lhs.b, rhs.b))
+    }
+
+    /// Check that two floats are equal within some range, `eps`
+    ///
+    /// # Arguments
+    ///
+    /// * `a` - first value to compare
+    /// * `b` - first value to compare
+    /// * `eps` - range to consider diff of floats equal within
+    fn assert_eq_f32(a: f32, b: f32, eps: f32) {
+        if (a - b).abs() > eps {
+            panic!("{} and {} were not equal", a, b);
+        }
+    }
 
     #[test]
     fn enabled_filters_levels() {
@@ -341,29 +394,6 @@ mod tests {
         }
     }
 
-    /// To account for differences in the floating point math used to
-    /// calculate colors along a gradient, this function compares the
-    /// values in two Rgb structs within some range (+/- some value)
-    ///
-    /// # Arguments
-    ///
-    /// * `valid_range` - Rgb values +/- this value will be considered equal
-    fn assert_rgb_eq(lhs: Rgb, rhs: Rgb, valid_range: Option<u8>) {
-        let valid_range = valid_range.unwrap_or(1);
-
-        let is_eq = |a: u8, b: u8| -> bool {
-            // cast to avoid overflow
-            let a = a as i32;
-            let b = b as i32;
-            let valid_range = valid_range as i32;
-
-            // true if a within b +/- valid_range
-            !(a < (b - valid_range) || a > (b + valid_range))
-        };
-
-        assert!(is_eq(lhs.r, rhs.r) && is_eq(lhs.g, rhs.g) && is_eq(lhs.b, rhs.b))
-    }
-
     #[test]
     fn linear_gradient_calculates_correct_color() {
         let r = RgbRange {
@@ -434,6 +464,18 @@ mod tests {
             b: 255,
         };
         assert_rgb_eq(linear_gradient(&r, 100.0), expected, None);
+    }
+
+    #[test]
+    fn oscillate_dist_oscillates() {
+        assert_eq_f32(oscillate_dist(0, 255), 0.0, 1e-2);
+        assert_eq_f32(oscillate_dist(128, 255), 0.5, 1e-2);
+        assert_eq_f32(oscillate_dist(255, 255), 1.0, 1e-2);
+        assert_eq_f32(oscillate_dist(256, 255), 1.0 - (1.0 / 255.0), 1e-2);
+        assert_eq_f32(oscillate_dist(383, 255), 0.5, 1e-2);
+        assert_eq_f32(oscillate_dist(510, 255), 0.0, 1e-2);
+        assert_eq_f32(oscillate_dist(638, 255), 0.5, 1e-2);
+        assert_eq_f32(oscillate_dist(765, 255), 1.0, 1e-2);
     }
 
     #[test]
