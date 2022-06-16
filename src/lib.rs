@@ -309,6 +309,45 @@ mod tests {
     }
 
     #[test]
+    fn rgb_into_color_is_accurate() {
+        let test_cases = vec![
+            (
+                Rgb { r: 0, g: 0, b: 0 },
+                Color::TrueColor { r: 0, g: 0, b: 0 },
+            ),
+            (
+                Rgb {
+                    r: 127,
+                    g: 128,
+                    b: 129,
+                },
+                Color::TrueColor {
+                    r: 127,
+                    g: 128,
+                    b: 129,
+                },
+            ),
+            (
+                Rgb {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                },
+                Color::TrueColor {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                },
+            ),
+        ];
+
+        for (rgb, tc) in test_cases {
+            let c: Color = rgb.into();
+            assert_eq!(c, tc);
+        }
+    }
+
+    #[test]
     fn enabled_filters_levels() {
         // TODO test LevelFilter::Off
 
