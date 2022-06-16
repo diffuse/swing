@@ -54,6 +54,17 @@ pub struct Rgb {
     b: u8,
 }
 
+/// Convert Rgb -> Color for easier use with string coloring
+impl Into<Color> for Rgb {
+    fn into(self) -> Color {
+        Color::TrueColor {
+            r: self.r,
+            g: self.g,
+            b: self.b,
+        }
+    }
+}
+
 /// RgbRange defines a linear color range
 /// from some start Rgb triplet -> some end
 /// Rgb triplet
@@ -162,14 +173,7 @@ impl DiscoLogger {
     /// * `msg` - messsage being logged
     fn color_solid(&self, level: Level, msg: String) -> String {
         let color = self.config.theme.solid(level);
-
-        let true_color = Color::TrueColor {
-            r: color.r,
-            g: color.g,
-            b: color.b,
-        };
-
-        msg.color(true_color).to_string()
+        msg.color(color).to_string()
     }
 
     /// Apply linear color gradient over each line
@@ -187,14 +191,7 @@ impl DiscoLogger {
                 // how far along the linear gradient this color should be (0.0 - 1.0)
                 let dist = (i as f32) / (msg.len() as f32);
                 let color = linear_gradient(&theme.range(level), dist);
-
-                let true_color = Color::TrueColor {
-                    r: color.r,
-                    g: color.g,
-                    b: color.b,
-                };
-
-                c.to_string().color(true_color).to_string()
+                c.to_string().color(color).to_string()
             })
             .collect::<Vec<String>>()
             .join("")
@@ -213,14 +210,7 @@ impl DiscoLogger {
         let dist = oscillate_dist(lines_logged, n);
         let theme = &self.config.theme;
         let color = linear_gradient(&theme.range(level), dist);
-
-        let true_color = Color::TrueColor {
-            r: color.r,
-            g: color.g,
-            b: color.b,
-        };
-
-        msg.color(true_color).to_string()
+        msg.color(color).to_string()
     }
 
     /// Color a log line based on selected options
