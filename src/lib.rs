@@ -224,20 +224,25 @@ impl DiscoLogger {
             return msg;
         }
 
-        let s = match self.config.color_format.as_ref().unwrap() {
+        let line = match self.config.color_format.as_ref().unwrap() {
             ColorFormat::Solid => self.color_solid(record.level(), msg),
             ColorFormat::InlineGradient => self.color_inline_gradient(record.level(), msg),
-            ColorFormat::MultiLineGradient => self.color_multi_line_gradient(record.level(), msg),
+            ColorFormat::MultiLineGradient => {
+                let l = self.color_multi_line_gradient(record.level(), msg);
+
+                // increment line counter for this level
+                self.lines_logged
+                    .lock()
+                    .unwrap()
+                    .entry(record.level())
+                    .and_modify(|e| *e += 1)
+                    .or_insert(0);
+
+                return l;
+            }
         };
 
-        self.lines_logged
-            .lock()
-            .unwrap()
-            .entry(record.level())
-            .and_modify(|e| *e += 1)
-            .or_insert(0);
-
-        return s;
+        return line;
     }
 }
 
