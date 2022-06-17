@@ -235,7 +235,7 @@ impl DiscoLogger {
                     .lock()
                     .unwrap()
                     .entry(record.level())
-                    .and_modify(|e| *e += 1)
+                    .and_modify(|e| *e = e.wrapping_add(1))
                     .or_insert(0);
 
                 return l;
