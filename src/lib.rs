@@ -288,6 +288,24 @@ impl Log for DiscoLogger {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use num::NumCast;
+
+    /// Assert that two values are equal within some range, `eps`
+    ///
+    /// # Arguments
+    ///
+    /// * `a` - first value to compare
+    /// * `b` - second value to compare
+    /// * `eps` - max distance to consider diff of values equal within
+    fn assert_eq_with_eps<T: NumCast>(a: T, b: T, eps: T) {
+        let a: f64 = NumCast::from(a).unwrap();
+        let b: f64 = NumCast::from(b).unwrap();
+        let eps: f64 = NumCast::from(eps).unwrap();
+
+        if (a - b).abs() > eps {
+            panic!("{} and {} were not equal", a, b);
+        }
+    }
 
     /// To account for differences in the floating point math used to
     /// calculate colors along a gradient, this function compares the
@@ -297,34 +315,13 @@ mod tests {
     ///
     /// * `lhs` - first color in comparison
     /// * `rhs` - second color in comparison
-    /// * `valid_range` - Rgb values +/- this value will be considered equal
-    fn assert_rgb_eq(lhs: Rgb, rhs: Rgb, valid_range: Option<u8>) {
-        let valid_range = valid_range.unwrap_or(1);
+    /// * `eps` - max distance to consider diff of r/g/b values equal within
+    fn assert_rgb_eq(lhs: Rgb, rhs: Rgb, eps: Option<u8>) {
+        let eps = eps.unwrap_or(1);
 
-        let is_eq = |a: u8, b: u8| -> bool {
-            // cast to avoid overflow
-            let a = a as i32;
-            let b = b as i32;
-            let valid_range = valid_range as i32;
-
-            // true if a within b +/- valid_range
-            !(a < (b - valid_range) || a > (b + valid_range))
-        };
-
-        assert!(is_eq(lhs.r, rhs.r) && is_eq(lhs.g, rhs.g) && is_eq(lhs.b, rhs.b))
-    }
-
-    /// Check that two floats are equal within some range, `eps`
-    ///
-    /// # Arguments
-    ///
-    /// * `a` - first value to compare
-    /// * `b` - first value to compare
-    /// * `eps` - range to consider diff of floats equal within
-    fn assert_eq_f32(a: f32, b: f32, eps: f32) {
-        if (a - b).abs() > eps {
-            panic!("{} and {} were not equal", a, b);
-        }
+        assert_eq_with_eps(lhs.r, rhs.r, eps);
+        assert_eq_with_eps(lhs.g, rhs.g, eps);
+        assert_eq_with_eps(lhs.b, rhs.b, eps);
     }
 
     #[test]
@@ -363,85 +360,6 @@ mod tests {
         for (rgb, tc) in test_cases {
             let c: Color = rgb.into();
             assert_eq!(c, tc);
-        }
-    }
-
-    #[test]
-    fn enabled_filters_levels() {
-        let config = Config {
-            level: LevelFilter::Warn,
-            ..Default::default()
-        };
-        let logger = DiscoLogger::new(config);
-        let mut mb = Metadata::builder();
-
-        assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
-        assert!(!logger.enabled(&mut mb.level(Level::Debug).build()));
-        assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
-        assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
-        assert!(logger.enabled(&mut mb.level(Level::Error).build()));
-    }
-
-    #[test]
-    fn format_record_presets_return_non_empty() {
-        for fmt in vec![RecordFormat::Json, RecordFormat::Simple] {
-            let config = Config {
-                record_format: fmt,
-                ..Default::default()
-            };
-            let logger = DiscoLogger::new(config);
-
-            // create normal test record
-            let rec = Record::builder()
-                .args(format_args!("foo"))
-                .level(Level::Info)
-                .target("test")
-                .build();
-
-            assert!(!logger.format_record(&rec).is_empty());
-
-            // create record with empty args and target
-            let rec = Record::builder()
-                .args(format_args!(""))
-                .level(Level::Info)
-                .target("")
-                .build();
-
-            // record should still give non-empty log lines
-            assert!(!logger.format_record(&rec).is_empty());
-        }
-    }
-
-    #[test]
-    fn format_record_custom_formats_correctly() {
-        let test_cases = vec![
-            (RecordFormat::Custom(Box::new(|_| "".to_string())), ""),
-            (
-                RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
-                "INFO foo",
-            ),
-            (
-                RecordFormat::Custom(Box::new(|r| {
-                    format!("{} [{}] {}", r.level(), r.target(), r.args())
-                })),
-                "INFO [test] foo",
-            ),
-        ];
-
-        let rec = Record::builder()
-            .args(format_args!("foo"))
-            .level(Level::Info)
-            .target("test")
-            .build();
-
-        for (fmt, expected) in test_cases {
-            let config = Config {
-                record_format: fmt,
-                ..Default::default()
-            };
-            let logger = DiscoLogger::new(config);
-
-            assert_eq!(logger.format_record(&rec), expected);
         }
     }
 
@@ -519,14 +437,77 @@ mod tests {
 
     #[test]
     fn oscillate_dist_oscillates() {
-        assert_eq_f32(oscillate_dist(0, 255), 0.0, 1e-2);
-        assert_eq_f32(oscillate_dist(128, 255), 0.5, 1e-2);
-        assert_eq_f32(oscillate_dist(255, 255), 1.0, 1e-2);
-        assert_eq_f32(oscillate_dist(256, 255), 1.0 - (1.0 / 255.0), 1e-2);
-        assert_eq_f32(oscillate_dist(383, 255), 0.5, 1e-2);
-        assert_eq_f32(oscillate_dist(510, 255), 0.0, 1e-2);
-        assert_eq_f32(oscillate_dist(638, 255), 0.5, 1e-2);
-        assert_eq_f32(oscillate_dist(765, 255), 1.0, 1e-2);
+        assert_eq_with_eps(oscillate_dist(0, 255), 0.0, 1e-2);
+        assert_eq_with_eps(oscillate_dist(128, 255), 0.5, 1e-2);
+        assert_eq_with_eps(oscillate_dist(255, 255), 1.0, 1e-2);
+        assert_eq_with_eps(oscillate_dist(256, 255), 1.0 - (1.0 / 255.0), 1e-2);
+        assert_eq_with_eps(oscillate_dist(383, 255), 0.5, 1e-2);
+        assert_eq_with_eps(oscillate_dist(510, 255), 0.0, 1e-2);
+        assert_eq_with_eps(oscillate_dist(638, 255), 0.5, 1e-2);
+        assert_eq_with_eps(oscillate_dist(765, 255), 1.0, 1e-2);
+    }
+
+    #[test]
+    fn format_record_presets_return_non_empty() {
+        for fmt in vec![RecordFormat::Json, RecordFormat::Simple] {
+            let config = Config {
+                record_format: fmt,
+                ..Default::default()
+            };
+            let logger = DiscoLogger::new(config);
+
+            // create normal test record
+            let rec = Record::builder()
+                .args(format_args!("foo"))
+                .level(Level::Info)
+                .target("test")
+                .build();
+
+            assert!(!logger.format_record(&rec).is_empty());
+
+            // create record with empty args and target
+            let rec = Record::builder()
+                .args(format_args!(""))
+                .level(Level::Info)
+                .target("")
+                .build();
+
+            // record should still give non-empty log lines
+            assert!(!logger.format_record(&rec).is_empty());
+        }
+    }
+
+    #[test]
+    fn format_record_custom_formats_correctly() {
+        let test_cases = vec![
+            (RecordFormat::Custom(Box::new(|_| "".to_string())), ""),
+            (
+                RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
+                "INFO foo",
+            ),
+            (
+                RecordFormat::Custom(Box::new(|r| {
+                    format!("{} [{}] {}", r.level(), r.target(), r.args())
+                })),
+                "INFO [test] foo",
+            ),
+        ];
+
+        let rec = Record::builder()
+            .args(format_args!("foo"))
+            .level(Level::Info)
+            .target("test")
+            .build();
+
+        for (fmt, expected) in test_cases {
+            let config = Config {
+                record_format: fmt,
+                ..Default::default()
+            };
+            let logger = DiscoLogger::new(config);
+
+            assert_eq!(logger.format_record(&rec), expected);
+        }
     }
 
     #[test]
@@ -620,5 +601,21 @@ mod tests {
         // input msg should not be altered by None color format
         let msg = "foo".to_string();
         assert_eq!(logger.color_log(msg.clone(), rec.level()), msg);
+    }
+
+    #[test]
+    fn enabled_filters_levels() {
+        let config = Config {
+            level: LevelFilter::Warn,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+        let mut mb = Metadata::builder();
+
+        assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Debug).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
+        assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
+        assert!(logger.enabled(&mut mb.level(Level::Error).build()));
     }
 }
