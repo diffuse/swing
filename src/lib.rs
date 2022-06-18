@@ -178,9 +178,9 @@ impl DiscoLogger {
     ///
     /// # Arguments
     ///
-    /// * `level` - level of this log line
     /// * `msg` - message to color
-    fn color_solid(&self, level: Level, msg: String) -> String {
+    /// * `level` - level of this log line
+    fn color_solid(&self, msg: String, level: Level) -> String {
         let color = self.config.theme.solid(level);
         msg.color(color).to_string()
     }
@@ -189,9 +189,9 @@ impl DiscoLogger {
     ///
     /// # Arguments
     ///
-    /// * `level` - level of this log line
     /// * `msg` - message to color
-    fn color_inline_gradient(&self, level: Level, msg: String) -> String {
+    /// * `level` - level of this log line
+    fn color_inline_gradient(&self, msg: String, level: Level) -> String {
         let theme = &self.config.theme;
 
         msg.chars()
@@ -214,9 +214,9 @@ impl DiscoLogger {
     ///
     /// # Arguments
     ///
-    /// * `level` - level of this log line
     /// * `msg` - message to color
-    fn color_multi_line_gradient(&self, level: Level, msg: String) -> String {
+    /// * `level` - level of this log line
+    fn color_multi_line_gradient(&self, msg: String, level: Level) -> String {
         let n = 20;
         let lines_logged = *self.lines_logged.lock().unwrap().entry(level).or_insert(0);
         let dist = oscillate_dist(lines_logged, n);
@@ -229,23 +229,23 @@ impl DiscoLogger {
     /// Arguments
     ///
     /// * `msg` - message to color
-    /// * `record` - log record
-    fn color_log(&self, msg: String, record: &Record) -> String {
+    /// * `level` - level of this log line
+    fn color_log(&self, msg: String, level: Level) -> String {
         if self.config.color_format.is_none() {
             return msg;
         }
 
         let line = match self.config.color_format.as_ref().unwrap() {
-            ColorFormat::Solid => self.color_solid(record.level(), msg),
-            ColorFormat::InlineGradient => self.color_inline_gradient(record.level(), msg),
+            ColorFormat::Solid => self.color_solid(msg, level),
+            ColorFormat::InlineGradient => self.color_inline_gradient(msg, level),
             ColorFormat::MultiLineGradient => {
-                let l = self.color_multi_line_gradient(record.level(), msg);
+                let l = self.color_multi_line_gradient(msg, level);
 
                 // increment line counter for this level
                 self.lines_logged
                     .lock()
                     .unwrap()
-                    .entry(record.level())
+                    .entry(level)
                     .and_modify(|e| *e = e.wrapping_add(1))
                     .or_insert(0);
 
@@ -267,7 +267,7 @@ impl Log for DiscoLogger {
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
             let mut msg = self.format_record(record);
-            msg = self.color_log(msg, record);
+            msg = self.color_log(msg, record.level());
 
             match record.level() {
                 Level::Warn | Level::Error => {
@@ -539,11 +539,11 @@ mod tests {
 
         let msg = "foo".to_string();
         let lines = [
-            logger.color_solid(Level::Trace, msg.clone()),
-            logger.color_solid(Level::Debug, msg.clone()),
-            logger.color_solid(Level::Info, msg.clone()),
-            logger.color_solid(Level::Warn, msg.clone()),
-            logger.color_solid(Level::Error, msg.clone()),
+            logger.color_solid(msg.clone(), Level::Trace),
+            logger.color_solid(msg.clone(), Level::Debug),
+            logger.color_solid(msg.clone(), Level::Info),
+            logger.color_solid(msg.clone(), Level::Warn),
+            logger.color_solid(msg.clone(), Level::Error),
         ];
 
         for (i, line) in lines.iter().enumerate() {
@@ -563,7 +563,7 @@ mod tests {
         };
         let logger = DiscoLogger::new(config);
 
-        logger.color_solid(Level::Warn, "".to_string());
+        logger.color_solid("".to_string(), Level::Warn);
     }
 
     #[test]
@@ -576,11 +576,11 @@ mod tests {
 
         let msg = "foo".to_string();
         let lines = [
-            logger.color_inline_gradient(Level::Trace, msg.clone()),
-            logger.color_inline_gradient(Level::Debug, msg.clone()),
-            logger.color_inline_gradient(Level::Info, msg.clone()),
-            logger.color_inline_gradient(Level::Warn, msg.clone()),
-            logger.color_inline_gradient(Level::Error, msg.clone()),
+            logger.color_inline_gradient(msg.clone(), Level::Trace),
+            logger.color_inline_gradient(msg.clone(), Level::Debug),
+            logger.color_inline_gradient(msg.clone(), Level::Info),
+            logger.color_inline_gradient(msg.clone(), Level::Warn),
+            logger.color_inline_gradient(msg.clone(), Level::Error),
         ];
 
         for (i, line) in lines.iter().enumerate() {
@@ -600,7 +600,7 @@ mod tests {
         };
         let logger = DiscoLogger::new(config);
 
-        logger.color_inline_gradient(Level::Warn, "".to_string());
+        logger.color_inline_gradient("".to_string(), Level::Warn);
     }
 
     #[test]
@@ -619,6 +619,6 @@ mod tests {
 
         // input msg should not be altered by None color format
         let msg = "foo".to_string();
-        assert_eq!(logger.color_log(msg.clone(), &rec), msg);
+        assert_eq!(logger.color_log(msg.clone(), rec.level()), msg);
     }
 }
