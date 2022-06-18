@@ -43,7 +43,7 @@ impl Default for Config {
     fn default() -> Config {
         Config {
             level: LevelFilter::Info,
-            record_format: RecordFormat::Json,
+            record_format: RecordFormat::Simple,
             color_format: Some(ColorFormat::Solid),
             theme: Box::new(theme::Simple {}),
             use_stderr: true,
