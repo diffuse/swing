@@ -364,85 +364,6 @@ mod tests {
     }
 
     #[test]
-    fn enabled_filters_levels() {
-        let config = Config {
-            level: LevelFilter::Warn,
-            ..Default::default()
-        };
-        let logger = DiscoLogger::new(config);
-        let mut mb = Metadata::builder();
-
-        assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
-        assert!(!logger.enabled(&mut mb.level(Level::Debug).build()));
-        assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
-        assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
-        assert!(logger.enabled(&mut mb.level(Level::Error).build()));
-    }
-
-    #[test]
-    fn format_record_presets_return_non_empty() {
-        for fmt in vec![RecordFormat::Json, RecordFormat::Simple] {
-            let config = Config {
-                record_format: fmt,
-                ..Default::default()
-            };
-            let logger = DiscoLogger::new(config);
-
-            // create normal test record
-            let rec = Record::builder()
-                .args(format_args!("foo"))
-                .level(Level::Info)
-                .target("test")
-                .build();
-
-            assert!(!logger.format_record(&rec).is_empty());
-
-            // create record with empty args and target
-            let rec = Record::builder()
-                .args(format_args!(""))
-                .level(Level::Info)
-                .target("")
-                .build();
-
-            // record should still give non-empty log lines
-            assert!(!logger.format_record(&rec).is_empty());
-        }
-    }
-
-    #[test]
-    fn format_record_custom_formats_correctly() {
-        let test_cases = vec![
-            (RecordFormat::Custom(Box::new(|_| "".to_string())), ""),
-            (
-                RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
-                "INFO foo",
-            ),
-            (
-                RecordFormat::Custom(Box::new(|r| {
-                    format!("{} [{}] {}", r.level(), r.target(), r.args())
-                })),
-                "INFO [test] foo",
-            ),
-        ];
-
-        let rec = Record::builder()
-            .args(format_args!("foo"))
-            .level(Level::Info)
-            .target("test")
-            .build();
-
-        for (fmt, expected) in test_cases {
-            let config = Config {
-                record_format: fmt,
-                ..Default::default()
-            };
-            let logger = DiscoLogger::new(config);
-
-            assert_eq!(logger.format_record(&rec), expected);
-        }
-    }
-
-    #[test]
     fn linear_gradient_calculates_correct_color() {
         let r = RgbRange {
             start: Rgb { r: 0, g: 0, b: 0 },
@@ -524,6 +445,69 @@ mod tests {
         assert_eq_with_eps(oscillate_dist(510, 255), 0.0, 1e-2);
         assert_eq_with_eps(oscillate_dist(638, 255), 0.5, 1e-2);
         assert_eq_with_eps(oscillate_dist(765, 255), 1.0, 1e-2);
+    }
+
+    #[test]
+    fn format_record_presets_return_non_empty() {
+        for fmt in vec![RecordFormat::Json, RecordFormat::Simple] {
+            let config = Config {
+                record_format: fmt,
+                ..Default::default()
+            };
+            let logger = DiscoLogger::new(config);
+
+            // create normal test record
+            let rec = Record::builder()
+                .args(format_args!("foo"))
+                .level(Level::Info)
+                .target("test")
+                .build();
+
+            assert!(!logger.format_record(&rec).is_empty());
+
+            // create record with empty args and target
+            let rec = Record::builder()
+                .args(format_args!(""))
+                .level(Level::Info)
+                .target("")
+                .build();
+
+            // record should still give non-empty log lines
+            assert!(!logger.format_record(&rec).is_empty());
+        }
+    }
+
+    #[test]
+    fn format_record_custom_formats_correctly() {
+        let test_cases = vec![
+            (RecordFormat::Custom(Box::new(|_| "".to_string())), ""),
+            (
+                RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args()))),
+                "INFO foo",
+            ),
+            (
+                RecordFormat::Custom(Box::new(|r| {
+                    format!("{} [{}] {}", r.level(), r.target(), r.args())
+                })),
+                "INFO [test] foo",
+            ),
+        ];
+
+        let rec = Record::builder()
+            .args(format_args!("foo"))
+            .level(Level::Info)
+            .target("test")
+            .build();
+
+        for (fmt, expected) in test_cases {
+            let config = Config {
+                record_format: fmt,
+                ..Default::default()
+            };
+            let logger = DiscoLogger::new(config);
+
+            assert_eq!(logger.format_record(&rec), expected);
+        }
     }
 
     #[test]
@@ -617,5 +601,21 @@ mod tests {
         // input msg should not be altered by None color format
         let msg = "foo".to_string();
         assert_eq!(logger.color_log(msg.clone(), rec.level()), msg);
+    }
+
+    #[test]
+    fn enabled_filters_levels() {
+        let config = Config {
+            level: LevelFilter::Warn,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+        let mut mb = Metadata::builder();
+
+        assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Debug).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
+        assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
+        assert!(logger.enabled(&mut mb.level(Level::Error).build()));
     }
 }
