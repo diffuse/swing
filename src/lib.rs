@@ -33,6 +33,9 @@ pub struct LoggerConfig {
     pub color_format: Option<ColorFormat>,
     /// color theme
     pub theme: Box<dyn Theme>,
+    /// if true, log `trace` - `info` levels to stdout, and `warn` - `error` levels to stderr
+    /// if false, log all levels to stdout
+    pub use_stderr: bool,
 }
 
 impl Default for LoggerConfig {
@@ -42,6 +45,7 @@ impl Default for LoggerConfig {
             record_format: RecordFormat::Json,
             color_format: Some(ColorFormat::Solid),
             theme: Box::new(theme::Simple {}),
+            use_stderr: true,
         }
     }
 }
@@ -259,7 +263,13 @@ impl Log for DiscoLogger {
             msg = self.color_log(msg, record);
 
             match record.level() {
-                Level::Warn | Level::Error => eprintln!("{}", msg.bold()),
+                Level::Warn | Level::Error => {
+                    if self.config.use_stderr {
+                        eprintln!("{}", msg.bold());
+                    } else {
+                        println!("{}", msg.bold());
+                    }
+                }
                 _ => println!("{}", msg),
             }
         }
