@@ -38,6 +38,7 @@ pub struct LoggerConfig {
     pub use_stderr: bool,
 }
 
+/// Set config defaults
 impl Default for LoggerConfig {
     fn default() -> LoggerConfig {
         LoggerConfig {
@@ -78,13 +79,13 @@ pub struct RgbRange {
 }
 
 /// Compute a new color `dist` distance along the linear
-/// gradient from `start` to `end`
+/// gradient from start to end of `range`
 ///
 /// `dist` will be clamped to the range 0.0 - 1.0
 ///
 /// # Arguments
 ///
-/// * `color_range` - bounding color range for this linear gradient
+/// * `range` - bounding color range for this linear gradient
 /// * `dist` - desired distance along linear gradient (0.0 - 1.0)
 fn linear_gradient(range: &RgbRange, dist: f32) -> Rgb {
     let dist = dist.clamp(0.0, 1.0);
@@ -108,12 +109,13 @@ fn linear_gradient(range: &RgbRange, dist: f32) -> Rgb {
 /// - 0 -> 1 when (`x` % `2n`) <= `n`
 /// - 1 -> 0 when `n` < (`x` % `2n`) < `2n`
 ///
-/// If used with linear gradients, this oscillating dist will avoid the
-/// harsh visual transition when wrapping around from 0->1.0 to 0->1.0
+/// If used with linear gradients, this oscillating dist will avoid the harsh visual
+/// transition when wrapping around from 1 -> 0 (e.g. 0.9, 1.0, 0.0, 0.1 will not be
+/// a smooth transition)
 ///
 /// # Arguments
 ///
-/// * `x` - some number, who's value `x` % `2n`, will be considered the distance along the line 0-`n`
+/// * `x` - some number whose value, `x` % `2n`, will be considered the distance along the line 0-`n`
 /// * `n` - upper limit of range 0-`n`
 fn oscillate_dist(x: usize, n: usize) -> f32 {
     ((x + n) % (n * 2)).abs_diff(n) as f32 / n as f32
@@ -121,7 +123,10 @@ fn oscillate_dist(x: usize, n: usize) -> f32 {
 
 /// Implements log::Log
 pub struct DiscoLogger {
+    /// Configuration for this logger
     config: LoggerConfig,
+    /// Count of how many lines are logged at each level,
+    /// for use with coloring
     lines_logged: Mutex<HashMap<Level, usize>>,
 }
 
@@ -143,7 +148,7 @@ impl DiscoLogger {
         log::set_boxed_logger(Box::new(self)).map(|()| log::set_max_level(LevelFilter::Trace))
     }
 
-    /// Format a log message based on the current RecordFormat setting
+    /// Convert a log record into a formatted string, based on the current logger configuration
     fn format_record(&self, record: &Record) -> String {
         let now = Utc::now().to_rfc3339();
 
@@ -174,18 +179,18 @@ impl DiscoLogger {
     /// # Arguments
     ///
     /// * `level` - level of this log line
-    /// * `msg` - messsage being logged
+    /// * `msg` - message to color
     fn color_solid(&self, level: Level, msg: String) -> String {
         let color = self.config.theme.solid(level);
         msg.color(color).to_string()
     }
 
-    /// Apply linear color gradient over each line
+    /// Apply linear color gradient across the characters in a string
     ///
     /// # Arguments
     ///
     /// * `level` - level of this log line
-    /// * `msg` - messsage being logged
+    /// * `msg` - message to color
     fn color_inline_gradient(&self, level: Level, msg: String) -> String {
         let theme = &self.config.theme;
 
@@ -203,25 +208,27 @@ impl DiscoLogger {
 
     /// Apply a linear color gradient over multiple lines
     ///
+    /// An independent linear color gradient will be applied across
+    /// all lines logged at each level (e.g. `INFO` line color may change
+    /// from green -> cyan as lines are logged)
+    ///
     /// # Arguments
     ///
     /// * `level` - level of this log line
-    /// * `msg` - messsage being logged
+    /// * `msg` - message to color
     fn color_multi_line_gradient(&self, level: Level, msg: String) -> String {
-        // essentially a linear gradient, but lines move along the gradient in ((i % N) / N) jumps
         let n = 20;
         let lines_logged = *self.lines_logged.lock().unwrap().entry(level).or_insert(0);
         let dist = oscillate_dist(lines_logged, n);
-        let theme = &self.config.theme;
-        let color = linear_gradient(&theme.range(level), dist);
+        let color = linear_gradient(&self.config.theme.range(level), dist);
         msg.color(color).to_string()
     }
 
-    /// Color a log line based on selected options
+    /// Color a log line
     ///
     /// Arguments
     ///
-    /// * `msg` - message being logged
+    /// * `msg` - message to color
     /// * `record` - log record
     fn color_log(&self, msg: String, record: &Record) -> String {
         if self.config.color_format.is_none() {
@@ -288,6 +295,8 @@ mod tests {
     ///
     /// # Arguments
     ///
+    /// * `lhs` - first color in comparison
+    /// * `rhs` - second color in comparison
     /// * `valid_range` - Rgb values +/- this value will be considered equal
     fn assert_rgb_eq(lhs: Rgb, rhs: Rgb, valid_range: Option<u8>) {
         let valid_range = valid_range.unwrap_or(1);
@@ -359,8 +368,6 @@ mod tests {
 
     #[test]
     fn enabled_filters_levels() {
-        // TODO test LevelFilter::Off
-
         let config = LoggerConfig {
             level: LevelFilter::Warn,
             ..Default::default()
