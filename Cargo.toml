@@ -12,4 +12,5 @@ colored = "2"
 
 [dev-dependencies]
 lipsum = "0.8"
+num = "0.4"
 rand = "0.8"
