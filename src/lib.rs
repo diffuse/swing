@@ -24,7 +24,7 @@ pub enum ColorFormat {
 }
 
 /// Config for logger
-pub struct LoggerConfig {
+pub struct Config {
     /// log level
     pub level: LevelFilter,
     /// record formatting mode
@@ -39,9 +39,9 @@ pub struct LoggerConfig {
 }
 
 /// Set config defaults
-impl Default for LoggerConfig {
-    fn default() -> LoggerConfig {
-        LoggerConfig {
+impl Default for Config {
+    fn default() -> Config {
+        Config {
             level: LevelFilter::Info,
             record_format: RecordFormat::Json,
             color_format: Some(ColorFormat::Solid),
@@ -124,7 +124,7 @@ fn oscillate_dist(x: usize, n: usize) -> f32 {
 /// Implements log::Log
 pub struct DiscoLogger {
     /// Configuration for this logger
-    config: LoggerConfig,
+    config: Config,
     /// Count of how many lines are logged at each level,
     /// for use with coloring
     lines_logged: Mutex<HashMap<Level, usize>>,
@@ -136,7 +136,7 @@ impl DiscoLogger {
     /// # Arguments
     ///
     /// * `config` - configuration for this logger
-    pub fn new(config: LoggerConfig) -> DiscoLogger {
+    pub fn new(config: Config) -> DiscoLogger {
         DiscoLogger {
             config,
             lines_logged: Mutex::new(HashMap::new()),
@@ -368,7 +368,7 @@ mod tests {
 
     #[test]
     fn enabled_filters_levels() {
-        let config = LoggerConfig {
+        let config = Config {
             level: LevelFilter::Warn,
             ..Default::default()
         };
@@ -385,7 +385,7 @@ mod tests {
     #[test]
     fn format_record_presets_return_non_empty() {
         for fmt in vec![RecordFormat::Json, RecordFormat::Simple] {
-            let config = LoggerConfig {
+            let config = Config {
                 record_format: fmt,
                 ..Default::default()
             };
@@ -435,7 +435,7 @@ mod tests {
             .build();
 
         for (fmt, expected) in test_cases {
-            let config = LoggerConfig {
+            let config = Config {
                 record_format: fmt,
                 ..Default::default()
             };
@@ -531,7 +531,7 @@ mod tests {
 
     #[test]
     fn color_solid_colors_by_level() {
-        let config = LoggerConfig {
+        let config = Config {
             level: LevelFilter::Trace,
             ..Default::default()
         };
@@ -557,7 +557,7 @@ mod tests {
 
     #[test]
     fn color_solid_handles_empty_msg() {
-        let config = LoggerConfig {
+        let config = Config {
             level: LevelFilter::Trace,
             ..Default::default()
         };
@@ -568,7 +568,7 @@ mod tests {
 
     #[test]
     fn color_inline_gradient_colors_by_level() {
-        let config = LoggerConfig {
+        let config = Config {
             level: LevelFilter::Trace,
             ..Default::default()
         };
@@ -594,7 +594,7 @@ mod tests {
 
     #[test]
     fn color_inline_gradient_handles_empty_msg() {
-        let config = LoggerConfig {
+        let config = Config {
             level: LevelFilter::Trace,
             ..Default::default()
         };
@@ -605,7 +605,7 @@ mod tests {
 
     #[test]
     fn color_log_with_none_format_returns_orig() {
-        let config = LoggerConfig {
+        let config = Config {
             color_format: None,
             ..Default::default()
         };

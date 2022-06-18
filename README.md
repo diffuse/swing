@@ -12,14 +12,14 @@ log = "0.4"
 ```
 
 # Quick start
-Create a `LoggerConfig` to configure your logger, then create and initialize a `DiscoLogger`:
+Create a `Config` to configure your logger, then create and initialize a `DiscoLogger`:
 ```rust
-use disco::{DiscoLogger, LoggerConfig};
+use disco::{DiscoLogger, Config};
 use log::LevelFilter;
 
 fn main() {
     // setup logger
-    let config = LoggerConfig {
+    let config = Config {
         level: LevelFilter::Trace,
         ...Default::default()
     };
@@ -37,7 +37,7 @@ fn main() {
 # Logger config options
 A `DiscoLogger` config can be created with:
 ```rust
-let config = LoggerConfig {
+let config = Config {
     level: LevelFilter::Trace,
     ...Default::default()
 };
@@ -52,7 +52,7 @@ Option | Description | Example Usage
 `record_format` | Sets the method used to structure a log line/record | `record_format: RecordFormat::Json`
 
 ## level
-The `LevelFilter` enum used in `LoggerConfig` is taken directly from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html).  It defines the following variants:
+The `LevelFilter` enum used in `Config` is taken directly from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html).  It defines the following variants:
 - `Off`
 - `Trace`
 - `Debug`
@@ -91,7 +91,7 @@ If you don't like any of the above formats, you can handle formatting log record
 ```rust
 let record_format = RecordFormat::Custom(Box::new(|r| format!("{} {}", r.level(), r.args())));
 
-let config = LoggerConfig {
+let config = Config {
     level: LevelFilter::Trace,
     record_format,
     ..Default::default()
