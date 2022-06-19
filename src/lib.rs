@@ -657,4 +657,20 @@ mod tests {
         assert!(!logger.enabled(&mut mb.level(Level::Warn).build()));
         assert!(!logger.enabled(&mut mb.level(Level::Error).build()));
     }
+
+    #[test]
+    fn log_handles_empty_record() {
+        let config = Config::default();
+        let logger = DiscoLogger::new(config);
+
+        // create record with fields set to empty strings
+        let rec = Record::builder()
+            .args(format_args!(""))
+            .level(Level::Info)
+            .target("")
+            .build();
+
+        // this shouldn't panic
+        logger.log(&rec);
+    }
 }
