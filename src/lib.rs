@@ -596,6 +596,37 @@ mod tests {
     }
 
     #[test]
+    fn color_log_with_multi_line_gradient_changes_color_within_level() {
+        let config = Config {
+            color_format: Some(ColorFormat::MultiLineGradient),
+            theme: Box::new(theme::Simple {}),
+            record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+        let msg = "foo".to_string();
+
+        // the color should change each time a message is logged,
+        // since the multi-line gradient color format should create
+        // a color gradient over multiple lines (under each level)
+        let assert_color_changes_within_level = |level: Level| {
+            let mut last_logged = "".to_string();
+
+            for _ in 0..10 {
+                let l = logger.color_log(msg.clone(), level);
+                assert_ne!(last_logged, l);
+                last_logged = l;
+            }
+        };
+
+        assert_color_changes_within_level(Level::Trace);
+        assert_color_changes_within_level(Level::Debug);
+        assert_color_changes_within_level(Level::Info);
+        assert_color_changes_within_level(Level::Warn);
+        assert_color_changes_within_level(Level::Error);
+    }
+
+    #[test]
     fn enabled_filters_levels() {
         let config = Config {
             level: LevelFilter::Warn,
