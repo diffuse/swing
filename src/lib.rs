@@ -618,4 +618,20 @@ mod tests {
         assert!(logger.enabled(&mut mb.level(Level::Warn).build()));
         assert!(logger.enabled(&mut mb.level(Level::Error).build()));
     }
+
+    #[test]
+    fn enabled_with_off_level_filter_is_always_false() {
+        let config = Config {
+            level: LevelFilter::Off,
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+        let mut mb = Metadata::builder();
+
+        assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Debug).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Info).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Warn).build()));
+        assert!(!logger.enabled(&mut mb.level(Level::Error).build()));
+    }
 }
