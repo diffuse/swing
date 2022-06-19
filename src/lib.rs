@@ -510,76 +510,36 @@ mod tests {
         }
     }
 
-    #[test]
-    fn color_solid_colors_by_level() {
+    /// Assert that `f` gives a uniquely colored output for a string
+    /// logged at each of the possible log levels
+    ///
+    /// # Arguments
+    ///
+    /// * `f` - function to color a string by log level
+    fn assert_logs_colored_by_level(f: &dyn Fn(&DiscoLogger, String, Level) -> String) {
+        // create a logger that will always log the same message "foo"
+        // so that the only variable is changing color when comparing logs
+        // at different levels
         let config = Config {
             level: LevelFilter::Trace,
-            ..Default::default()
-        };
-        let logger = DiscoLogger::new(config);
-
-        let msg = "foo".to_string();
-        let lines = [
-            logger.color_solid(msg.clone(), Level::Trace),
-            logger.color_solid(msg.clone(), Level::Debug),
-            logger.color_solid(msg.clone(), Level::Info),
-            logger.color_solid(msg.clone(), Level::Warn),
-            logger.color_solid(msg.clone(), Level::Error),
-        ];
-
-        for (i, line) in lines.iter().enumerate() {
-            for line1 in lines.iter().skip(i + 1) {
-                if line == line1 {
-                    panic!("\"{}\" and \"{}\" had different levels but generated the same formatted line", line, line1);
-                }
-            }
-        }
-    }
-
-    #[test]
-    fn color_inline_gradient_colors_by_level() {
-        let config = Config {
-            level: LevelFilter::Trace,
-            ..Default::default()
-        };
-        let logger = DiscoLogger::new(config);
-
-        let msg = "foo".to_string();
-        let lines = [
-            logger.color_inline_gradient(msg.clone(), Level::Trace),
-            logger.color_inline_gradient(msg.clone(), Level::Debug),
-            logger.color_inline_gradient(msg.clone(), Level::Info),
-            logger.color_inline_gradient(msg.clone(), Level::Warn),
-            logger.color_inline_gradient(msg.clone(), Level::Error),
-        ];
-
-        for (i, line) in lines.iter().enumerate() {
-            for line1 in lines.iter().skip(i + 1) {
-                if line == line1 {
-                    panic!("\"{}\" and \"{}\" had different levels but generated the same formatted line", line, line1);
-                }
-            }
-        }
-    }
-
-    #[test]
-    fn color_multi_line_gradient_colors_by_level() {
-        let config = Config {
-            level: LevelFilter::Trace,
+            theme: Box::new(theme::Simple {}),
             record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
             ..Default::default()
         };
         let logger = DiscoLogger::new(config);
 
+        // run `f` on `msg` with each level to make sure that
+        // no two levels give the same colored output
         let msg = "foo".to_string();
         let lines = [
-            logger.color_multi_line_gradient(msg.clone(), Level::Trace),
-            logger.color_multi_line_gradient(msg.clone(), Level::Debug),
-            logger.color_multi_line_gradient(msg.clone(), Level::Info),
-            logger.color_multi_line_gradient(msg.clone(), Level::Warn),
-            logger.color_multi_line_gradient(msg.clone(), Level::Error),
+            f(&logger, msg.clone(), Level::Trace),
+            f(&logger, msg.clone(), Level::Debug),
+            f(&logger, msg.clone(), Level::Info),
+            f(&logger, msg.clone(), Level::Warn),
+            f(&logger, msg.clone(), Level::Error),
         ];
 
+        // check that each colored line is unique
         for (i, line) in lines.iter().enumerate() {
             for line1 in lines.iter().skip(i + 1) {
                 if line == line1 {
@@ -587,6 +547,21 @@ mod tests {
                 }
             }
         }
+    }
+
+    #[test]
+    fn color_solid_colors_by_level() {
+        assert_logs_colored_by_level(&DiscoLogger::color_solid);
+    }
+
+    #[test]
+    fn color_inline_gradient_colors_by_level() {
+        assert_logs_colored_by_level(&DiscoLogger::color_inline_gradient);
+    }
+
+    #[test]
+    fn color_multi_line_gradient_colors_by_level() {
+        assert_logs_colored_by_level(&DiscoLogger::color_multi_line_gradient);
     }
 
     #[test]
