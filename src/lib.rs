@@ -586,15 +586,9 @@ mod tests {
         };
         let logger = DiscoLogger::new(config);
 
-        let rec = Record::builder()
-            .args(format_args!("foo"))
-            .level(Level::Info)
-            .target("test")
-            .build();
-
         // input msg should not be altered by None color format
         let msg = "foo".to_string();
-        assert_eq!(logger.color_log(msg.clone(), rec.level()), msg);
+        assert_eq!(logger.color_log(msg.clone(), Level::Info), msg);
     }
 
     #[test]
