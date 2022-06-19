@@ -290,6 +290,8 @@ mod tests {
     use super::*;
     use num::NumCast;
 
+    // helpers
+
     /// Assert that two values are equal within some range, `eps`
     ///
     /// # Arguments
@@ -323,6 +325,47 @@ mod tests {
         assert_eq_with_eps(lhs.g, rhs.g, eps);
         assert_eq_with_eps(lhs.b, rhs.b, eps);
     }
+
+    /// Assert that `f` gives a uniquely colored output for a string
+    /// logged at each of the possible log levels
+    ///
+    /// # Arguments
+    ///
+    /// * `f` - function to color a string by log level
+    fn assert_logs_colored_by_level(f: &dyn Fn(&DiscoLogger, String, Level) -> String) {
+        // create a logger that will always log the same message "foo"
+        // so that the only variable is changing color when comparing logs
+        // at different levels
+        let config = Config {
+            level: LevelFilter::Trace,
+            theme: Box::new(theme::Simple {}),
+            record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
+        // run `f` on `msg` with each level to make sure that
+        // no two levels give the same colored output
+        let msg = "foo".to_string();
+        let lines = [
+            f(&logger, msg.clone(), Level::Trace),
+            f(&logger, msg.clone(), Level::Debug),
+            f(&logger, msg.clone(), Level::Info),
+            f(&logger, msg.clone(), Level::Warn),
+            f(&logger, msg.clone(), Level::Error),
+        ];
+
+        // check that each colored line is unique
+        for (i, line) in lines.iter().enumerate() {
+            for line1 in lines.iter().skip(i + 1) {
+                if line == line1 {
+                    panic!("\"{}\" and \"{}\" had different levels but generated the same formatted line", line, line1);
+                }
+            }
+        }
+    }
+
+    // tests
 
     #[test]
     fn rgb_into_color_is_accurate() {
@@ -507,45 +550,6 @@ mod tests {
             let logger = DiscoLogger::new(config);
 
             assert_eq!(logger.format_record(&rec), expected);
-        }
-    }
-
-    /// Assert that `f` gives a uniquely colored output for a string
-    /// logged at each of the possible log levels
-    ///
-    /// # Arguments
-    ///
-    /// * `f` - function to color a string by log level
-    fn assert_logs_colored_by_level(f: &dyn Fn(&DiscoLogger, String, Level) -> String) {
-        // create a logger that will always log the same message "foo"
-        // so that the only variable is changing color when comparing logs
-        // at different levels
-        let config = Config {
-            level: LevelFilter::Trace,
-            theme: Box::new(theme::Simple {}),
-            record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
-            ..Default::default()
-        };
-        let logger = DiscoLogger::new(config);
-
-        // run `f` on `msg` with each level to make sure that
-        // no two levels give the same colored output
-        let msg = "foo".to_string();
-        let lines = [
-            f(&logger, msg.clone(), Level::Trace),
-            f(&logger, msg.clone(), Level::Debug),
-            f(&logger, msg.clone(), Level::Info),
-            f(&logger, msg.clone(), Level::Warn),
-            f(&logger, msg.clone(), Level::Error),
-        ];
-
-        // check that each colored line is unique
-        for (i, line) in lines.iter().enumerate() {
-            for line1 in lines.iter().skip(i + 1) {
-                if line == line1 {
-                    panic!("\"{}\" and \"{}\" had different levels but generated the same formatted line", line, line1);
-                }
-            }
         }
     }
 
