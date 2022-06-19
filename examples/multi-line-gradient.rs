@@ -8,7 +8,7 @@ fn main() {
     let config = Config {
         level: LevelFilter::Trace,
         record_format: RecordFormat::Simple,
-        color_format: Some(ColorFormat::MultiLineGradient),
+        color_format: Some(ColorFormat::MultiLineGradient(20)),
         theme: Box::new(Spectral {}),
         ..Default::default()
     };
