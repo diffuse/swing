@@ -537,17 +537,6 @@ mod tests {
     }
 
     #[test]
-    fn color_solid_handles_empty_msg() {
-        let config = Config {
-            level: LevelFilter::Trace,
-            ..Default::default()
-        };
-        let logger = DiscoLogger::new(config);
-
-        logger.color_solid("".to_string(), Level::Warn);
-    }
-
-    #[test]
     fn color_inline_gradient_colors_by_level() {
         let config = Config {
             level: LevelFilter::Trace,
@@ -574,14 +563,44 @@ mod tests {
     }
 
     #[test]
-    fn color_inline_gradient_handles_empty_msg() {
+    fn color_multi_line_gradient_colors_by_level() {
+        let config = Config {
+            level: LevelFilter::Trace,
+            record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
+        let msg = "foo".to_string();
+        let lines = [
+            logger.color_multi_line_gradient(msg.clone(), Level::Trace),
+            logger.color_multi_line_gradient(msg.clone(), Level::Debug),
+            logger.color_multi_line_gradient(msg.clone(), Level::Info),
+            logger.color_multi_line_gradient(msg.clone(), Level::Warn),
+            logger.color_multi_line_gradient(msg.clone(), Level::Error),
+        ];
+
+        for (i, line) in lines.iter().enumerate() {
+            for line1 in lines.iter().skip(i + 1) {
+                if line == line1 {
+                    panic!("\"{}\" and \"{}\" had different levels but generated the same formatted line", line, line1);
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn color_fns_handle_empty_msg() {
         let config = Config {
             level: LevelFilter::Trace,
             ..Default::default()
         };
         let logger = DiscoLogger::new(config);
 
+        // none of these calls should panic with an empty message
+        logger.color_solid("".to_string(), Level::Warn);
         logger.color_inline_gradient("".to_string(), Level::Warn);
+        logger.color_multi_line_gradient("".to_string(), Level::Warn);
     }
 
     #[test]
