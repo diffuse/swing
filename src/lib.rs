@@ -4,6 +4,7 @@ use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 use std::collections::HashMap;
 use std::sync::Mutex;
+use unicode_segmentation::UnicodeSegmentation;
 
 mod color;
 pub mod theme;
@@ -20,8 +21,9 @@ pub enum RecordFormat {
 pub enum ColorFormat {
     /// Solid color applied to a line
     Solid,
-    /// Linear color gradient applied over characters in single line
-    InlineGradient,
+    /// Linear color gradient applied over characters in single line, with arg for number of steps
+    /// in gradient
+    InlineGradient(usize),
     /// Linear color gradient applied over multiple lines, with arg for number of steps in gradient
     MultiLineGradient(usize),
 }
@@ -189,22 +191,20 @@ impl DiscoLogger {
         msg.color(color).to_string()
     }
 
-    /// Apply linear color gradient across the characters in a string
+    /// Apply linear color gradient across the graphemes in a string
     ///
     /// # Arguments
     ///
     /// * `msg` - message to color
     /// * `level` - level of this log line
-    fn color_inline_gradient(&self, msg: String, level: Level) -> String {
-        let theme = &self.config.theme;
-
-        msg.chars()
+    /// * `steps` - number of steps in gradient
+    fn color_inline_gradient(&self, msg: String, level: Level, steps: usize) -> String {
+        msg.graphemes(true)
             .enumerate()
             .map(|(i, c)| {
-                // how far along the linear gradient this color should be (0.0 - 1.0)
-                let dist = (i as f32) / (msg.len() as f32);
-                let color = linear_gradient(&theme.range(level), dist);
-                c.to_string().color(color).to_string()
+                let dist = oscillate_dist(i, steps);
+                let color = linear_gradient(&self.config.theme.range(level), dist);
+                c.color(color).to_string()
             })
             .collect::<Vec<String>>()
             .join("")
@@ -241,7 +241,7 @@ impl DiscoLogger {
 
         let line = match self.config.color_format.as_ref().unwrap() {
             ColorFormat::Solid => self.color_solid(msg, level),
-            ColorFormat::InlineGradient => self.color_inline_gradient(msg, level),
+            ColorFormat::InlineGradient(steps) => self.color_inline_gradient(msg, level, *steps),
             ColorFormat::MultiLineGradient(steps) => {
                 let l = self.color_multi_line_gradient(msg, level, *steps);
 
@@ -492,6 +492,7 @@ mod tests {
         assert_eq_with_eps(oscillate_dist(510, 255), 0.0, 1e-2);
         assert_eq_with_eps(oscillate_dist(638, 255), 0.5, 1e-2);
         assert_eq_with_eps(oscillate_dist(765, 255), 1.0, 1e-2);
+        // TODO test for usize::max_value() in each field, then both fields
     }
 
     #[test]
@@ -570,7 +571,11 @@ mod tests {
 
     #[test]
     fn color_inline_gradient_colors_by_level() {
-        assert_logs_colored_by_level(&DiscoLogger::color_inline_gradient);
+        let color_fn = |logger: &DiscoLogger, msg: String, level: Level| -> String {
+            logger.color_inline_gradient(msg, level, 20)
+        };
+
+        assert_logs_colored_by_level(&color_fn);
     }
 
     #[test]
@@ -592,7 +597,7 @@ mod tests {
 
         // none of these calls should panic with an empty message
         logger.color_solid("".to_string(), Level::Warn);
-        logger.color_inline_gradient("".to_string(), Level::Warn);
+        logger.color_inline_gradient("".to_string(), Level::Warn, 10);
         logger.color_multi_line_gradient("".to_string(), Level::Warn, 10);
     }
 
@@ -610,11 +615,46 @@ mod tests {
     }
 
     #[test]
+    fn color_log_with_inline_gradient_uses_steps_arg() {
+        let config = Config {
+            color_format: Some(ColorFormat::InlineGradient(2)),
+            theme: Box::new(theme::Simple {}),
+            ..Default::default()
+        };
+        let logger = DiscoLogger::new(config);
+
+        let msgs = vec!["0000000000".to_string(), "नमस्तेनमस्तेनमस्तेनमस्तेनमस्ते".to_string()];
+
+        for msg in msgs {
+            let msg_colored = logger.color_log(msg.clone(), Level::Info);
+
+            // collect ANSI 24-bit escape sequences to compare color of each grapheme
+            let words = msg_colored.unicode_words().collect::<Vec<&str>>();
+            let num_words = words.len();
+            let graphemes = msg.graphemes(true).collect::<Vec<&str>>().len();
+            let escape_seqs = words
+                .into_iter()
+                .step_by(num_words / graphemes)
+                .collect::<Vec<&str>>();
+
+            // check that gradient restarts at index 4 (2 * steps)
+            //
+            // it restarts at 4 instead of 2 because the gradient is first
+            // traversed from start to end, then from end to start, then start to end
+            // again, oscillating this way indefinitely
+            assert_ne!(escape_seqs[0], escape_seqs[1]);
+            assert_eq!(escape_seqs[0], escape_seqs[4]);
+            assert_eq!(escape_seqs[1], escape_seqs[5]);
+            assert_eq!(escape_seqs[2], escape_seqs[6]);
+            assert_eq!(escape_seqs[3], escape_seqs[7]);
+        }
+    }
+
+    #[test]
     fn color_log_with_multi_line_gradient_changes_color_within_level() {
         let config = Config {
             color_format: Some(ColorFormat::MultiLineGradient(20)),
             theme: Box::new(theme::Simple {}),
-            record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
             ..Default::default()
         };
         let logger = DiscoLogger::new(config);
@@ -672,8 +712,9 @@ mod tests {
         // check that gradient restarts at index 4 (2 * steps)
         //
         // it restarts at 4 instead of 2 because the gradient is first
-        // traversed from start to end, then from end to start, then start to end 
+        // traversed from start to end, then from end to start, then start to end
         // again, oscillating this way indefinitely
+        assert_ne!(lines[0], lines[1]);
         assert_eq!(lines[0], lines[4]);
         assert_eq!(lines[1], lines[5]);
         assert_eq!(lines[2], lines[6]);
