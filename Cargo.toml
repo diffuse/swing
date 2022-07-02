@@ -9,6 +9,7 @@ log = { version = "0.4", features = ["std", "serde"] }
 chrono = "0.4"
 serde_json = { version = "1.0", features = ["preserve_order"]}
 colored = "2"
+unicode-segmentation = "1.9.0"
 
 [dev-dependencies]
 lipsum = "0.8"
