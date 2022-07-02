@@ -124,7 +124,7 @@ fn linear_gradient(range: &RgbRange, dist: f32) -> Rgb {
 /// * `n` - upper limit of range 0-`n`
 fn oscillate_dist(x: usize, n: usize) -> f32 {
     let n = if n == 0 { 1 } else { n };
-    ((x + n) % (n * 2)).abs_diff(n) as f32 / (n as f32)
+    (x.wrapping_add(n) % n.wrapping_mul(2)).abs_diff(n) as f32 / (n as f32)
 }
 
 /// Implements log::Log
@@ -492,7 +492,18 @@ mod tests {
         assert_eq_with_eps(oscillate_dist(510, 255), 0.0, 1e-2);
         assert_eq_with_eps(oscillate_dist(638, 255), 0.5, 1e-2);
         assert_eq_with_eps(oscillate_dist(765, 255), 1.0, 1e-2);
-        // TODO test for usize::max_value() in each field, then both fields
+        assert_eq_with_eps(
+            oscillate_dist(usize::max_value(), 255),
+            oscillate_dist(usize::max_value() - 255, 255),
+            1e-2,
+        );
+        assert_eq_with_eps(oscillate_dist(12, usize::max_value()), 1.0, 1e-2);
+        assert_eq_with_eps(oscillate_dist(257, usize::max_value()), 1.0, 1e-2);
+        assert_eq_with_eps(
+            oscillate_dist(usize::max_value(), usize::max_value()),
+            1.0,
+            1e-2,
+        );
     }
 
     #[test]
