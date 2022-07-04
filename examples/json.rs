@@ -8,7 +8,7 @@ fn main() {
         record_format: RecordFormat::Json,
         ..Default::default()
     };
-    DiscoLogger::new(config).init().unwrap();
+    DiscoLogger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("foo");

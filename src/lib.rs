@@ -138,11 +138,16 @@ pub struct DiscoLogger {
 
 impl DiscoLogger {
     /// Create a new DiscoLogger
+    pub fn new() -> DiscoLogger {
+        DiscoLogger::with_config(Config::default())
+    }
+
+    /// Create a new DiscoLogger with a custom configuration
     ///
     /// # Arguments
     ///
     /// * `config` - configuration for this logger
-    pub fn new(config: Config) -> DiscoLogger {
+    pub fn with_config(config: Config) -> DiscoLogger {
         DiscoLogger {
             config,
             lines_logged: Mutex::new(HashMap::new()),
@@ -346,7 +351,7 @@ mod tests {
             record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
 
         // run `f` on `msg` with each level to make sure that
         // no two levels give the same colored output
@@ -519,7 +524,7 @@ mod tests {
                 record_format: fmt,
                 ..Default::default()
             };
-            let logger = DiscoLogger::new(config);
+            let logger = DiscoLogger::with_config(config);
 
             // create normal test record
             let rec = Record::builder()
@@ -569,7 +574,7 @@ mod tests {
                 record_format: fmt,
                 ..Default::default()
             };
-            let logger = DiscoLogger::new(config);
+            let logger = DiscoLogger::with_config(config);
 
             assert_eq!(logger.format_record(&rec), expected);
         }
@@ -604,7 +609,7 @@ mod tests {
             level: LevelFilter::Trace,
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
 
         // none of these calls should panic with an empty message
         logger.color_solid("".to_string(), Level::Warn);
@@ -618,7 +623,7 @@ mod tests {
             color_format: None,
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
 
         // input msg should not be altered by None color format
         let msg = "foo".to_string();
@@ -632,7 +637,7 @@ mod tests {
             theme: Box::new(theme::Simple {}),
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
 
         let msgs = vec!["0000000000".to_string(), "नमस्तेनमस्तेनमस्तेनमस्तेनमस्ते".to_string()];
 
@@ -668,7 +673,7 @@ mod tests {
             theme: Box::new(theme::Simple {}),
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
         let msg = "foo".to_string();
 
         // the color should change each time a message is logged,
@@ -702,7 +707,7 @@ mod tests {
             record_format: RecordFormat::Custom(Box::new(|_| "foo".to_string())),
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
         let msg = "foo".to_string();
 
         let lines = vec![
@@ -738,7 +743,7 @@ mod tests {
             level: LevelFilter::Warn,
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
         let mut mb = Metadata::builder();
 
         assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
@@ -754,7 +759,7 @@ mod tests {
             level: LevelFilter::Off,
             ..Default::default()
         };
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
         let mut mb = Metadata::builder();
 
         assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
@@ -767,7 +772,7 @@ mod tests {
     #[test]
     fn log_handles_empty_record() {
         let config = Config::default();
-        let logger = DiscoLogger::new(config);
+        let logger = DiscoLogger::with_config(config);
 
         // create record with fields set to empty strings
         let rec = Record::builder()
