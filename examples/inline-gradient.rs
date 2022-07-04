@@ -12,7 +12,7 @@ fn main() {
         theme: Box::new(Spectral {}),
         ..Default::default()
     };
-    DiscoLogger::new(config).init().unwrap();
+    DiscoLogger::with_config(config).init().unwrap();
 
     util::log_sample_messages(100);
 }

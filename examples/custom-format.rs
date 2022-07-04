@@ -15,7 +15,7 @@ fn main() {
         record_format: RecordFormat::Custom(fmt_rec),
         ..Default::default()
     };
-    DiscoLogger::new(config).init().unwrap();
+    DiscoLogger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("foo");

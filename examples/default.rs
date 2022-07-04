@@ -1,9 +1,8 @@
-use disco::{Config, DiscoLogger};
+use disco::DiscoLogger;
 
 fn main() {
     // setup logger
-    let config = Config::default();
-    DiscoLogger::new(config).init().unwrap();
+    DiscoLogger::new().init().unwrap();
 
     // log away!
     log::trace!("foo");
