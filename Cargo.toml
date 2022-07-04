@@ -6,8 +6,8 @@ edition = "2018"
 
 [dependencies]
 log = { version = "0.4", features = ["std", "serde"] }
-chrono = "0.4"
 serde_json = { version = "1.0", features = ["preserve_order"]}
+time = { version = "0.3.11", features = ["formatting"] }
 colored = "2"
 unicode-segmentation = "1.9.0"
 
