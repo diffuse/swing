@@ -134,6 +134,8 @@ pub struct DiscoLogger {
     /// Count of how many lines are logged at each level,
     /// for use with coloring
     lines_logged: Mutex<HashMap<Level, usize>>,
+    /// guard against interleaving from simultaneous writes to stdout + stderr
+    write_mtx: Mutex<()>,
 }
 
 impl DiscoLogger {
@@ -151,6 +153,7 @@ impl DiscoLogger {
         DiscoLogger {
             config,
             lines_logged: Mutex::new(HashMap::new()),
+            write_mtx: Mutex::new(()),
         }
     }
 
@@ -279,6 +282,14 @@ impl Log for DiscoLogger {
         if self.enabled(record.metadata()) {
             let mut msg = self.format_record(record);
             msg = self.color_log(msg, record.level());
+
+            // stdout and stderr already have their own locks, but
+            // there is nothing preventing logs simultaneously written
+            // to stdout + stderr from being interleaved in the console
+            //
+            // this guard synchronizes writes so that stdout will not be
+            // interleaved with stderr
+            let _lk = self.write_mtx.lock().unwrap();
 
             match record.level() {
                 Level::Warn | Level::Error => {
