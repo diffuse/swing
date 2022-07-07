@@ -2,8 +2,11 @@ use colored::{Color, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 use std::collections::HashMap;
+use std::io;
+use std::io::Write;
 use std::sync::Mutex;
-use time::{format_description::well_known::Rfc3339, OffsetDateTime};
+use time::format_description::well_known::Rfc3339;
+use time::OffsetDateTime;
 use unicode_segmentation::UnicodeSegmentation;
 
 mod color;
@@ -136,6 +139,10 @@ pub struct DiscoLogger {
     lines_logged: Mutex<HashMap<Level, usize>>,
     /// guard against interleaving from simultaneous writes to stdout + stderr
     write_mtx: Mutex<()>,
+    /// handle to stdout
+    stdout: io::Stdout,
+    /// handle to stderr
+    stderr: io::Stderr,
 }
 
 impl DiscoLogger {
@@ -154,6 +161,8 @@ impl DiscoLogger {
             config,
             lines_logged: Mutex::new(HashMap::new()),
             write_mtx: Mutex::new(()),
+            stdout: io::stdout(),
+            stderr: io::stderr(),
         }
     }
 
@@ -294,12 +303,14 @@ impl Log for DiscoLogger {
             match record.level() {
                 Level::Warn | Level::Error => {
                     if self.config.use_stderr {
-                        eprintln!("{}", msg.bold());
+                        let _ = writeln!(self.stderr.lock(), "{}", msg.bold());
                     } else {
-                        println!("{}", msg.bold());
+                        let _ = writeln!(self.stdout.lock(), "{}", msg.bold());
                     }
                 }
-                _ => println!("{}", msg),
+                _ => {
+                    let _ = writeln!(self.stdout.lock(), "{}", msg);
+                }
             }
         }
     }
