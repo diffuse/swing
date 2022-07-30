@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use std::io;
 use std::io::Write;
 use std::sync::Mutex;
-use time::format_description::well_known::Rfc3339;
+use time::format_description::well_known::Iso8601;
 use time::OffsetDateTime;
 use unicode_segmentation::UnicodeSegmentation;
 
@@ -174,7 +174,7 @@ impl DiscoLogger {
     /// Convert a log record into a formatted string, based on the current logger configuration
     fn format_record(&self, record: &Record) -> String {
         let now = OffsetDateTime::now_utc()
-            .format(&Rfc3339)
+            .format(&Iso8601::DEFAULT)
             .expect("Failed to format time as RFC-3339");
 
         match &self.config.record_format {

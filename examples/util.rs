@@ -4,7 +4,7 @@ use rand::Rng;
 /// log n sample messages, weighted towards the default _ match arm
 pub fn log_sample_messages(n: usize) {
     for _ in 0..n {
-        let n = rand::thread_rng().gen_range(0..50);
+        let n = rand::thread_rng().gen_range(0..20);
         let msg = lipsum(n);
 
         match rand::thread_rng().gen_range(0..15) {
