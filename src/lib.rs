@@ -175,7 +175,7 @@ impl DiscoLogger {
     fn format_record(&self, record: &Record) -> String {
         let now = OffsetDateTime::now_utc()
             .format(&Iso8601::DEFAULT)
-            .expect("Failed to format time as RFC-3339");
+            .expect("Failed to format time as ISO 8601");
 
         match &self.config.record_format {
             RecordFormat::Json => json!({
