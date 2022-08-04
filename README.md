@@ -33,12 +33,17 @@ Note that the default `DiscoLogger` created with `::new()` has a log level filte
 # Logger config options
 For more control, `DiscoLogger`s can be created with a `Config` struct via `DiscoLogger::with_config`:
 ```rust
-let config = Config {
-    level: LevelFilter::Trace,
-    ...Default::default()
-};
+use disco::{Config, DiscoLogger};
+use log::LevelFilter;
 
-DiscoLogger::with_config(config).init().unwrap();
+fn main() {
+    let config = Config {
+        level: LevelFilter::Trace,
+        ...Default::default()
+    };
+
+    DiscoLogger::with_config(config).init().unwrap();
+}
 ```
 
 The default configuration uses the following settings (explained below):
@@ -52,21 +57,9 @@ Config {
 }
 ```
 
-A `DiscoLogger`'s main areas of configurability are:
-- color theme
-- log format
-- `stdout`\/`stderr` splitting
-
-Below is a breakdown of available config options and their effects (see below subsections for full
-explanations of options and behaviors):
-
-Option | Description | Example Usage
---- | --- | ---
-`level` | Only logs at or above this severity will be logged | `level: LevelFilter::Debug`
-`record_format` | Sets the method used to structure a log line/record | `record_format: RecordFormat::Json`
-
 ## level
-The `LevelFilter` enum used in `Config` is taken directly from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html).  It defines the following variants:
+The `level` setting controls which log records are processed and which are ignored.  The `LevelFilter` enum used in `Config` is taken directly 
+from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html).  It defines the following variants:
 - `Off`
 - `Trace`
 - `Debug`
@@ -74,11 +67,47 @@ The `LevelFilter` enum used in `Config` is taken directly from [the log crate](h
 - `Warn`
 - `Error`
 
+Only records logged at or above the chosen severity will be output to `stdout`/`stderr`.  For example:
+```rust
+// --snip--
+
+let config = Config {
+    level: LevelFilter::Info,
+    ...Default::default()
+};
+
+// --snip--
+
+// trace and debug logs will be ignored, only info, warn, and error messages will print to the screen
+log::trace!("foo");
+log::debug!("bar");
+log::info!("baz");
+log::warn!("spam");
+log::error!("eggs");
+```
+
 ## record_format
-Each call to the [log](https://docs.rs/log/latest/log/) crate macros (`trace!`, `info!`, etc...) generates a log [record](https://docs.rs/log/latest/log/struct.Record.html).  These records are then formatted by this crate using one of the methods in the `RecordFormat` enum:
+The `record_format` setting controls how log records are (structurally) formatted when they are print to the screen.  Each call to the [log](https://docs.rs/log/latest/log/) 
+crate macros (`trace!`, `info!`, etc...) generates a log [record](https://docs.rs/log/latest/log/struct.Record.html).  These records are then formatted by this crate using one 
+of the methods in the `RecordFormat` enum:
 - `Json`
 - `Simple`
 - `Custom`
+
+Record formats are imported and used by:
+```rust
+use disco::{Config, DiscoLogger, RecordFormat};
+use log::LevelFilter;
+
+fn main() {
+    let config = Config {
+        level: LevelFilter::Trace,
+        record_format: RecordFormat::Simple,
+        ..Default::default()
+    };
+    DiscoLogger::with_config(config).init().unwrap();
+}
+```
 
 ### Simple format
 This is the default record format and will generate log lines that look like this:
@@ -89,8 +118,9 @@ This is the default record format and will generate log lines that look like thi
 2022-07-31T20:25:31.108667634Z [main] WARN - spam
 2022-07-31T20:25:31.108736790Z [main] ERROR - eggs
 ```
+Note that times are always in ISO 8601 format, UTC time.
 
-### JSON format
+### Json format
 This record format will generate log lines as JSON:
 ```json
 {"time":"2022-07-31T20:28:11.863634602Z","level":"TRACE","target":"main","message":"foo"}
@@ -99,19 +129,33 @@ This record format will generate log lines as JSON:
 {"time":"2022-07-31T20:28:11.864269093Z","level":"WARN","target":"main","message":"spam"}
 {"time":"2022-07-31T20:28:11.864372619Z","level":"ERROR","target":"main","message":"eggs"}
 ```
+Note that times are always in ISO 8601 format, UTC time.
 
 ### Custom format
 If you don't like any of the above formats, you can inject your own custom record formatting by using the `Custom` format:
 ```rust
-let fmt_rec = Box::new(|r: &Record| -> String {
-    format!("{} - {}", r.level(), r.args())
-});
+use disco::{Config, DiscoLogger, RecordFormat};
+use log::{LevelFilter, Record};
 
-let config = Config {
-    level: LevelFilter::Trace,
-    record_format,
-    ..Default::default()
-};
+fn main() {
+    let fmt_rec = Box::new(|r: &Record| -> String {
+        format!("{} - {}", r.level(), r.args())
+    });
+
+    let config = Config {
+        level: LevelFilter::Trace,
+        record_format: RecordFormat::Custom(fmt_rec),
+        ..Default::default()
+    };
+    DiscoLogger::with_config(config).init().unwrap();
+
+    // log away!
+    log::trace!("foo");
+    log::debug!("bar");
+    log::info!("baz");
+    log::warn!("spam");
+    log::error!("eggs");
+}
 ```
 
 The above example format will generate log lines that look like this:
@@ -141,30 +185,24 @@ let fmt_rec = Box::new(|r: &Record| -> String {
 });
 ```
 
-### stderr handling
-The `use_stderr` `Config` setting changes how log records are split between `stdout` and `stderr`.  When this field is false, all log records will be written to `stdout`.  When this field is true, records at levels `trace`, `debug`, and `info` are written to stdout, while those at `warn` and `error` levels are written to stderr.
+## theme
+TODO
 
-# Example
-An example is included at `examples/main.rs` that logs some test messages at different levels.
+## use_stderr
+The `use_stderr` determines if log records are split between `stdout` and `stderr` or not.  When this field is false, all log records will be written to `stdout`.  When this field is true, records at levels `trace`, `debug`, and `info` are written to stdout, while those at `warn` and `error` levels are written to stderr.
 
-```shell
-$ cargo run
-{"time":"2022-05-28T23:08:18.420138779+00:00","level":"TRACE","target":"main","message":"foo"}
-{"time":"2022-05-28T23:08:18.420226306+00:00","level":"DEBUG","target":"main","message":"bar"}
-{"time":"2022-05-28T23:08:18.420267953+00:00","level":"INFO","target":"main","message":"baz"}
-{"time":"2022-05-28T23:08:18.420306418+00:00","level":"WARN","target":"main","message":"spam"}
-{"time":"2022-05-28T23:08:18.420361151+00:00","level":"ERROR","target":"main","message":"eggs"}
-```
+# Examples
+TODO
 
-# Stream redirection
-Since this logger writes to both stdout and stderr, you must redirect both streams to capture all output.
+# Stream redirection tips in Linux
+When logging with `use_stderr` set to true, you must redirect both streams to capture all output.
 
-## Redirect all logs to file
+To redirect all log records to file:
 ```shell
 $ ./example &> foo.log
 ```
 
-## Redirect all logs to file, while watching output
+To redirect all logs to file, while watching output:
 Write all log data to `foo.log` and stdout:
 ```shell
 $ ./example 2>&1 | tee foo.log
