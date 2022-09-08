@@ -108,9 +108,9 @@ log::error!("eggs");
 
 ## record_format
 
-The `record_format` setting controls how log records are (structurally) formatted when they are print to the screen. Each call to the [log](https://docs.rs/log/latest/log/)
+The `record_format` setting controls how log records are (structurally) formatted when they are displayed. Each call to the [log](https://docs.rs/log/latest/log/)
 crate macros (`trace!`, `info!`, etc...) generates a log [record](https://docs.rs/log/latest/log/struct.Record.html). These records are then formatted by this crate using one
-of the methods in the `RecordFormat` enum:
+of the variants in the `RecordFormat` enum:
 
 - `Json`
 - `Simple`
@@ -217,6 +217,50 @@ let fmt_rec = Box::new(|r: &Record| -> String {
     format!("{} [{}] {} - {}", now, r.target(), r.level(), r.args())
 });
 ```
+
+## color_format
+
+The `color_format` setting controls how log records are colored (specifically how a theme is applied) when they are displayed. Log records are formatted by this crate using one of the variants in the `ColorFormat` enum, or `None`:
+
+- `Solid`
+- `InlineGradient`
+- `MultiLineGradient`
+
+Color formats are imported and used by:
+
+```rust
+use disco::{Config, DiscoLogger, ColorFormat};
+use log::LevelFilter;
+
+fn main() {
+    let config = Config {
+        level: LevelFilter::Trace,
+        color_format: Some(ColorFormat::Solid),
+        ..Default::default()
+    };
+    DiscoLogger::with_config(config).init().unwrap();
+}
+```
+
+### None format
+
+If `None` is provided as the `color_format`, log records will not be colored (warnings and errors will still be made bold).
+
+### Solid format
+
+This will generate log lines that each have a solid color, chosen by log level:
+![solid color format](images/solid-color.png)
+
+### Inline gradient format
+
+This will generate log lines that are colored with a repeating linear gradient from left to right, chosen by log level:
+![inline gradient color format](images/inline-gradient-color.png)
+
+TODO mention steps arg
+
+### Multi-line gradient format
+
+TODO add GIF
 
 ## theme
 
