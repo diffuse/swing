@@ -4,6 +4,8 @@
 
 Log like it's 1978 with this logging implementation for the [log](https://crates.io/crates/log) crate. Color themes, pluggable formatting, we've got it all!
 
+![multi-line gradient](images/multi-line-gradient.gif)
+
 # Installation
 
 Add the following to `Cargo.toml`:
@@ -264,13 +266,15 @@ color_format: Some(ColorFormat::InlineGradient(60))
 
 This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `60` characters to go from the starting color for each line to the ending color, then `60` more characters to return to the starting color again.
 
+Note that this color format will incur a nontrivial performance hit with heavy logging.  If you have a lot of logs and are trying to break the next land speed record for fastest program, you probably shouldn't use this color format.
+
 ### Multi-line gradient format
 
-This will generate log lines that each have a solid color, determined by level.  Lines within each level will change color step by step, moving through a linear gradient of colors determined by the relevant log level.  The below GIF uses the `Spectral` theme and the following color format:
+This will generate log lines that each have a solid color, determined by level.  Lines within each level will change color step by step, moving through a linear gradient of colors determined by the relevant log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
 color_format: Some(ColorFormat::MultiLineGradient(30))
 ```
-![multi-line gradient](images/multi-line-gradient.gif)
+![multi-line gradient](images/multi-line-gradient.png)
 
 This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `30` lines to go from the starting color for each level to the ending color, then `30` more lines to return to the starting color again.
 
