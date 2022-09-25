@@ -280,11 +280,33 @@ This color format takes a `usize` argument which represents the number of steps 
 
 ## theme
 
-TODO
+The `theme` setting determines the color palette to use when applying color formats.  It is set by providing an instance of something that implements the `Theme` trait:
+```rust
+use disco::theme::Spectral;
+
+// --snip--
+
+theme: Box::new(Spectral {})
+```
+
+This crate provides a few premade themes, but you can also implement your own, or use themes made by others.
+
+### Spectral
+The `Spectral` theme provides a palette that moves through the color spectrum in 5 segments:
+![spectral theme](images/spectral-theme.svg)
+
+### Simple
+The `Simple` theme provides a relatively flat palette that uses dark/light versions of 5 main colors:
+![simple theme](images/simple-theme.svg)
+
+### Creating your own custom theme
+Anything that implements the `Theme` trait can be used as a theme.  To make your own theme, you just have to implement this trait:
+
+TODO: show example of custom theme implementation.
 
 ## use_stderr
 
-The `use_stderr` determines if log records are split between `stdout` and `stderr` or not. When this field is false, all log records will be written to `stdout`. When this field is true, records at levels `trace`, `debug`, and `info` are written to `stdout`, while those at `warn` and `error` levels are written to `stderr`.
+The `use_stderr` setting determines if log records are split between `stdout` and `stderr` or not. When this field is false, all log records will be written to `stdout`. When this field is true, records at levels `trace`, `debug`, and `info` are written to `stdout`, while those at `warn` and `error` levels are written to `stderr`.
 
 # Examples
 
