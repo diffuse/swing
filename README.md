@@ -288,7 +288,10 @@ The `use_stderr` determines if log records are split between `stdout` and `stder
 
 # Examples
 
-TODO
+See the `examples` directory for a variety of usage examples.  You can run any of these examples with:
+```shell
+$ cargo run --example <example name>
+```
 
 # Stream redirection tips in Linux
 
