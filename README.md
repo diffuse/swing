@@ -260,7 +260,7 @@ TODO mention steps arg
 
 ### Multi-line gradient format
 
-TODO add GIF
+![multi-line gradient](images/multi-line-gradient.gif)
 
 ## theme
 
