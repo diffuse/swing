@@ -223,8 +223,8 @@ let fmt_rec = Box::new(|r: &Record| -> String {
 The `color_format` setting controls how log records are colored (specifically how a theme is applied) when they are displayed. Log records are formatted by this crate using one of the variants in the `ColorFormat` enum, or `None`:
 
 - `Solid`
-- `InlineGradient`
-- `MultiLineGradient`
+- `InlineGradient(<steps>)`
+- `MultiLineGradient(<steps>)`
 
 Color formats are imported and used by:
 
@@ -248,19 +248,31 @@ If `None` is provided as the `color_format`, log records will not be colored (wa
 
 ### Solid format
 
-This will generate log lines that each have a solid color, chosen by log level:
+This will generate log lines that each have a solid color, determined by log level.  The below screenshot uses the `Spectral` theme and the following color format:
+```rust
+color_format: Some(ColorFormat::Solid)
+```
 ![solid color format](images/solid-color.png)
 
 ### Inline gradient format
 
-This will generate log lines that are colored with a repeating linear gradient from left to right, chosen by log level:
+This will generate log lines that are colored with a repeating linear gradient from left to right, determined by log level.  The below screenshot uses the `Spectral` theme and the following color format:
+```rust
+color_format: Some(ColorFormat::InlineGradient(60))
+```
 ![inline gradient color format](images/inline-gradient-color.png)
 
-TODO mention steps arg
+This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `60` characters to go from the starting color for each line to the ending color, then `60` more characters to return to the starting color again.
 
 ### Multi-line gradient format
 
+This will generate log lines that each have a solid color, determined by level.  Lines within each level will change color step by step, moving through a linear gradient of colors determined by the relevant log level.  The below GIF uses the `Spectral` theme and the following color format:
+```rust
+color_format: Some(ColorFormat::MultiLineGradient(30))
+```
 ![multi-line gradient](images/multi-line-gradient.gif)
+
+This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `30` lines to go from the starting color for each level to the ending color, then `30` more lines to return to the starting color again.
 
 ## theme
 
