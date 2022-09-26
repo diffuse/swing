@@ -9,7 +9,7 @@ use time::format_description::well_known::Iso8601;
 use time::OffsetDateTime;
 use unicode_segmentation::UnicodeSegmentation;
 
-mod color;
+pub mod color;
 pub mod theme;
 use theme::Theme;
 
@@ -62,9 +62,9 @@ impl Default for Config {
 /// RGB triplet
 #[derive(Debug, PartialEq)]
 pub struct Rgb {
-    r: u8,
-    g: u8,
-    b: u8,
+    pub r: u8,
+    pub g: u8,
+    pub b: u8,
 }
 
 /// Convert Rgb -> Color for easier use with string coloring
@@ -82,8 +82,8 @@ impl Into<Color> for Rgb {
 /// from some start Rgb triplet -> some end
 /// Rgb triplet
 pub struct RgbRange {
-    start: Rgb,
-    end: Rgb,
+    pub start: Rgb,
+    pub end: Rgb,
 }
 
 /// Compute a new color `dist` distance along the linear
