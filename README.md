@@ -1,4 +1,4 @@
-<img src="images/disco.gif" alt="disco logo" width="25%"/>
+<img src="https://user-images.githubusercontent.com/48339639/193424431-150f1577-2104-4aca-8c5e-c0cad8f15efc.gif" alt="disco logo" width="25%"/>
 
 # disco
 
