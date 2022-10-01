@@ -41,8 +41,11 @@ pub struct Config {
     pub color_format: Option<ColorFormat>,
     /// color theme
     pub theme: Box<dyn Theme>,
-    /// if true, log `trace` - `info` levels to stdout, and `warn` - `error` levels to stderr
-    /// if false, log all levels to stdout
+    /// switch for enabling log splitting to `stderr`
+    ///
+    /// - `true`: log `trace` - `info` levels to `stdout` and `warn` - `error` levels to `stderr`
+    ///
+    /// - `false`: log all levels to `stdout`
     pub use_stderr: bool,
 }
 
