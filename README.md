@@ -4,7 +4,7 @@
 
 Log like it's 1978 with this logging implementation for the [log](https://crates.io/crates/log) crate. Color themes, pluggable formatting, we've got it all!
 
-![multi-line gradient](images/multi-line-gradient.gif)
+![multi-line-gradient](https://user-images.githubusercontent.com/48339639/193415322-e13fe6ca-a7c0-4014-966d-584d3fe2c6f4.gif)
 
 # Installation
 
