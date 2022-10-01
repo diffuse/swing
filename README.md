@@ -292,17 +292,18 @@ theme: Box::new(Spectral {})
 This crate provides a few premade themes, but you can also implement your own, or use themes made by others.
 
 ### Spectral
+
 The `Spectral` theme provides a palette that moves through the color spectrum in 5 segments:
 ![spectral theme](images/spectral-theme.svg)
 
 ### Simple
+
 The `Simple` theme provides a relatively flat palette that uses dark/light versions of 5 main colors:
 ![simple theme](images/simple-theme.svg)
 
 ### Creating your own custom theme
-Anything that implements the `Theme` trait can be used as a theme.  To make your own theme, you just have to implement this trait:
 
-TODO: show example of custom theme implementation.
+Anything that implements the `Theme` trait can be used as a theme.  To make your own theme, you just have to implement this trait for a struct, then set `Config`'s `theme` member to a boxed instance of that struct.  See `examples/custom-theme.rs` for an example of a custom theme implementation.
 
 ## use_stderr
 
