@@ -326,9 +326,9 @@ $ ./example &> foo.log
 ```
 
 To redirect all logs to file, while watching output:
-Write all log data to `foo.log` and stdout:
 
 ```shell
+# write all log data to foo.log and stdout simultaneously
 $ ./example 2>&1 | tee foo.log
 ```
 
