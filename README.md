@@ -338,3 +338,7 @@ You can add `jq` for pretty printing:
 ```shell
 $ ./example 2>&1 | tee foo.log | jq
 ```
+
+# Contributing
+
+Contributions are welcome and greatly appreciated.  See [CONTRIBUTING](CONTRIBUTING.md) for some general guidelines.
