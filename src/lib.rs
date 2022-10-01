@@ -1,4 +1,5 @@
 #![doc = include_str!("../README.md")]
+#![deny(missing_docs)]
 
 use colored::{Color, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};

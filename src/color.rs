@@ -1,22 +1,45 @@
+//! Color related type definitions and constant values
+
 use crate::Rgb;
 
 #[allow(dead_code)]
+/// Constant predefined color values
+///
+/// Use of these color values is not necessary when
+/// creating a theme, but they act as helpful aliases
+/// for raw Rgb triplets
 pub enum Color {
+    /// dark magenta
     DarkMagenta,
+    /// magenta
     Magenta,
+    /// dark pink
     DarkPink,
+    /// pink
     Pink,
+    /// dark cyan
     DarkCyan,
+    /// cyan
     Cyan,
+    /// dark blue
     DarkBlue,
+    /// blue
     Blue,
+    /// dark green
     DarkGreen,
+    /// green
     Green,
+    /// dark yellow
     DarkYellow,
+    /// yellow
     Yellow,
+    /// dark orange
     DarkOrange,
+    /// orange
     Orange,
+    /// dark red
     DarkRed,
+    /// red
     Red,
 }
 

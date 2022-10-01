@@ -1,3 +1,8 @@
+//! Theme trait definition and predefined themes
+//!
+//! See examples/custom-theme.rs for an example of defining a
+//! custom theme
+
 use crate::color::Color;
 use crate::{Rgb, RgbRange};
 use log::Level;
