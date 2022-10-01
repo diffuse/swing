@@ -21,6 +21,7 @@ pub enum Color {
 }
 
 impl Color {
+    /// Return the Rgb triplet associated with a color variant
     pub fn value(&self) -> Rgb {
         match self {
             Color::DarkMagenta => Rgb {
