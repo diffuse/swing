@@ -1,3 +1,5 @@
+#![doc = include_str!("../README.md")]
+
 use colored::{Color, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
