@@ -51,30 +51,30 @@ pub struct Spectral {}
 
 impl Theme for Spectral {
     fn solid(&self, level: Level) -> Rgb {
-        self.range(level).start
+        self.range(level).end
     }
 
     fn range(&self, level: Level) -> RgbRange {
         match level {
             Level::Trace => RgbRange {
-                start: Color::Pink.value(),
-                end: Color::DarkMagenta.value(),
+                start: Color::DarkMagenta.value(),
+                end: Color::Pink.value(),
             },
             Level::Debug => RgbRange {
-                start: Color::Cyan.value(),
-                end: Color::DarkBlue.value(),
+                start: Color::DarkBlue.value(),
+                end: Color::Cyan.value(),
             },
             Level::Info => RgbRange {
-                start: Color::Green.value(),
-                end: Color::DarkCyan.value(),
+                start: Color::DarkCyan.value(),
+                end: Color::Green.value(),
             },
             Level::Warn => RgbRange {
-                start: Color::Orange.value(),
-                end: Color::DarkYellow.value(),
+                start: Color::DarkYellow.value(),
+                end: Color::Orange.value(),
             },
             Level::Error => RgbRange {
-                start: Color::Red.value(),
-                end: Color::DarkOrange.value(),
+                start: Color::DarkOrange.value(),
+                end: Color::Red.value(),
             },
         }
     }
