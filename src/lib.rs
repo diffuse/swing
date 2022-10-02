@@ -1,3 +1,11 @@
+#![doc = include_str!("../README.md")]
+#![doc(
+    html_logo_url = "https://i.imgur.com/xOjqfvy.gif",
+    html_favicon_url = "https://i.imgur.com/Q7UUHoN.png",
+    html_playground_url = "https://play.rust-lang.org/"
+)]
+#![deny(missing_docs)]
+
 use colored::{Color, Colorize};
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
@@ -13,41 +21,50 @@ pub mod color;
 pub mod theme;
 use theme::Theme;
 
-/// Record formatting mode
+/// Record formatting mode that determines how log records are structured
 pub enum RecordFormat {
+    /// JSON format
     Json,
+    /// simple log format `<timestamp> [<target>] - <message>`
     Simple,
+    /// custom record formatter provided by client code
     Custom(Box<dyn Sync + Send + Fn(&Record) -> String>),
 }
 
-/// Color formatting mode
+/// Color formatting mode that determines how log records are colored/how a theme
+/// is applied to log records
 pub enum ColorFormat {
-    /// Solid color applied to a line
+    /// solid color(s) applied from a theme to log lines
     Solid,
-    /// Linear color gradient applied over characters in single line, with arg for number of steps
-    /// in gradient
+    /// linear color gradient applied over characters in a single line, with arg for number of steps
+    /// in gradient (how many characters it will take to go from the starting color to the ending color
+    /// for each level)
     InlineGradient(usize),
-    /// Linear color gradient applied over multiple lines, with arg for number of steps in gradient
+    /// linear color gradient applied over multiple lines, with arg for number of steps in gradient (how
+    /// many lines it will take to go from the starting color to the ending color for each level)
     MultiLineGradient(usize),
 }
 
-/// Config for logger
+/// Main configuration for a `DiscoLogger`
 pub struct Config {
-    /// log level
+    /// log level filter (logs below this severity will be ignored)
     pub level: LevelFilter,
-    /// record formatting mode
+    /// record formatting mode (determines how log records are structurally formatted)
     pub record_format: RecordFormat,
-    /// color formatting mode
+    /// color formatting mode (determines how log records are colored)
     pub color_format: Option<ColorFormat>,
-    /// color theme
+    /// color theme (determines the color palette used to color log records)
     pub theme: Box<dyn Theme>,
-    /// if true, log `trace` - `info` levels to stdout, and `warn` - `error` levels to stderr
-    /// if false, log all levels to stdout
+    /// switch for enabling log splitting to `stderr`
+    ///
+    /// - `true`: log `trace` - `info` levels to `stdout` and `warn` - `error` levels to `stderr`
+    ///
+    /// - `false`: log all levels to `stdout`
     pub use_stderr: bool,
 }
 
-/// Set config defaults
 impl Default for Config {
+    /// Return a `Config` with default values
     fn default() -> Config {
         Config {
             level: LevelFilter::Info,
@@ -62,13 +79,16 @@ impl Default for Config {
 /// RGB triplet
 #[derive(Debug, PartialEq)]
 pub struct Rgb {
+    /// red intensity
     pub r: u8,
+    /// green intensity
     pub g: u8,
+    /// blue intensity
     pub b: u8,
 }
 
-/// Convert Rgb -> Color for easier use with string coloring
 impl Into<Color> for Rgb {
+    /// Convert Rgb -> Color for easier use with string coloring
     fn into(self) -> Color {
         Color::TrueColor {
             r: self.r,
@@ -78,11 +98,12 @@ impl Into<Color> for Rgb {
     }
 }
 
-/// RgbRange defines a linear color range
-/// from some start Rgb triplet -> some end
-/// Rgb triplet
+/// RgbRange defines a linear color range from some start Rgb
+/// triplet -> some end Rgb triplet
 pub struct RgbRange {
+    /// start of color range
     pub start: Rgb,
+    /// end of color range
     pub end: Rgb,
 }
 
@@ -146,7 +167,7 @@ pub struct DiscoLogger {
 }
 
 impl DiscoLogger {
-    /// Create a new DiscoLogger
+    /// Create a new DiscoLogger with a default configuration
     pub fn new() -> DiscoLogger {
         DiscoLogger::with_config(Config::default())
     }
@@ -172,6 +193,10 @@ impl DiscoLogger {
     }
 
     /// Convert a log record into a formatted string, based on the current logger configuration
+    ///
+    /// # Arguments
+    ///
+    /// * `record` - the log record to format
     fn format_record(&self, record: &Record) -> String {
         let now = OffsetDateTime::now_utc()
             .format(&Iso8601::DEFAULT)
@@ -232,8 +257,9 @@ impl DiscoLogger {
     /// Apply a linear color gradient over multiple lines
     ///
     /// An independent linear color gradient will be applied across
-    /// all lines logged at each level (e.g. `INFO` line color may change
-    /// from green -> cyan as lines are logged)
+    /// all lines logged at each level (e.g. `INFO` line color can change
+    /// from green -> cyan as lines are logged, while lines logged at other
+    /// levels move independently in their own gradient color ranges)
     ///
     /// # Arguments
     ///
@@ -247,7 +273,7 @@ impl DiscoLogger {
         msg.color(color).to_string()
     }
 
-    /// Color a log line
+    /// Color a log line, based on the current logger configuration
     ///
     /// Arguments
     ///
@@ -286,7 +312,11 @@ impl Log for DiscoLogger {
         metadata.level() <= self.config.level
     }
 
-    /// Log a message
+    /// Log a message/record
+    ///
+    /// # Arguments
+    ///
+    /// * `record` - the record to log
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
             let mut msg = self.format_record(record);

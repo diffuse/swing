@@ -1,10 +1,14 @@
+//! Theme trait definition and predefined themes
+//!
+//! See examples/custom-theme.rs for an example of defining a
+//! custom theme
+
 use crate::color::Color;
 use crate::{Rgb, RgbRange};
 use log::Level;
 
-/// Define a color range for each log level
-/// to use as a theme with this library's color
-/// formats
+/// Define a log level specific color palette to be injected into
+/// color formatting
 pub trait Theme: Send + Sync {
     /// return the representative solid color for this theme at each level
     fn solid(&self, level: Level) -> Rgb;

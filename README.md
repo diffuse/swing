@@ -1,10 +1,10 @@
-<img src="images/disco.gif" alt="disco logo" width="25%"/>
+<img src="https://i.imgur.com/xOjqfvy.gif" alt="disco logo" width="25%"/>
 
 # disco
 
 Log like it's 1978 with this logging implementation for the [log](https://crates.io/crates/log) crate. Color themes, pluggable formatting, we've got it all!
 
-![multi-line-gradient](https://user-images.githubusercontent.com/48339639/193415322-e13fe6ca-a7c0-4014-966d-584d3fe2c6f4.gif)
+![multi-line-gradient](https://i.imgur.com/2cGHo5L.gif)
 
 # Installation
 
@@ -49,7 +49,7 @@ use log::LevelFilter;
 fn main() {
     let config = Config {
         level: LevelFilter::Trace,
-        ...Default::default()
+        ..Default::default()
     };
 
     DiscoLogger::with_config(config).init().unwrap();
@@ -59,13 +59,16 @@ fn main() {
 The default configuration uses the following settings:
 
 ```rust
+use disco::{Config, ColorFormat, RecordFormat, theme};
+use log::LevelFilter;
+
 Config {
     level: LevelFilter::Info,
     record_format: RecordFormat::Simple,
     color_format: Some(ColorFormat::Solid),
     theme: Box::new(theme::Simple {}),
     use_stderr: true,
-}
+};
 ```
 
 Each setting is explained in its own subsection:
@@ -91,11 +94,14 @@ from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html). It d
 Only records logged at or above the chosen severity will be output to `stdout`/`stderr`. For example:
 
 ```rust
+use disco::Config;
+use log::LevelFilter;
+
 // --snip--
 
 let config = Config {
     level: LevelFilter::Info,
-    ...Default::default()
+    ..Default::default()
 };
 
 // --snip--
@@ -208,6 +214,7 @@ For reference, the `Simple` record format can be reproduced with the following `
 ```rust
 use time::format_description::well_known::Iso8601;
 use time::OffsetDateTime;
+use log::Record;
 
 // --snip--
 
@@ -252,17 +259,25 @@ If `None` is provided as the `color_format`, log records will not be colored (wa
 
 This will generate log lines that each have a solid color, determined by log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
-color_format: Some(ColorFormat::Solid)
+use disco::ColorFormat;
+
+// --snip--
+
+let color_format = Some(ColorFormat::Solid);
 ```
-![solid color format](images/solid-color.png)
+![solid color format](https://i.imgur.com/AiSOt2W.png)
 
 ### Inline gradient format
 
 This will generate log lines that are colored with a repeating linear gradient from left to right, determined by log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
-color_format: Some(ColorFormat::InlineGradient(60))
+use disco::ColorFormat;
+
+// --snip--
+
+let color_format = Some(ColorFormat::InlineGradient(60));
 ```
-![inline gradient color format](images/inline-gradient-color.png)
+![inline gradient color format](https://i.imgur.com/RkGZWEh.png)
 
 This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `60` characters to go from the starting color for each line to the ending color, then `60` more characters to return to the starting color again.
 
@@ -272,9 +287,13 @@ Note that this color format will incur a nontrivial performance hit with heavy l
 
 This will generate log lines that each have a solid color, determined by level.  Lines within each level will change color step by step, moving through a linear gradient of colors determined by the relevant log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
-color_format: Some(ColorFormat::MultiLineGradient(30))
+use disco::ColorFormat;
+
+// --snip--
+
+let color_format = Some(ColorFormat::MultiLineGradient(30));
 ```
-![multi-line gradient](images/multi-line-gradient.png)
+![multi-line gradient](https://i.imgur.com/x4Z0tN3.png)
 
 This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `30` lines to go from the starting color for each level to the ending color, then `30` more lines to return to the starting color again.
 
@@ -286,7 +305,7 @@ use disco::theme::Spectral;
 
 // --snip--
 
-theme: Box::new(Spectral {})
+let theme = Box::new(Spectral {});
 ```
 
 This crate provides a few premade themes, but you can also implement your own, or use themes made by others.
@@ -294,12 +313,14 @@ This crate provides a few premade themes, but you can also implement your own, o
 ### Spectral
 
 The `Spectral` theme provides a palette that moves through the color spectrum in 5 segments:
-![spectral theme](images/spectral-theme.svg)
+
+![spectral theme](https://i.imgur.com/DIdDbI7.png)
 
 ### Simple
 
 The `Simple` theme provides a relatively flat palette that uses dark/light versions of 5 main colors:
-![simple theme](images/simple-theme.svg)
+
+![simple theme](https://i.imgur.com/Rrku1BP.png)
 
 ### Creating your own custom theme
 
