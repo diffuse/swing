@@ -1,4 +1,9 @@
 #![doc = include_str!("../README.md")]
+#![doc(
+    html_logo_url = "https://i.imgur.com/xOjqfvy.gif",
+    html_favicon_url = "https://i.imgur.com/Q7UUHoN.png",
+    html_playground_url = "https://play.rust-lang.org/"
+)]
 #![deny(missing_docs)]
 
 use colored::{Color, Colorize};

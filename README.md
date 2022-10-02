@@ -1,10 +1,10 @@
-<img src="https://user-images.githubusercontent.com/48339639/193424431-150f1577-2104-4aca-8c5e-c0cad8f15efc.gif" alt="disco logo" width="25%"/>
+<img src="https://i.imgur.com/xOjqfvy.gif" alt="disco logo" width="25%"/>
 
 # disco
 
 Log like it's 1978 with this logging implementation for the [log](https://crates.io/crates/log) crate. Color themes, pluggable formatting, we've got it all!
 
-![multi-line-gradient](https://user-images.githubusercontent.com/48339639/193415322-e13fe6ca-a7c0-4014-966d-584d3fe2c6f4.gif)
+![multi-line-gradient](https://i.imgur.com/2cGHo5L.gif)
 
 # Installation
 
@@ -265,7 +265,7 @@ use disco::ColorFormat;
 
 let color_format = Some(ColorFormat::Solid);
 ```
-![solid color format](images/solid-color.png)
+![solid color format](https://i.imgur.com/AiSOt2W.png)
 
 ### Inline gradient format
 
@@ -277,7 +277,7 @@ use disco::ColorFormat;
 
 let color_format = Some(ColorFormat::InlineGradient(60));
 ```
-![inline gradient color format](images/inline-gradient-color.png)
+![inline gradient color format](https://i.imgur.com/RkGZWEh.png)
 
 This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `60` characters to go from the starting color for each line to the ending color, then `60` more characters to return to the starting color again.
 
@@ -293,7 +293,7 @@ use disco::ColorFormat;
 
 let color_format = Some(ColorFormat::MultiLineGradient(30));
 ```
-![multi-line gradient](images/multi-line-gradient.png)
+![multi-line gradient](https://i.imgur.com/x4Z0tN3.png)
 
 This color format takes a `usize` argument which represents the number of steps required to go from the start color to the end color for each level's color gradient.  Gradients will be traversed in alternating ascending and descending order.  In the above example, it will take `30` lines to go from the starting color for each level to the ending color, then `30` more lines to return to the starting color again.
 
@@ -313,12 +313,14 @@ This crate provides a few premade themes, but you can also implement your own, o
 ### Spectral
 
 The `Spectral` theme provides a palette that moves through the color spectrum in 5 segments:
-![spectral theme](images/spectral-theme.svg)
+
+![spectral theme](https://i.imgur.com/DIdDbI7.png)
 
 ### Simple
 
 The `Simple` theme provides a relatively flat palette that uses dark/light versions of 5 main colors:
-![simple theme](images/simple-theme.svg)
+
+![simple theme](https://i.imgur.com/Rrku1BP.png)
 
 ### Creating your own custom theme
 
