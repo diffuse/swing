@@ -6,7 +6,7 @@
 )]
 #![deny(missing_docs)]
 
-use colored::{Color, Colorize};
+use colored::Colorize;
 use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
 use serde_json::json;
 use std::collections::HashMap;
@@ -19,6 +19,7 @@ use unicode_segmentation::UnicodeSegmentation;
 
 pub mod color;
 pub mod theme;
+pub use color::{Rgb, RgbRange};
 use theme::Theme;
 
 /// Record formatting mode that determines how log records are structured
@@ -74,37 +75,6 @@ impl Default for Config {
             use_stderr: true,
         }
     }
-}
-
-/// RGB triplet
-#[derive(Debug, PartialEq)]
-pub struct Rgb {
-    /// red intensity
-    pub r: u8,
-    /// green intensity
-    pub g: u8,
-    /// blue intensity
-    pub b: u8,
-}
-
-impl Into<Color> for Rgb {
-    /// Convert Rgb -> Color for easier use with string coloring
-    fn into(self) -> Color {
-        Color::TrueColor {
-            r: self.r,
-            g: self.g,
-            b: self.b,
-        }
-    }
-}
-
-/// RgbRange defines a linear color range from some start Rgb
-/// triplet -> some end Rgb triplet
-pub struct RgbRange {
-    /// start of color range
-    pub start: Rgb,
-    /// end of color range
-    pub end: Rgb,
 }
 
 /// Compute a new color `dist` distance along the linear
@@ -429,45 +399,6 @@ mod tests {
     }
 
     // tests
-
-    #[test]
-    fn rgb_into_color_is_accurate() {
-        let test_cases = vec![
-            (
-                Rgb { r: 0, g: 0, b: 0 },
-                Color::TrueColor { r: 0, g: 0, b: 0 },
-            ),
-            (
-                Rgb {
-                    r: 127,
-                    g: 128,
-                    b: 129,
-                },
-                Color::TrueColor {
-                    r: 127,
-                    g: 128,
-                    b: 129,
-                },
-            ),
-            (
-                Rgb {
-                    r: 255,
-                    g: 255,
-                    b: 255,
-                },
-                Color::TrueColor {
-                    r: 255,
-                    g: 255,
-                    b: 255,
-                },
-            ),
-        ];
-
-        for (rgb, tc) in test_cases {
-            let c: Color = rgb.into();
-            assert_eq!(c, tc);
-        }
-    }
 
     #[test]
     fn linear_gradient_calculates_correct_color() {
