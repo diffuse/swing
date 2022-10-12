@@ -6,15 +6,13 @@
 )]
 #![deny(missing_docs)]
 
-use colored::Colorize;
-use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
-use std::io;
-use std::io::Write;
-use std::sync::Mutex;
+use log::{LevelFilter, Log, Metadata, Record, SetLoggerError};
 mod paint;
 use paint::LogPainter;
 mod sculpt;
 use sculpt::LogSculptor;
+mod write;
+use write::LogWriter;
 
 pub mod color;
 pub mod theme;
@@ -29,22 +27,12 @@ use theme::Theme;
 pub struct DiscoLogger {
     /// Level-based filter for logs
     level_filter: LevelFilter,
-    /// switch for enabling log splitting to `stderr`
-    ///
-    /// - `true`: log `trace` - `info` levels to `stdout` and `warn` - `error` levels to `stderr`
-    ///
-    /// - `false`: log all levels to `stdout`
-    use_stderr: bool,
     /// painter for logs
     log_painter: LogPainter,
-    // sculptor for logs
+    /// sculptor for logs
     log_sculptor: LogSculptor,
-    /// guard against interleaving from simultaneous writes to stdout + stderr
-    write_mtx: Mutex<()>,
-    /// handle to stdout
-    stdout: io::Stdout,
-    /// handle to stderr
-    stderr: io::Stderr,
+    /// writer for logs
+    log_writer: LogWriter,
 }
 
 impl DiscoLogger {
@@ -63,10 +51,7 @@ impl DiscoLogger {
             log_sculptor: LogSculptor::new(config.record_format),
             level_filter: config.level,
             log_painter: LogPainter::new(config.theme, config.color_format),
-            use_stderr: config.use_stderr,
-            write_mtx: Mutex::new(()),
-            stdout: io::stdout(),
-            stderr: io::stderr(),
+            log_writer: LogWriter::new(config.use_stderr),
         }
     }
 
@@ -88,31 +73,13 @@ impl Log for DiscoLogger {
     ///
     /// * `record` - the record to log
     fn log(&self, record: &Record) {
-        if self.enabled(record.metadata()) {
-            let mut msg = self.log_sculptor.sculpt(record);
-            msg = self.log_painter.paint(msg, record.level());
-
-            // stdout and stderr already have their own locks, but
-            // there is nothing preventing logs simultaneously written
-            // to stdout + stderr from being interleaved in the console
-            //
-            // this guard synchronizes writes so that stdout will not be
-            // interleaved with stderr
-            let _lk = self.write_mtx.lock().unwrap();
-
-            match record.level() {
-                Level::Warn | Level::Error => {
-                    if self.use_stderr {
-                        let _ = writeln!(self.stderr.lock(), "{}", msg.bold());
-                    } else {
-                        let _ = writeln!(self.stdout.lock(), "{}", msg.bold());
-                    }
-                }
-                _ => {
-                    let _ = writeln!(self.stdout.lock(), "{}", msg);
-                }
-            }
+        if !self.enabled(record.metadata()) {
+            return;
         }
+
+        let mut msg = self.log_sculptor.sculpt(record);
+        msg = self.log_painter.paint(msg, record.level());
+        self.log_writer.write(msg, record.level());
     }
 
     fn flush(&self) {}
@@ -121,6 +88,7 @@ impl Log for DiscoLogger {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use log::Level;
 
     #[test]
     fn enabled_filters_levels() {
