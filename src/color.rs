@@ -1,6 +1,37 @@
 //! Color related type definitions and constant values
 
-use crate::Rgb;
+use colored::{self, Color::TrueColor};
+
+/// RGB triplet
+#[derive(Debug, PartialEq)]
+pub struct Rgb {
+    /// red intensity
+    pub r: u8,
+    /// green intensity
+    pub g: u8,
+    /// blue intensity
+    pub b: u8,
+}
+
+impl Into<colored::Color> for Rgb {
+    /// Convert Rgb -> Color for easier use with string coloring
+    fn into(self) -> colored::Color {
+        TrueColor {
+            r: self.r,
+            g: self.g,
+            b: self.b,
+        }
+    }
+}
+
+/// RgbRange defines a linear color range from some start Rgb
+/// triplet -> some end Rgb triplet
+pub struct RgbRange {
+    /// start of color range
+    pub start: Rgb,
+    /// end of color range
+    pub end: Rgb,
+}
 
 #[allow(dead_code)]
 /// Constant predefined color values
@@ -127,6 +158,47 @@ impl Color {
                 g: 60,
                 b: 10,
             },
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn rgb_into_color_is_accurate() {
+        let test_cases = vec![
+            (Rgb { r: 0, g: 0, b: 0 }, TrueColor { r: 0, g: 0, b: 0 }),
+            (
+                Rgb {
+                    r: 127,
+                    g: 128,
+                    b: 129,
+                },
+                TrueColor {
+                    r: 127,
+                    g: 128,
+                    b: 129,
+                },
+            ),
+            (
+                Rgb {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                },
+                TrueColor {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                },
+            ),
+        ];
+
+        for (rgb, tc) in test_cases {
+            let c: colored::Color = rgb.into();
+            assert_eq!(c, tc);
         }
     }
 }

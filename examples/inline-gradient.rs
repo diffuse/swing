@@ -1,5 +1,4 @@
-use disco::theme::Spectral;
-use disco::{ColorFormat, Config, DiscoLogger, RecordFormat};
+use disco::{theme::Spectral, ColorFormat, Config, DiscoLogger, RecordFormat};
 use log::LevelFilter;
 mod util;
 

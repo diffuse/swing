@@ -3,8 +3,7 @@
 //! See examples/custom-theme.rs for an example of defining a
 //! custom theme
 
-use crate::color::Color;
-use crate::{Rgb, RgbRange};
+use crate::color::{Color, Rgb, RgbRange};
 use log::Level;
 
 /// Define a log level specific color palette to be injected into

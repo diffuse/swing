@@ -1,6 +1,4 @@
-use disco::color::Color;
-use disco::theme::Theme;
-use disco::{ColorFormat, Config, DiscoLogger, Rgb, RgbRange};
+use disco::{Color, ColorFormat, Config, DiscoLogger, Rgb, RgbRange, Theme};
 use log::{Level, LevelFilter};
 
 /// Custom theme
