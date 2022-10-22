@@ -16,12 +16,12 @@ use write::LogWriter;
 
 pub mod color;
 pub mod theme;
-pub use color::{Rgb, RgbRange};
+pub use color::{Color, Rgb, RgbRange};
 pub use paint::ColorFormat;
 pub use sculpt::RecordFormat;
+pub use theme::Theme;
 pub mod config;
 pub use config::Config;
-use theme::Theme;
 
 /// Implements log::Log
 pub struct DiscoLogger {

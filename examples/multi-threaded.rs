@@ -1,5 +1,4 @@
-use disco::theme::Spectral;
-use disco::{ColorFormat, Config, DiscoLogger};
+use disco::{theme::Spectral, ColorFormat, Config, DiscoLogger};
 use log::LevelFilter;
 use std::thread;
 mod util;

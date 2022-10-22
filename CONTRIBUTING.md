@@ -4,7 +4,7 @@ Thank you for making/considering a contribution to this project!  These guidelin
 
 ## Commit messages
 
-Ideal commit messages give a high level descripition of your change, and are written in [the imperative mood](https://en.wikipedia.org/wiki/Imperative_mood).  For example:
+Ideal commit messages give a high level description of your change, and are written in [the imperative mood](https://en.wikipedia.org/wiki/Imperative_mood).  For example:
 
 ```shell
 # this is in the imperative mood
