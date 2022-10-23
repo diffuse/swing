@@ -1,6 +1,6 @@
 //! Configuration related definitions and implementation
 
-use crate::{paint::ColorFormat, sculpt::RecordFormat, theme::Simple, theme::Theme};
+use crate::{paint::ColorFormat, sculpt::RecordFormat, theme::Spectral, theme::Theme};
 use log::LevelFilter;
 
 /// Main configuration for a `DiscoLogger`
@@ -28,7 +28,7 @@ impl Default for Config {
             level: LevelFilter::Info,
             record_format: RecordFormat::Simple,
             color_format: Some(ColorFormat::Solid),
-            theme: Box::new(Simple {}),
+            theme: Box::new(Spectral {}),
             use_stderr: true,
         }
     }

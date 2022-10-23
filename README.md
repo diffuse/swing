@@ -66,7 +66,7 @@ Config {
     level: LevelFilter::Info,
     record_format: RecordFormat::Simple,
     color_format: Some(ColorFormat::Solid),
-    theme: Box::new(theme::Simple {}),
+    theme: Box::new(theme::Spectral {}),
     use_stderr: true,
 };
 ```
