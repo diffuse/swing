@@ -76,7 +76,7 @@ impl Theme for Spectral {
                 end: Color::Orange.value(),
             },
             Level::Error => RgbRange {
-                start: Color::DarkOrange.value(),
+                start: Color::DarkRed.value(),
                 end: Color::Red.value(),
             },
         }
