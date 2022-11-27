@@ -1,6 +1,6 @@
-use swing::{theme::Spectral, ColorFormat, Config, SwingLogger};
 use log::LevelFilter;
 use std::thread;
+use swing::{theme::Spectral, ColorFormat, Config, Logger};
 mod util;
 
 fn main() {
@@ -11,7 +11,7 @@ fn main() {
         theme: Box::new(Spectral {}),
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 
     // log sample messages from 10 threads simultaneously
     let mut handles = vec![];

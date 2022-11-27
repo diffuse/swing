@@ -1,5 +1,5 @@
-use swing::{theme::Spectral, ColorFormat, Config, SwingLogger, RecordFormat};
 use log::LevelFilter;
+use swing::{theme::Spectral, ColorFormat, Config, Logger, RecordFormat};
 mod util;
 
 fn main() {
@@ -11,7 +11,7 @@ fn main() {
         theme: Box::new(Spectral {}),
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 
     util::log_sample_messages(1000);
 }

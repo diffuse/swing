@@ -1,8 +1,8 @@
-use swing::SwingLogger;
+use swing::Logger;
 
 fn main() {
     // setup logger
-    SwingLogger::new().init().unwrap();
+    Logger::new().init().unwrap();
 
     // log away!
     log::trace!("foo");

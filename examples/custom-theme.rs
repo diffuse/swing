@@ -1,5 +1,5 @@
-use swing::{Color, ColorFormat, Config, SwingLogger, Rgb, RgbRange, Theme};
 use log::{Level, LevelFilter};
+use swing::{Color, ColorFormat, Config, Logger, Rgb, RgbRange, Theme};
 
 /// Custom theme
 pub struct MyTheme {}
@@ -77,7 +77,7 @@ fn main() {
         color_format: Some(ColorFormat::InlineGradient(20)),
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("I looked forward to making a crate");

@@ -18,14 +18,14 @@ log = "0.4"
 
 # Quick start
 
-Create and initialize a `SwingLogger`, then use the [log](https://crates.io/crates/log) crate macros to log messages:
+Create and initialize a `Logger`, then use the [log](https://crates.io/crates/log) crate macros to log messages:
 
 ```rust
-use swing::SwingLogger;
+use swing::Logger;
 
 fn main() {
     // setup logger
-    SwingLogger::new().init().unwrap();
+    Logger::new().init().unwrap();
 
     // log away!
     log::trace!("foo");
@@ -36,14 +36,14 @@ fn main() {
 }
 ```
 
-Note that the default `SwingLogger` created with `::new()` has a log level filter of `info`, so in this example, only `"baz"` `"spam"` and `"eggs"` will be printed to the console.
+Note that the default `Logger` created with `::new()` has a log level filter of `info`, so in this example, only `"baz"` `"spam"` and `"eggs"` will be printed to the console.
 
 # Logger config options
 
-For more control, `SwingLogger`s can be created with a `Config` struct via `SwingLogger::with_config`:
+For more control, `Logger`s can be created with a `Config` struct via `Logger::with_config`:
 
 ```rust
-use swing::{Config, SwingLogger};
+use swing::{Config, Logger};
 use log::LevelFilter;
 
 fn main() {
@@ -52,7 +52,7 @@ fn main() {
         ..Default::default()
     };
 
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 }
 ```
 
@@ -127,7 +127,7 @@ of the variants in the `RecordFormat` enum:
 Record formats are imported and used by:
 
 ```rust
-use swing::{Config, SwingLogger, RecordFormat};
+use swing::{Config, Logger, RecordFormat};
 use log::LevelFilter;
 
 fn main() {
@@ -136,7 +136,7 @@ fn main() {
         record_format: RecordFormat::Simple,
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 }
 ```
 
@@ -173,7 +173,7 @@ Note that times are always in ISO 8601 format, UTC time.
 If you don't like any of the above formats, you can inject your own custom record formatting by using the `Custom` format:
 
 ```rust
-use swing::{Config, SwingLogger, RecordFormat};
+use swing::{Config, Logger, RecordFormat};
 use log::{LevelFilter, Record};
 
 fn main() {
@@ -186,7 +186,7 @@ fn main() {
         record_format: RecordFormat::Custom(fmt_rec),
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("foo");
@@ -238,7 +238,7 @@ The `color_format` setting controls how log records are colored (specifically ho
 Color formats are imported and used by:
 
 ```rust
-use swing::{Config, SwingLogger, ColorFormat};
+use swing::{Config, Logger, ColorFormat};
 use log::LevelFilter;
 
 fn main() {
@@ -247,7 +247,7 @@ fn main() {
         color_format: Some(ColorFormat::Solid),
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 }
 ```
 

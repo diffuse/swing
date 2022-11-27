@@ -1,5 +1,5 @@
-use swing::{Config, SwingLogger, RecordFormat};
 use log::LevelFilter;
+use swing::{Config, Logger, RecordFormat};
 
 fn main() {
     // setup logger
@@ -8,7 +8,7 @@ fn main() {
         record_format: RecordFormat::Json,
         ..Default::default()
     };
-    SwingLogger::with_config(config).init().unwrap();
+    Logger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("foo");
