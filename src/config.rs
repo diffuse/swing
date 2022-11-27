@@ -3,7 +3,7 @@
 use crate::{paint::ColorFormat, sculpt::RecordFormat, theme::Spectral, theme::Theme};
 use log::LevelFilter;
 
-/// Main configuration for a `DiscoLogger`
+/// Main configuration for a `Logger`
 pub struct Config {
     /// log level filter (logs below this severity will be ignored)
     pub level: LevelFilter,

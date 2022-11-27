@@ -1,13 +1,13 @@
 [package]
-name = "disco"
+name = "swing"
 version = "0.1.0"
 authors = ["Diffuse <48339639+diffuse@users.noreply.github.com>"]
 edition = "2018"
 readme = "README.md"
-repository = "https://github.com/diffuse/disco"
+repository = "https://github.com/diffuse/swing"
 license = "MIT/Apache-2.0"
 description = "Log like it's 1978 with this logging implementation for the log crate"
-keywords = ["log", "logging", "disco", "color"]
+keywords = ["log", "logging", "swing", "color"]
 categories = ["development-tools::debugging"]
 
 [dependencies]
