@@ -5,6 +5,7 @@ authors = ["Diffuse <48339639+diffuse@users.noreply.github.com>"]
 edition = "2018"
 readme = "README.md"
 repository = "https://github.com/diffuse/disco"
+license = "MIT/Apache-2.0"
 
 [dependencies]
 log = { version = "0.4", features = ["std", "serde"] }
