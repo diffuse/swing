@@ -354,7 +354,7 @@ To redirect all logs to file, while watching output:
 $ ./example 2>&1 | tee foo.log
 ```
 
-You can add `jq` for pretty printing:
+You can add `jq` for pretty printing when using `RecordFormat::Json`:
 
 ```shell
 $ ./example 2>&1 | tee foo.log | jq
