@@ -354,7 +354,7 @@ To redirect all logs to file, while watching output:
 $ ./example 2>&1 | tee foo.log
 ```
 
-You can add `jq` for pretty printing:
+You can add `jq` for pretty printing when using `RecordFormat::Json`:
 
 ```shell
 $ ./example 2>&1 | tee foo.log | jq
@@ -363,3 +363,9 @@ $ ./example 2>&1 | tee foo.log | jq
 # Contributing
 
 Contributions are welcome and greatly appreciated.  See [CONTRIBUTING](CONTRIBUTING.md) for some general guidelines.
+
+# License
+
+Licensed under either of [Apache License, Version 2.0](https://github.com/diffuse/disco/blob/main/LICENSE-APACHE) or [MIT license](https://github.com/diffuse/disco/blob/main/LICENSE-MIT) at your option.
+
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in disco by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions. 

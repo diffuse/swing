@@ -16,6 +16,7 @@ pub trait Theme: Send + Sync {
 }
 
 /// Basic log level colors
+#[derive(Clone)]
 pub struct Simple {}
 
 impl Theme for Simple {
@@ -50,6 +51,7 @@ impl Theme for Simple {
 }
 
 /// Move down the color spectrum by level
+#[derive(Clone)]
 pub struct Spectral {}
 
 impl Theme for Spectral {

@@ -3,7 +3,7 @@
 use colored::{self, Color::TrueColor};
 
 /// RGB triplet
-#[derive(Debug, PartialEq)]
+#[derive(Copy, Clone, Eq, PartialEq, Hash, Debug, Default)]
 pub struct Rgb {
     /// red intensity
     pub r: u8,
@@ -26,6 +26,7 @@ impl Into<colored::Color> for Rgb {
 
 /// RgbRange defines a linear color range from some start Rgb
 /// triplet -> some end Rgb triplet
+#[derive(Copy, Clone, Eq, PartialEq, Hash, Debug, Default)]
 pub struct RgbRange {
     /// start of color range
     pub start: Rgb,
@@ -33,12 +34,12 @@ pub struct RgbRange {
     pub end: Rgb,
 }
 
-#[allow(dead_code)]
 /// Constant predefined color values
 ///
 /// Use of these color values is not necessary when
 /// creating a theme, but they act as helpful aliases
 /// for raw Rgb triplets
+#[allow(dead_code)]
 pub enum Color {
     /// dark magenta
     DarkMagenta,
