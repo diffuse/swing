@@ -1,4 +1,4 @@
-use disco::{theme::Spectral, ColorFormat, Config, DiscoLogger};
+use swing::{theme::Spectral, ColorFormat, Config, SwingLogger};
 use log::LevelFilter;
 use std::thread;
 mod util;
@@ -11,7 +11,7 @@ fn main() {
         theme: Box::new(Spectral {}),
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 
     // log sample messages from 10 threads simultaneously
     let mut handles = vec![];

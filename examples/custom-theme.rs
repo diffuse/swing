@@ -1,4 +1,4 @@
-use disco::{Color, ColorFormat, Config, DiscoLogger, Rgb, RgbRange, Theme};
+use swing::{Color, ColorFormat, Config, SwingLogger, Rgb, RgbRange, Theme};
 use log::{Level, LevelFilter};
 
 /// Custom theme
@@ -77,7 +77,7 @@ fn main() {
         color_format: Some(ColorFormat::InlineGradient(20)),
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("I looked forward to making a crate");

@@ -1,4 +1,4 @@
-use disco::{Config, DiscoLogger, RecordFormat};
+use swing::{Config, SwingLogger, RecordFormat};
 use log::LevelFilter;
 
 fn main() {
@@ -8,7 +8,7 @@ fn main() {
         record_format: RecordFormat::Json,
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("foo");

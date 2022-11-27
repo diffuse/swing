@@ -1,4 +1,4 @@
-use disco::{theme::Spectral, ColorFormat, Config, DiscoLogger, RecordFormat};
+use swing::{theme::Spectral, ColorFormat, Config, SwingLogger, RecordFormat};
 use log::LevelFilter;
 mod util;
 
@@ -11,7 +11,7 @@ fn main() {
         theme: Box::new(Spectral {}),
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 
     util::log_sample_messages(1000);
 }

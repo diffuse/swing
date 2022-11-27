@@ -24,7 +24,7 @@ pub mod config;
 pub use config::Config;
 
 /// Implements log::Log
-pub struct DiscoLogger {
+pub struct SwingLogger {
     /// Level-based filter for logs
     level_filter: LevelFilter,
     /// painter for logs
@@ -35,19 +35,19 @@ pub struct DiscoLogger {
     log_writer: LogWriter,
 }
 
-impl DiscoLogger {
-    /// Create a new DiscoLogger with a default configuration
-    pub fn new() -> DiscoLogger {
-        DiscoLogger::with_config(Config::default())
+impl SwingLogger {
+    /// Create a new SwingLogger with a default configuration
+    pub fn new() -> SwingLogger {
+        SwingLogger::with_config(Config::default())
     }
 
-    /// Create a new DiscoLogger with a custom configuration
+    /// Create a new SwingLogger with a custom configuration
     ///
     /// # Arguments
     ///
     /// * `config` - configuration for this logger
-    pub fn with_config(config: Config) -> DiscoLogger {
-        DiscoLogger {
+    pub fn with_config(config: Config) -> SwingLogger {
+        SwingLogger {
             log_sculptor: LogSculptor::new(config.record_format),
             level_filter: config.level,
             log_painter: LogPainter::new(config.theme, config.color_format),
@@ -61,7 +61,7 @@ impl DiscoLogger {
     }
 }
 
-impl Log for DiscoLogger {
+impl Log for SwingLogger {
     /// Check if this message should be logged
     fn enabled(&self, metadata: &Metadata) -> bool {
         metadata.level() <= self.level_filter
@@ -96,7 +96,7 @@ mod tests {
             level: LevelFilter::Warn,
             ..Default::default()
         };
-        let logger = DiscoLogger::with_config(config);
+        let logger = SwingLogger::with_config(config);
         let mut mb = Metadata::builder();
 
         assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
@@ -112,7 +112,7 @@ mod tests {
             level: LevelFilter::Off,
             ..Default::default()
         };
-        let logger = DiscoLogger::with_config(config);
+        let logger = SwingLogger::with_config(config);
         let mut mb = Metadata::builder();
 
         assert!(!logger.enabled(&mut mb.level(Level::Trace).build()));
@@ -125,7 +125,7 @@ mod tests {
     #[test]
     fn log_handles_empty_record() {
         let config = Config::default();
-        let logger = DiscoLogger::with_config(config);
+        let logger = SwingLogger::with_config(config);
 
         // create record with fields set to empty strings
         let rec = Record::builder()

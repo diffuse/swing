@@ -1,8 +1,8 @@
-use disco::DiscoLogger;
+use swing::SwingLogger;
 
 fn main() {
     // setup logger
-    DiscoLogger::new().init().unwrap();
+    SwingLogger::new().init().unwrap();
 
     // log away!
     log::trace!("foo");

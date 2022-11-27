@@ -1,6 +1,6 @@
-<img src="https://i.imgur.com/xOjqfvy.gif" alt="disco logo" width="25%"/>
+<img src="https://i.imgur.com/xOjqfvy.gif" alt="swing logo" width="25%"/>
 
-# disco
+# swing
 
 Log like it's 1978 with this logging implementation for the [log](https://crates.io/crates/log) crate. Color themes, pluggable formatting, we've got it all!
 
@@ -12,20 +12,20 @@ Add the following to `Cargo.toml`:
 
 ```toml
 [dependencies]
-disco = "0.1"
+swing = "0.1"
 log = "0.4"
 ```
 
 # Quick start
 
-Create and initialize a `DiscoLogger`, then use the [log](https://crates.io/crates/log) crate macros to log messages:
+Create and initialize a `SwingLogger`, then use the [log](https://crates.io/crates/log) crate macros to log messages:
 
 ```rust
-use disco::DiscoLogger;
+use swing::SwingLogger;
 
 fn main() {
     // setup logger
-    DiscoLogger::new().init().unwrap();
+    SwingLogger::new().init().unwrap();
 
     // log away!
     log::trace!("foo");
@@ -36,14 +36,14 @@ fn main() {
 }
 ```
 
-Note that the default `DiscoLogger` created with `::new()` has a log level filter of `info`, so in this example, only `"baz"` `"spam"` and `"eggs"` will be printed to the console.
+Note that the default `SwingLogger` created with `::new()` has a log level filter of `info`, so in this example, only `"baz"` `"spam"` and `"eggs"` will be printed to the console.
 
 # Logger config options
 
-For more control, `DiscoLogger`s can be created with a `Config` struct via `DiscoLogger::with_config`:
+For more control, `SwingLogger`s can be created with a `Config` struct via `SwingLogger::with_config`:
 
 ```rust
-use disco::{Config, DiscoLogger};
+use swing::{Config, SwingLogger};
 use log::LevelFilter;
 
 fn main() {
@@ -52,14 +52,14 @@ fn main() {
         ..Default::default()
     };
 
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 }
 ```
 
 The default configuration uses the following settings:
 
 ```rust
-use disco::{Config, ColorFormat, RecordFormat, theme};
+use swing::{Config, ColorFormat, RecordFormat, theme};
 use log::LevelFilter;
 
 Config {
@@ -94,7 +94,7 @@ from [the log crate](https://docs.rs/log/latest/log/enum.LevelFilter.html). It d
 Only records logged at or above the chosen severity will be output to `stdout`/`stderr`. For example:
 
 ```rust
-use disco::Config;
+use swing::Config;
 use log::LevelFilter;
 
 // --snip--
@@ -127,7 +127,7 @@ of the variants in the `RecordFormat` enum:
 Record formats are imported and used by:
 
 ```rust
-use disco::{Config, DiscoLogger, RecordFormat};
+use swing::{Config, SwingLogger, RecordFormat};
 use log::LevelFilter;
 
 fn main() {
@@ -136,7 +136,7 @@ fn main() {
         record_format: RecordFormat::Simple,
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 }
 ```
 
@@ -173,7 +173,7 @@ Note that times are always in ISO 8601 format, UTC time.
 If you don't like any of the above formats, you can inject your own custom record formatting by using the `Custom` format:
 
 ```rust
-use disco::{Config, DiscoLogger, RecordFormat};
+use swing::{Config, SwingLogger, RecordFormat};
 use log::{LevelFilter, Record};
 
 fn main() {
@@ -186,7 +186,7 @@ fn main() {
         record_format: RecordFormat::Custom(fmt_rec),
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 
     // log away!
     log::trace!("foo");
@@ -238,7 +238,7 @@ The `color_format` setting controls how log records are colored (specifically ho
 Color formats are imported and used by:
 
 ```rust
-use disco::{Config, DiscoLogger, ColorFormat};
+use swing::{Config, SwingLogger, ColorFormat};
 use log::LevelFilter;
 
 fn main() {
@@ -247,7 +247,7 @@ fn main() {
         color_format: Some(ColorFormat::Solid),
         ..Default::default()
     };
-    DiscoLogger::with_config(config).init().unwrap();
+    SwingLogger::with_config(config).init().unwrap();
 }
 ```
 
@@ -259,7 +259,7 @@ If `None` is provided as the `color_format`, log records will not be colored (wa
 
 This will generate log lines that each have a solid color, determined by log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
-use disco::ColorFormat;
+use swing::ColorFormat;
 
 // --snip--
 
@@ -271,7 +271,7 @@ let color_format = Some(ColorFormat::Solid);
 
 This will generate log lines that are colored with a repeating linear gradient from left to right, determined by log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
-use disco::ColorFormat;
+use swing::ColorFormat;
 
 // --snip--
 
@@ -287,7 +287,7 @@ Note that this color format will incur a nontrivial performance hit with heavy l
 
 This will generate log lines that each have a solid color, determined by level.  Lines within each level will change color step by step, moving through a linear gradient of colors determined by the relevant log level.  The below screenshot uses the `Spectral` theme and the following color format:
 ```rust
-use disco::ColorFormat;
+use swing::ColorFormat;
 
 // --snip--
 
@@ -301,7 +301,7 @@ This color format takes a `usize` argument which represents the number of steps 
 
 The `theme` setting determines the color palette to use when applying color formats.  It is set by providing an instance of something that implements the `Theme` trait:
 ```rust
-use disco::theme::Spectral;
+use swing::theme::Spectral;
 
 // --snip--
 
@@ -366,6 +366,6 @@ Contributions are welcome and greatly appreciated.  See [CONTRIBUTING](CONTRIBUT
 
 # License
 
-Licensed under either of [Apache License, Version 2.0](https://github.com/diffuse/disco/blob/main/LICENSE-APACHE) or [MIT license](https://github.com/diffuse/disco/blob/main/LICENSE-MIT) at your option.
+Licensed under either of [Apache License, Version 2.0](https://github.com/diffuse/swing/blob/main/LICENSE-APACHE) or [MIT license](https://github.com/diffuse/swing/blob/main/LICENSE-MIT) at your option.
 
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in disco by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions. 
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in swing by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions. 
