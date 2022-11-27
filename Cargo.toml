@@ -6,6 +6,9 @@ edition = "2018"
 readme = "README.md"
 repository = "https://github.com/diffuse/disco"
 license = "MIT/Apache-2.0"
+description = "Log like it's 1978 with this logging implementation for the log crate"
+keywords = ["log", "logging", "disco", "color"]
+categories = ["development-tools::debugging"]
 
 [dependencies]
 log = { version = "0.4", features = ["std", "serde"] }
